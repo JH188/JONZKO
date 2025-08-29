@@ -745,7 +745,70 @@ footer .copy { margin-top:15px; font-size:.85rem; color:#eee; }
   padding-top: 15px;
   font-size: 0.85rem;
 }
-/* NOVEDADES */
+/* HEADER FIX */
+header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap; /* evita que el carrito se salga */
+  padding:12px 6%;
+  background:#1b4332;
+  color:#fff;
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+.nav-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-shrink:0;
+}
+.search-box{
+  position:relative;
+  flex:1;
+  min-width:150px;
+}
+.search-box input{
+  width:100%;
+  padding:6px 30px 6px 12px;
+  border-radius:8px;
+  border:1px solid #ccc;
+  font-size:.9rem;
+}
+.search-box i{
+  position:absolute;
+  right:10px;
+  top:50%;
+  transform:translateY(-50%);
+  color:#777;
+}
+.cart{
+  position:relative;
+  font-size:1.2rem;
+  cursor:pointer;
+  background:#fff;
+  color:#1b4332;
+  border-radius:50%;
+  width:38px;
+  height:38px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.cart-count{
+  position:absolute;
+  top:-6px;
+  right:-6px;
+  background:#d62828;
+  color:#fff;
+  font-size:.7rem;
+  padding:3px 6px;
+  border-radius:50%;
+  font-weight:bold;
+}
+
+/* NOVEDADES FIX */
 .novedades-header{
   display:flex;
   justify-content:space-between;
@@ -763,7 +826,7 @@ footer .copy { margin-top:15px; font-size:.85rem; color:#eee; }
   background:#fff;
   border-radius:10px;
   box-shadow:0 2px 6px rgba(0,0,0,0.1);
-  min-width:220px;
+  min-width:240px;
   flex:none;
   text-align:center;
   padding:10px;
@@ -772,8 +835,8 @@ footer .copy { margin-top:15px; font-size:.85rem; color:#eee; }
 }
 .card-novedad img{
   width:100%;
-  height:200px;
-  object-fit:cover;
+  height:220px; /* altura fija y uniforme */
+  object-fit:cover; /* evita distorsión */
   border-radius:8px;
 }
 .card-novedad h3{
@@ -781,4 +844,5 @@ footer .copy { margin-top:15px; font-size:.85rem; color:#eee; }
   font-size:1rem;
   color:#1b4332;
 }
+
 
