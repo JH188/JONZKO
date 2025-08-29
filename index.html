@@ -24,17 +24,19 @@
     /* HEADER */
     header{
       display:flex;align-items:center;justify-content:space-between;
-      padding:10px 4%;background:#1b4332;color:#fff;
+      padding:12px 6%;background:#1b4332;color:#fff;
       position:sticky;top:0;z-index:1000;
     }
-    .logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:1.2rem;color:#fff;}
+    .logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:1.3rem;color:#fff;}
     .logo img{width:32px;height:32px;border-radius:50%;}
     nav{display:flex;gap:20px;}
     nav a{color:#fff;text-decoration:none;font-weight:500;position:relative;}
-    nav a.active::after{content:"";display:block;width:100%;height:2px;background:#ffb703;
-      position:absolute;bottom:-4px;left:0;border-radius:2px;}
+    nav a.active::after{
+      content:"";display:block;width:100%;height:2px;background:#ffb703;
+      position:absolute;bottom:-4px;left:0;border-radius:2px;
+    }
 
-    /* MENU MOBILE */
+    /* MOBILE NAV */
     .menu-toggle{display:none;font-size:1.5rem;background:none;border:none;color:#fff;cursor:pointer;}
     @media(max-width:768px){
       nav{display:none;flex-direction:column;gap:15px;background:#1b4332;position:absolute;top:60px;right:0;width:200px;padding:20px;}
@@ -43,7 +45,7 @@
     }
 
     /* SEARCH + CART */
-    .nav-actions{display:flex;align-items:center;gap:12px;}
+    .nav-actions{display:flex;align-items:center;gap:15px;}
     .search-box{position:relative;}
     .search-box input{padding:6px 30px 6px 12px;border-radius:8px;border:1px solid #ccc;font-size:.9rem;}
     .search-box i{position:absolute;right:10px;top:50%;transform:translateY(-50%);color:#777;}
@@ -52,20 +54,28 @@
     .cart-count{position:absolute;top:-6px;right:-6px;background:#d62828;color:#fff;
       font-size:.7rem;padding:3px 6px;border-radius:50%;font-weight:bold;}
 
-    /* HERO */
+    /* HERO SLIDER */
     .hero{position:relative;overflow:hidden;}
-    .slide img{width:100%;height:400px;object-fit:cover;}
-    @media(max-width:600px){.slide img{height:260px;}}
-    .hero-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-      text-align:center;color:#fff;z-index:2;padding:0 10px;}
-    .hero-text h1{font-size:2rem;margin:10px 0;}
-    .hero-text .btn{background:#1b4332;color:#fff;padding:8px 16px;border-radius:6px;text-decoration:none;}
-    
+    .slide{display:none;position:relative;}
+    .slide.active{display:block;}
+    .slide img{width:100%;height:500px;object-fit:cover;}
+    .hero-text{
+      position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+      text-align:center;color:#fff;z-index:2;
+    }
+    .hero-text .tag{background:#1b4332;padding:4px 12px;border-radius:20px;font-size:.8rem;}
+    .hero-text h1{font-size:2.2rem;margin:10px 0;}
+    .hero-text p{margin-bottom:15px;}
+    .hero-text .btn{background:#1b4332;color:#fff;padding:10px 18px;border-radius:6px;text-decoration:none;}
+    .slider-controls{position:absolute;top:50%;left:0;right:0;display:flex;justify-content:space-between;color:#fff;font-size:2rem;padding:0 15px;}
+    .slider-dots{text-align:center;margin:10px 0;}
+    .dot{height:10px;width:10px;background:#ccc;border-radius:50%;display:inline-block;margin:0 3px;cursor:pointer;}
+    .dot.active{background:#1b4332;}
+
     /* SECCIONES */
     .section{padding:40px 6%;}
     .section h2{text-align:center;color:#1b4332;margin-bottom:20px;}
 
-    /* PRODUCTOS GRID */
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;}
     .card{background:#fff;border-radius:10px;padding:15px;text-align:center;box-shadow:0 3px 10px rgba(0,0,0,.1);}
     .card img{width:100%;height:180px;object-fit:cover;border-radius:8px;}
@@ -74,30 +84,43 @@
     .card button{padding:8px 12px;background:#1b4332;color:#fff;border:none;border-radius:6px;cursor:pointer;}
 
     /* NOVEDADES */
-    .novedades-scroll{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;}
-    .card-novedad{background:#fff;border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,0.1);padding:10px;position:relative;text-align:center;}
-    .card-novedad img{width:100%;height:160px;object-fit:cover;border-radius:8px;}
-    .descuento{position:absolute;top:10px;left:10px;background:#ffb703;color:#111;padding:3px 7px;border-radius:5px;font-size:.75rem;font-weight:bold;}
+    .novedades-scroll{display:flex;gap:20px;overflow-x:auto;padding:10px;}
+    .card-novedad{background:#fff;border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,0.1);min-width:200px;flex:none;text-align:center;padding:10px;position:relative;}
+    .card-novedad img{width:100%;height:150px;object-fit:cover;border-radius:8px;}
+    .descuento{position:absolute;top:10px;left:10px;background:#ffb703;color:#111;padding:3px 7px;border-radius:5px;font-size:.75rem;font-weight:bold;cursor:pointer;}
     .precios{margin-top:6px;}
     .precio{color:#2d6a4f;font-weight:600;margin-right:5px;}
     .precio-ant{text-decoration:line-through;color:#888;font-size:.85rem;}
     .btn-rapido{position:absolute;bottom:10px;right:10px;background:#1b4332;color:#fff;border:none;padding:5px 10px;border-radius:50%;cursor:pointer;}
 
+    /* CONOCENOS */
+    .about-box{display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+    .about-box p{flex:1;font-size:.95rem;}
+    .about-box img{width:300px;border-radius:10px;}
+
+    /* FAQ */
+    .faq-box details{margin-bottom:10px;background:#fff;padding:10px;border-radius:6px;box-shadow:0 2px 6px rgba(0,0,0,0.05);}
+
+    /* RESEÑAS */
+    .reseñas-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;}
+    .review-card{background:#fff;padding:15px;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.05);}
+    .review-footer{margin-top:10px;display:flex;justify-content:space-between;align-items:center;}
+    .stars{color:#ffb703;}
+
     /* FOOTER */
-    .footer{background:#1b4332;color:#fff;padding:30px 6%;margin-top:40px;}
+    .footer{background:#1b4332;color:#fff;padding:30px 6%;}
     .footer-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;}
     .footer-col h3{margin-bottom:10px;}
     .footer-col a{display:block;color:#fff;text-decoration:none;margin-bottom:5px;font-size:.9rem;}
     .footer-bottom{text-align:center;margin-top:20px;font-size:.85rem;}
 
     /* CARRITO */
-    .cart-panel{position:fixed;top:0;right:-100%;width:320px;height:100%;background:#fff;box-shadow:-2px 0 8px rgba(0,0,0,0.3);transition:.3s;z-index:3000;display:flex;flex-direction:column;}
+    .cart-panel{position:fixed;top:0;right:-100%;width:320px;height:100%;background:#fff;box-shadow:-2px 0 8px rgba(0,0,0,0.2);transition:.3s;z-index:2000;padding:20px;display:flex;flex-direction:column;}
     .cart-panel.show{right:0;}
-    .cart-header{background:#1b4332;color:#fff;display:flex;justify-content:space-between;align-items:center;padding:12px;font-size:1rem;}
-    .cart-items{flex:1;overflow-y:auto;padding:15px;}
-    .cart-items p{margin:0 0 10px;}
-    .cart-footer{border-top:1px solid #ddd;padding:15px;}
-    .cart-footer button{width:100%;padding:10px;margin-top:8px;border:none;border-radius:6px;font-weight:600;cursor:pointer;}
+    .cart-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+    .cart-items{flex:1;overflow-y:auto;}
+    .cart-footer{border-top:1px solid #ddd;padding-top:10px;}
+    .cart-footer button{width:100%;margin-top:8px;padding:10px;border:none;border-radius:6px;font-weight:600;cursor:pointer;}
     .checkout{background:#1b4332;color:#fff;}
     .clear{background:#d62828;color:#fff;}
   </style>
@@ -105,7 +128,9 @@
 <body>
 
   <!-- TOPBAR -->
-  <div class="topbar">🎉 Nueva colección disponible ahora en <strong>JONZKO</strong></div>
+  <div class="topbar">
+    🎉 Nueva colección disponible ahora en <strong>JONZKO</strong>
+  </div>
 
   <!-- HEADER -->
   <header>
@@ -118,7 +143,10 @@
       <a href="contacto.html">Contacto</a>
     </nav>
     <div class="nav-actions">
-      <div class="search-box"><input type="text" placeholder="Buscar productos..."><i class="fas fa-search"></i></div>
+      <div class="search-box">
+        <input type="text" placeholder="Buscar productos, categorías...">
+        <i class="fas fa-search"></i>
+      </div>
       <div class="cart" id="cart-btn"><i class="fas fa-shopping-cart"></i><span class="cart-count">0</span></div>
     </div>
   </header>
@@ -134,25 +162,119 @@
         <a href="tienda.html" class="btn">Explorar</a>
       </div>
     </div>
+    <div class="slide">
+      <img src="img/slide1.jpg" alt="Mujeres">
+      <div class="hero-text">
+        <span class="tag">Moda Mujer</span>
+        <h1>Elegancia & Estilo</h1>
+        <p>Prendas exclusivas para destacar en cualquier ocasión.</p>
+        <a href="tienda.html" class="btn">Ver Colección</a>
+      </div>
+    </div>
+    <div class="slide">
+      <img src="img/slide1.jpg" alt="Accesorios">
+      <div class="hero-text">
+        <span class="tag">Accesorios</span>
+        <h1>Complementa tu Look</h1>
+        <p>Bolsos, mochilas y más, hechos para ti.</p>
+        <a href="tienda.html" class="btn">Ver Accesorios</a>
+      </div>
+    </div>
+    <div class="slider-controls">
+      <span class="prev">&#10094;</span>
+      <span class="next">&#10095;</span>
+    </div>
+    <div class="slider-dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
   </div>
 
   <!-- COLECCIONES -->
   <section class="section">
     <h2>Colecciones por Estilo</h2>
     <div class="grid">
-      <div class="card"><img src="img/slide1.jpg"><h3>Básico (19–29 soles)</h3><p>Ropa simple y económica con estilo urbano.</p><button data-name="Básico" data-price="25" class="add-to-cart">Añadir</button></div>
-      <div class="card"><img src="img/slide1.jpg"><h3>Intermedio (29–59 soles)</h3><p>La mejor relación precio–calidad en ropa moderna.</p><button data-name="Intermedio" data-price="45" class="add-to-cart">Añadir</button></div>
-      <div class="card"><img src="img/slide1.jpg"><h3>Premium (59–120 soles)</h3><p>Prendas exclusivas con telas de primera calidad.</p><button data-name="Premium" data-price="99" class="add-to-cart">Añadir</button></div>
+      <div class="card">
+        <img src="img/slide1.jpg" alt="Básico">
+        <h3>Básico (19–29 soles)</h3>
+        <p>Ropa simple y económica con estilo urbano.</p>
+        <button data-name="Básico" data-price="25" class="add-to-cart">Añadir</button>
+      </div>
+      <div class="card">
+        <img src="img/slide1.jpg" alt="Intermedio">
+        <h3>Intermedio (29–59 soles)</h3>
+        <p>La mejor relación precio–calidad en ropa moderna.</p>
+        <button data-name="Intermedio" data-price="45" class="add-to-cart">Añadir</button>
+      </div>
+      <div class="card">
+        <img src="img/slide1.jpg" alt="Premium">
+        <h3>Premium (59–120 soles)</h3>
+        <p>Prendas exclusivas con telas de primera calidad.</p>
+        <button data-name="Premium" data-price="99" class="add-to-cart">Añadir</button>
+      </div>
     </div>
   </section>
 
   <!-- NOVEDADES -->
   <section class="section novedades">
-    <h2>Novedades</h2>
+    <div class="novedades-header">
+      <h2>Novedades</h2>
+      <a href="tienda.html" class="ver-mas">Ver más →</a>
+    </div>
     <div class="novedades-scroll">
-      <div class="card-novedad"><span class="descuento">-10%</span><a href="polo.html"><img src="img/slide1.jpg"></a><h3>Polo Oversize</h3><div class="precios"><span class="precio">S/ 49</span><span class="precio-ant">S/ 55</span></div><button class="btn-rapido" data-name="Polo Oversize" data-price="49">+</button></div>
-      <div class="card-novedad"><span class="descuento">-12%</span><a href="polera.html"><img src="img/slide1.jpg"></a><h3>Polera Negra</h3><div class="precios"><span class="precio">S/ 79</span><span class="precio-ant">S/ 90</span></div><button class="btn-rapido" data-name="Polera Negra" data-price="79">+</button></div>
-      <div class="card-novedad"><span class="descuento">-15%</span><a href="pantalon.html"><img src="img/slide1.jpg"></a><h3>Pantalón Cargo</h3><div class="precios"><span class="precio">S/ 99</span><span class="precio-ant">S/ 115</span></div><button class="btn-rapido" data-name="Pantalón Cargo" data-price="99">+</button></div>
+      <div class="card-novedad">
+        <span class="descuento">-10%</span>
+        <a href="polo.html"><img src="img/slide1.jpg" alt="Polo Oversize"></a>
+        <h3><a href="polo.html" style="color:inherit;text-decoration:none;">Polo Oversize</a></h3>
+        <div class="precios"><span class="precio">S/ 49</span><span class="precio-ant">S/ 55</span></div>
+        <button class="btn-rapido" data-name="Polo Oversize" data-price="49">+</button>
+      </div>
+      <div class="card-novedad">
+        <span class="descuento">-12%</span>
+        <a href="polera.html"><img src="img/slide1.jpg" alt="Polera Negra"></a>
+        <h3><a href="polera.html" style="color:inherit;text-decoration:none;">Polera Negra</a></h3>
+        <div class="precios"><span class="precio">S/ 79</span><span class="precio-ant">S/ 90</span></div>
+        <button class="btn-rapido" data-name="Polera Negra" data-price="79">+</button>
+      </div>
+      <div class="card-novedad">
+        <span class="descuento">-15%</span>
+        <a href="pantalon.html"><img src="img/slide1.jpg" alt="Pantalón Cargo"></a>
+        <h3><a href="pantalon.html" style="color:inherit;text-decoration:none;">Pantalón Cargo</a></h3>
+        <div class="precios"><span class="precio">S/ 99</span><span class="precio-ant">S/ 115</span></div>
+        <button class="btn-rapido" data-name="Pantalón Cargo" data-price="99">+</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONÓCENOS -->
+  <section class="section conocenos">
+    <h2>Conócenos</h2>
+    <div class="about-box">
+      <p>En <strong>JONZKO</strong> creemos que la moda es identidad. Diseñamos ropa urbana que combina estilo, calidad y accesibilidad. Cada pieza está hecha para que luzcas auténtico y único.</p>
+      <img src="img/slide1.jpg" alt="Nosotros">
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq">
+    <h2>Preguntas Frecuentes</h2>
+    <div class="faq-box">
+      <details><summary>¿Puedo cambiar un producto si no me gustó o por tamaño?</summary><p>Sí, aceptamos cambios dentro de los 7 días posteriores.</p></details>
+      <details><summary>¿Cómo se realizan los envíos?</summary><p>Envíos motorizados en Lima y agencias a provincias.</p></details>
+      <details><summary>¿Qué métodos de pago aceptan?</summary><p>Yape, Plin, transferencias y tarjetas.</p></details>
+      <details><summary>¿De qué material están hechas las prendas?</summary><p>100% algodón premium y acabados de alta calidad.</p></details>
+    </div>
+  </section>
+
+  <!-- RESEÑAS -->
+  <section class="section reseñas">
+    <h2>Reseñas de Nuestros Clientes</h2>
+    <div class="reseñas-grid">
+      <div class="review-card"><p>"Muy hermoso me encantó, el material buenísimo. Gracias 😍"</p><div class="review-footer"><span class="stars">⭐️⭐️⭐️⭐️⭐️</span><strong>Katherine</strong></div></div>
+      <div class="review-card"><p>"La mini bag uff demasiado bello, amo su calidad 👜❤️"</p><div class="review-footer"><span class="stars">⭐️⭐️⭐️⭐️⭐️</span><strong>Jaqui</strong></div></div>
+      <div class="review-card"><p>"Las vi por TikTok y me animé en comprar. ¡No me arrepiento!"</p><div class="review-footer"><span class="stars">⭐️⭐️⭐️⭐️⭐️</span><strong>Eli Fernando</strong></div></div>
+      <div class="review-card"><p>"Llegó rápido y la tela es buenaza. Gracias JONZKO 🙌"</p><div class="review-footer"><span class="stars">⭐️⭐️⭐️⭐️⭐️</span><strong>Daniela</strong></div></div>
     </div>
   </section>
 
@@ -170,15 +292,29 @@
   <!-- CARRITO -->
   <div id="cart-panel" class="cart-panel">
     <div class="cart-header"><h3>🛍️ Tu Carrito</h3><button id="close-cart">❌</button></div>
-    <div class="cart-items" id="cart-items"><p>⚠️ No tienes productos aún</p></div>
+    <div class="cart-items" id="cart-items"><p id="cart-empty">⚠️ No tienes productos aún</p></div>
     <div class="cart-footer"><p><strong>Total:</strong> S/ <span id="cart-total">0.00</span></p><button class="checkout">Finalizar Compra</button><button class="clear" id="clear-cart">Vaciar</button></div>
   </div>
 
   <script>
+    // NAV
     const menuToggle=document.getElementById("menu-toggle");
     const navMenu=document.getElementById("nav-menu");
     menuToggle.addEventListener("click",()=>navMenu.classList.toggle("show"));
 
+    // SLIDER
+    const slides=document.querySelectorAll(".slide");
+    const dots=document.querySelectorAll(".dot");
+    let index=0;
+    function showSlide(i){
+      slides.forEach((s,idx)=>{s.classList.remove("active");dots[idx].classList.remove("active");});
+      slides[i].classList.add("active");dots[i].classList.add("active");
+    }
+    document.querySelector(".prev").addEventListener("click",()=>{index=(index>0)?index-1:slides.length-1;showSlide(index);});
+    document.querySelector(".next").addEventListener("click",()=>{index=(index<slides.length-1)?index+1:0;showSlide(index);});
+    dots.forEach((d,i)=>{d.addEventListener("click",()=>{index=i;showSlide(i);});});
+
+    // CARRITO
     let cart=JSON.parse(localStorage.getItem("cart"))||[];
     const cartBtn=document.getElementById("cart-btn");
     const cartPanel=document.getElementById("cart-panel");
