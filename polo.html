@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polo Oversize - JONZKO</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    :root {
+      --brand:#1b4332; --brand-light:#52b788; --accent:#ffb703;
+      --danger:#d62828; --bg:#fff; --text:#222; --muted:#666;
+      --radius:12px; --shadow:0 2px 8px rgba(0,0,0,.1);
+    }
+    body { margin:0; font-family:'Poppins',sans-serif; background:var(--bg); color:var(--text); }
+
+    /* ===== HEADER ===== */
+    header { display:flex; justify-content:space-between; align-items:center; padding:12px 6%; background:#1b4332; color:#fff; }
+    .logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:1.4rem;color:#fff;}
+    .logo img{width:38px;height:38px;border-radius:50%;}
+    nav{display:flex;gap:20px;}
+    nav a{color:#fff;text-decoration:none;font-weight:500;position:relative;}
+    nav a.active::after{content:""; position:absolute; bottom:-5px; left:0; width:100%; height:2px; background:var(--accent);}
+
+    .nav-actions{display:flex;align-items:center;gap:15px;}
+    .cart{position:relative;font-size:1.2rem;background:#fff;color:var(--brand);padding:6px 12px;border-radius:30px;cursor:pointer;}
+    .cart-count{background:var(--danger);color:#fff;font-size:.75rem;padding:2px 6px;border-radius:50%;position:absolute;top:-6px;right:-6px;}
+
+    /* ===== PRODUCT DETAIL ===== */
+    .product-page{max-width:1200px;margin:40px auto;padding:0 20px;display:grid;grid-template-columns:1fr 1fr;gap:40px;}
+    .gallery{display:flex;gap:15px;}
+    .thumbs{display:flex;flex-direction:column;gap:10px;}
+    .thumbs img{width:70px;height:70px;object-fit:cover;border-radius:10px;cursor:pointer;border:2px solid transparent;transition:.3s;}
+    .thumbs img:hover{border:2px solid var(--brand-light);}
+    .main-img{flex:1;}
+    .main-img img{width:100%;height:500px;object-fit:cover;border-radius:10px;box-shadow:var(--shadow);}
+    
+    .info h2{font-size:2rem;color:var(--brand);}
+    .vendidos{color:var(--muted);font-size:.9rem;}
+    .precios{display:flex;gap:10px;align-items:center;margin:10px 0;}
+    .precio{color:var(--brand);font-weight:700;font-size:1.6rem;}
+    .precio-ant{text-decoration:line-through;color:var(--muted);}
+    .ahorro{color:var(--brand-light);font-size:.9rem;font-weight:600;}
+    .disponible{color:green;font-weight:600;margin:5px 0;}
+    .tallas,.colores{margin:15px 0;}
+    .tallas button,.colores button{margin:5px;padding:6px 12px;border:1px solid var(--brand-light);background:#fff;border-radius:6px;cursor:pointer;transition:.3s;}
+    .tallas button:hover,.colores button:hover{background:var(--brand-light);color:#fff;}
+    .cantidad{display:flex;align-items:center;margin:15px 0;}
+    .cantidad button{width:32px;height:32px;border:none;background:var(--brand);color:#fff;font-weight:700;cursor:pointer;}
+    .cantidad input{width:50px;text-align:center;border:1px solid #ccc;padding:5px;}
+    .btn-agregar{background:var(--brand);color:#fff;border:none;padding:14px;width:100%;border-radius:var(--radius);font-weight:700;cursor:pointer;font-size:1rem;margin-top:10px;}
+    .btn-agregar:hover{background:var(--brand-light);}
+    .btn-whatsapp{background:#25d366;color:#fff;border:none;padding:12px;width:100%;border-radius:var(--radius);margin-top:10px;font-weight:600;cursor:pointer;}
+
+    .info h3{margin-top:25px;color:var(--brand);}
+    .info ul{list-style:none;padding:0;}
+    .info ul li{margin:6px 0;}
+
+    .pagos img{height:28px;margin:0 5px;vertical-align:middle;}
+    .pagos p{margin:6px 0;}
+
+    /* ===== RESPONSIVE ===== */
+    @media(max-width:900px){
+      .product-page{grid-template-columns:1fr;}
+      .main-img img{height:300px;}
+      .thumbs{flex-direction:row;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo"><img src="img/logo.jpg" alt="JONZKO Logo"><span>JONZKO</span></div>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="tienda.html" class="active">Tienda</a>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+    <div class="nav-actions">
+      <div class="cart" id="cart-btn"><i class="fas fa-shopping-cart"></i> <span class="cart-count">0</span></div>
+    </div>
+  </header>
+
+  <!-- PRODUCT DETAIL -->
+  <section class="product-page">
+    <!-- GALERÍA -->
+    <div class="gallery">
+      <div class="thumbs">
+        <img src="img/slide1.jpg" onclick="document.getElementById('main-img').src=this.src">
+        <img src="img/slide1.jpg" onclick="document.getElementById('main-img').src=this.src">
+        <img src="img/slide1.jpg" onclick="document.getElementById('main-img').src=this.src">
+        <img src="img/slide1.jpg" onclick="document.getElementById('main-img').src=this.src">
+      </div>
+      <div class="main-img"><img id="main-img" src="img/slide1.jpg" alt="Polo Oversize"></div>
+    </div>
+
+    <!-- INFO -->
+    <div class="info">
+      <p class="vendidos">58 vendidos</p>
+      <h2>Polo Oversize</h2>
+      <div class="precios">
+        <span class="precio">S/ 49.00</span>
+        <span class="precio-ant">S/ 55.00</span>
+      </div>
+      <p class="ahorro">Ahorras S/ 6.00</p>
+      <p class="disponible">✔ Disponible</p>
+
+      <div class="tallas">
+        <strong>Talla:</strong><br>
+        <button>S</button><button>M</button><button>L</button><button>XL</button>
+      </div>
+
+      <div class="colores">
+        <strong>Color:</strong><br>
+        <button>Negro</button><button>Blanco</button><button>Beige</button>
+      </div>
+
+      <div class="cantidad">
+        <button id="menos">-</button>
+        <input type="number" id="cantidad" value="1" min="1">
+        <button id="mas">+</button>
+      </div>
+
+      <button class="btn-agregar" id="agregarBtn"><i class="fas fa-cart-plus"></i> Agregar al carrito</button>
+      <button class="btn-whatsapp"><i class="fab fa-whatsapp"></i> Pedir por WhatsApp</button>
+
+      <h3>Descripción</h3>
+      <ul>
+        <li>✔ Polo oversize urbano, tela algodón premium</li>
+        <li>✔ No se encoge ni pierde color</li>
+        <li>✔ Diseño urbano y versátil</li>
+      </ul>
+
+      <h3>Métodos de pago</h3>
+      <div class="pagos">
+        <p>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Mastercard-logo.png">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo_%282018%29.svg">
+        </p>
+        <p>
+          <img src="https://seeklogo.com/images/Y/yape-logo-3999F8C1C0-seeklogo.com.png" height="28">
+          <img src="https://seeklogo.com/images/P/plin-logo-82F35E07A3-seeklogo.com.png" height="28">
+        </p>
+      </div>
+    </div>
+  </section>
+
+<script>
+  // Control cantidad
+  const mas=document.getElementById("mas"),menos=document.getElementById("menos"),cantidad=document.getElementById("cantidad");
+  mas.addEventListener("click",()=>cantidad.value=parseInt(cantidad.value)+1);
+  menos.addEventListener("click",()=>{if(cantidad.value>1)cantidad.value=parseInt(cantidad.value)-1;});
+
+  // Carrito
+  function getCart(){return JSON.parse(localStorage.getItem("cart"))||[];}
+  function saveCart(cart){localStorage.setItem("cart",JSON.stringify(cart));}
+  function updateCart(){document.querySelector(".cart-count").textContent=getCart().reduce((a,i)=>a+i.cantidad,0);}
+  function addToCart(nombre,precio,img){
+    const cart=getCart();cart.push({nombre,precio,img,cantidad:parseInt(cantidad.value)});saveCart(cart);updateCart();
+    alert("✅ Producto agregado al carrito");
+  }
+  document.getElementById("agregarBtn").addEventListener("click",()=>addToCart("Polo Oversize",49,"img/slide1.jpg"));
+  updateCart();
+</script>
+</body>
+</html>
