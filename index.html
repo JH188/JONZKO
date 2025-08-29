@@ -25,7 +25,7 @@
     header{
       display:flex;align-items:center;justify-content:space-between;
       padding:12px 6%;background:#1b4332;color:#fff;
-      position:sticky;top:0;z-index:1000;
+      position:sticky;top:0;z-index:1000;flex-wrap:wrap;gap:10px;
     }
     .logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:1.3rem;color:#fff;}
     .logo img{width:32px;height:32px;border-radius:50%;}
@@ -42,12 +42,13 @@
       nav{display:none;flex-direction:column;gap:15px;background:#1b4332;position:absolute;top:60px;right:0;width:200px;padding:20px;}
       nav.show{display:flex;}
       .menu-toggle{display:block;}
+      .nav-actions{width:100%;justify-content:space-between;}
     }
 
     /* SEARCH + CART */
     .nav-actions{display:flex;align-items:center;gap:15px;}
-    .search-box{position:relative;}
-    .search-box input{padding:6px 30px 6px 12px;border-radius:8px;border:1px solid #ccc;font-size:.9rem;}
+    .search-box{position:relative;flex:1;}
+    .search-box input{width:100%;padding:6px 30px 6px 12px;border-radius:8px;border:1px solid #ccc;font-size:.9rem;}
     .search-box i{position:absolute;right:10px;top:50%;transform:translateY(-50%);color:#777;}
     .cart{position:relative;font-size:1.2rem;cursor:pointer;background:#fff;color:#1b4332;
       border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;}
@@ -84,6 +85,7 @@
     .card button{padding:8px 12px;background:#1b4332;color:#fff;border:none;border-radius:6px;cursor:pointer;}
 
     /* NOVEDADES */
+    .novedades-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;}
     .novedades-scroll{display:flex;gap:20px;overflow-x:auto;padding:10px;}
     .card-novedad{background:#fff;border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,0.1);min-width:200px;flex:none;text-align:center;padding:10px;position:relative;}
     .card-novedad img{width:100%;height:150px;object-fit:cover;border-radius:8px;}
@@ -128,9 +130,7 @@
 <body>
 
   <!-- TOPBAR -->
-  <div class="topbar">
-    🎉 Nueva colección disponible ahora en <strong>JONZKO</strong>
-  </div>
+  <div class="topbar">🎉 Nueva colección disponible ahora en <strong>JONZKO</strong></div>
 
   <!-- HEADER -->
   <header>
@@ -143,10 +143,7 @@
       <a href="contacto.html">Contacto</a>
     </nav>
     <div class="nav-actions">
-      <div class="search-box">
-        <input type="text" placeholder="Buscar productos, categorías...">
-        <i class="fas fa-search"></i>
-      </div>
+      <div class="search-box"><input type="text" placeholder="Buscar productos..."><i class="fas fa-search"></i></div>
       <div class="cart" id="cart-btn"><i class="fas fa-shopping-cart"></i><span class="cart-count">0</span></div>
     </div>
   </header>
@@ -155,115 +152,54 @@
   <div class="hero">
     <div class="slide active">
       <img src="img/slide1.jpg" alt="Hombres">
-      <div class="hero-text">
-        <span class="tag">Moda Hombre</span>
-        <h1>Detalles que Importan</h1>
-        <p>Completa tu look con nuestra selección premium.</p>
-        <a href="tienda.html" class="btn">Explorar</a>
-      </div>
+      <div class="hero-text"><span class="tag">Moda Hombre</span><h1>Detalles que Importan</h1><p>Completa tu look con nuestra selección premium.</p><a href="tienda.html" class="btn">Explorar</a></div>
     </div>
     <div class="slide">
-      <img src="img/slide1.jpg" alt="Mujeres">
-      <div class="hero-text">
-        <span class="tag">Moda Mujer</span>
-        <h1>Elegancia & Estilo</h1>
-        <p>Prendas exclusivas para destacar en cualquier ocasión.</p>
-        <a href="tienda.html" class="btn">Ver Colección</a>
-      </div>
+      <img src="img/slide2.jpg" alt="Mujeres">
+      <div class="hero-text"><span class="tag">Moda Mujer</span><h1>Elegancia & Estilo</h1><p>Prendas exclusivas para cualquier ocasión.</p><a href="tienda.html" class="btn">Ver Colección</a></div>
     </div>
     <div class="slide">
-      <img src="img/slide1.jpg" alt="Accesorios">
-      <div class="hero-text">
-        <span class="tag">Accesorios</span>
-        <h1>Complementa tu Look</h1>
-        <p>Bolsos, mochilas y más, hechos para ti.</p>
-        <a href="tienda.html" class="btn">Ver Accesorios</a>
-      </div>
+      <img src="img/slide3.jpg" alt="Accesorios">
+      <div class="hero-text"><span class="tag">Accesorios</span><h1>Complementa tu Look</h1><p>Bolsos, mochilas y más, hechos para ti.</p><a href="tienda.html" class="btn">Ver Accesorios</a></div>
     </div>
-    <div class="slider-controls">
-      <span class="prev">&#10094;</span>
-      <span class="next">&#10095;</span>
-    </div>
-    <div class="slider-dots">
-      <span class="dot active"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-    </div>
+    <div class="slider-controls"><span class="prev">&#10094;</span><span class="next">&#10095;</span></div>
+    <div class="slider-dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span></div>
   </div>
 
   <!-- COLECCIONES -->
   <section class="section">
     <h2>Colecciones por Estilo</h2>
     <div class="grid">
-      <div class="card">
-        <img src="img/slide1.jpg" alt="Básico">
-        <h3>Básico (19–29 soles)</h3>
-        <p>Ropa simple y económica con estilo urbano.</p>
-        <button data-name="Básico" data-price="25" class="add-to-cart">Añadir</button>
-      </div>
-      <div class="card">
-        <img src="img/slide1.jpg" alt="Intermedio">
-        <h3>Intermedio (29–59 soles)</h3>
-        <p>La mejor relación precio–calidad en ropa moderna.</p>
-        <button data-name="Intermedio" data-price="45" class="add-to-cart">Añadir</button>
-      </div>
-      <div class="card">
-        <img src="img/slide1.jpg" alt="Premium">
-        <h3>Premium (59–120 soles)</h3>
-        <p>Prendas exclusivas con telas de primera calidad.</p>
-        <button data-name="Premium" data-price="99" class="add-to-cart">Añadir</button>
-      </div>
+      <div class="card"><img src="img/slide1.jpg"><h3>Básico (19–29 soles)</h3><p>Ropa simple y económica.</p><button data-name="Básico" data-price="25" class="add-to-cart">Añadir</button></div>
+      <div class="card"><img src="img/slide2.jpg"><h3>Intermedio (29–59 soles)</h3><p>La mejor relación precio–calidad.</p><button data-name="Intermedio" data-price="45" class="add-to-cart">Añadir</button></div>
+      <div class="card"><img src="img/slide3.jpg"><h3>Premium (59–120 soles)</h3><p>Prendas exclusivas con telas premium.</p><button data-name="Premium" data-price="99" class="add-to-cart">Añadir</button></div>
     </div>
   </section>
 
   <!-- NOVEDADES -->
   <section class="section novedades">
-    <div class="novedades-header">
-      <h2>Novedades</h2>
-      <a href="tienda.html" class="ver-mas">Ver más →</a>
-    </div>
+    <div class="novedades-header"><h2>Novedades</h2><a href="tienda.html" class="ver-mas">Ver más →</a></div>
     <div class="novedades-scroll">
-      <div class="card-novedad">
-        <span class="descuento">-10%</span>
-        <a href="polo.html"><img src="img/slide1.jpg" alt="Polo Oversize"></a>
-        <h3><a href="polo.html" style="color:inherit;text-decoration:none;">Polo Oversize</a></h3>
-        <div class="precios"><span class="precio">S/ 49</span><span class="precio-ant">S/ 55</span></div>
-        <button class="btn-rapido" data-name="Polo Oversize" data-price="49">+</button>
-      </div>
-      <div class="card-novedad">
-        <span class="descuento">-12%</span>
-        <a href="polera.html"><img src="img/slide1.jpg" alt="Polera Negra"></a>
-        <h3><a href="polera.html" style="color:inherit;text-decoration:none;">Polera Negra</a></h3>
-        <div class="precios"><span class="precio">S/ 79</span><span class="precio-ant">S/ 90</span></div>
-        <button class="btn-rapido" data-name="Polera Negra" data-price="79">+</button>
-      </div>
-      <div class="card-novedad">
-        <span class="descuento">-15%</span>
-        <a href="pantalon.html"><img src="img/slide1.jpg" alt="Pantalón Cargo"></a>
-        <h3><a href="pantalon.html" style="color:inherit;text-decoration:none;">Pantalón Cargo</a></h3>
-        <div class="precios"><span class="precio">S/ 99</span><span class="precio-ant">S/ 115</span></div>
-        <button class="btn-rapido" data-name="Pantalón Cargo" data-price="99">+</button>
-      </div>
+      <div class="card-novedad"><span class="descuento">-10%</span><img src="img/slide1.jpg"><h3>Polo Oversize</h3><div class="precios"><span class="precio">S/ 49</span><span class="precio-ant">S/ 55</span></div><button class="btn-rapido" data-name="Polo Oversize" data-price="49">+</button></div>
+      <div class="card-novedad"><span class="descuento">-12%</span><img src="img/slide2.jpg"><h3>Polera Negra</h3><div class="precios"><span class="precio">S/ 79</span><span class="precio-ant">S/ 90</span></div><button class="btn-rapido" data-name="Polera Negra" data-price="79">+</button></div>
+      <div class="card-novedad"><span class="descuento">-15%</span><img src="img/slide3.jpg"><h3>Pantalón Cargo</h3><div class="precios"><span class="precio">S/ 99</span><span class="precio-ant">S/ 115</span></div><button class="btn-rapido" data-name="Pantalón Cargo" data-price="99">+</button></div>
     </div>
   </section>
 
   <!-- CONÓCENOS -->
   <section class="section conocenos">
     <h2>Conócenos</h2>
-    <div class="about-box">
-      <p>En <strong>JONZKO</strong> creemos que la moda es identidad. Diseñamos ropa urbana que combina estilo, calidad y accesibilidad. Cada pieza está hecha para que luzcas auténtico y único.</p>
-      <img src="img/slide1.jpg" alt="Nosotros">
-    </div>
+    <div class="about-box"><p>En <strong>JONZKO</strong> creemos que la moda es identidad. Diseñamos ropa urbana que combina estilo, calidad y accesibilidad. Cada pieza está hecha para que luzcas auténtico y único.</p><img src="img/slide1.jpg"></div>
   </section>
 
   <!-- FAQ -->
   <section class="section faq">
     <h2>Preguntas Frecuentes</h2>
     <div class="faq-box">
-      <details><summary>¿Puedo cambiar un producto si no me gustó o por tamaño?</summary><p>Sí, aceptamos cambios dentro de los 7 días posteriores.</p></details>
-      <details><summary>¿Cómo se realizan los envíos?</summary><p>Envíos motorizados en Lima y agencias a provincias.</p></details>
+      <details><summary>¿Puedo cambiar un producto?</summary><p>Sí, dentro de los 7 días posteriores.</p></details>
+      <details><summary>¿Cómo se realizan los envíos?</summary><p>Motorizados en Lima y agencias a provincias.</p></details>
       <details><summary>¿Qué métodos de pago aceptan?</summary><p>Yape, Plin, transferencias y tarjetas.</p></details>
-      <details><summary>¿De qué material están hechas las prendas?</summary><p>100% algodón premium y acabados de alta calidad.</p></details>
+      <details><summary>¿De qué material están hechas las prendas?</summary><p>100% algodón premium.</p></details>
     </div>
   </section>
 
@@ -273,7 +209,7 @@
     <div class="reseñas-grid">
       <div class="review-card"><p>"Muy hermoso me encantó, el material buenísimo. Gracias 😍"</p><div class="review-footer"><span class="stars">⭐️⭐️⭐️⭐️⭐️</span><strong>Katherine</strong></div></div>
       <div class="review-card"><p>"La mini bag uff demasiado bello, amo su calidad 👜❤️"</p><div class="review-footer"><span class="stars">⭐️⭐️⭐️⭐️⭐️</span><strong>Jaqui</strong></div></div>
-      <div class="review-card"><p>"Las vi por TikTok y me animé en comprar. ¡No me arrepiento!"</p><div class="review-footer"><span class="stars">⭐️⭐️⭐️⭐️⭐️</span><strong>Eli Fernando</strong></div></div>
+      <div class="review-card"><p>"Las vi por TikTok y me animé en comprar. ¡No me arrepiento!"</p><div class="review-footer"><span class="stars">⭐️⭐️⭐️⭐️⭐️</span><strong>Eli</strong></div></div>
       <div class="review-card"><p>"Llegó rápido y la tela es buenaza. Gracias JONZKO 🙌"</p><div class="review-footer"><span class="stars">⭐️⭐️⭐️⭐️⭐️</span><strong>Daniela</strong></div></div>
     </div>
   </section>
@@ -302,7 +238,7 @@
     const navMenu=document.getElementById("nav-menu");
     menuToggle.addEventListener("click",()=>navMenu.classList.toggle("show"));
 
-    // SLIDER
+    // SLIDER con autoplay
     const slides=document.querySelectorAll(".slide");
     const dots=document.querySelectorAll(".dot");
     let index=0;
@@ -313,6 +249,7 @@
     document.querySelector(".prev").addEventListener("click",()=>{index=(index>0)?index-1:slides.length-1;showSlide(index);});
     document.querySelector(".next").addEventListener("click",()=>{index=(index<slides.length-1)?index+1:0;showSlide(index);});
     dots.forEach((d,i)=>{d.addEventListener("click",()=>{index=i;showSlide(i);});});
+    setInterval(()=>{index=(index<slides.length-1)?index+1:0;showSlide(index);},3000);
 
     // CARRITO
     let cart=JSON.parse(localStorage.getItem("cart"))||[];
