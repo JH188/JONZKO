@@ -499,6 +499,252 @@
           max-width: 100%;
         }
       }
+      .social-icons {
+        display: flex;
+        gap: 15px; /* espacio entre iconos */
+        margin-top: 10px;
+      }
+
+      .social-icons a img {
+        width: 28px;
+        height: 28px;
+        transition: transform 0.3s ease;
+      }
+
+      .social-icons a img:hover {
+        transform: scale(1.2);
+      }
+      .social-icons a img {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .social-icons a img:hover {
+        transform: translateY(-6px); /* se eleva */
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* sombra elegante */
+      }
+      /* Título FAQ */
+      .section.faq h2 {
+        text-align: center;
+        font-size: 26px;
+        margin-bottom: 20px;
+        color: #052c07d5; /* verde de marca */
+      }
+
+      /* Caja de cada pregunta */
+      .faq-box details {
+        background: #f8f8f8; /* fondo claro */
+        margin: 8px 0;
+        padding: 12px 18px;
+        border-radius: 8px;
+        border: 1px solid #dddddd88;
+        transition: background 0.3s ease;
+      }
+
+      .faq-box details:hover {
+        background: #e8f5fd27; /* ligero verde cuando pasas el mouse */
+      }
+
+      /* Preguntas */
+      .faq-box summary {
+        font-weight: bold;
+        font-size: 15px;
+        color: #222;
+        cursor: pointer;
+      }
+
+      /* Respuestas */
+      .faq-box p {
+        margin-top: 8px;
+        font-size: 14px;
+        color: #444;
+        line-height: 1.5;
+      }
+      .footer-col h3 {
+        position: relative;
+        padding-bottom: 6px;
+        margin-bottom: 10px;
+      }
+
+      .footer-col h3::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 2px;
+        background: #00d8a4; /* color de marca */
+      }
+      /* ===== HEADER GENERAL ===== */
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #264626;
+        padding: 10px 25px;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      /* Logo */
+      .logo img {
+        height: 45px;
+        width: auto;
+      }
+
+      /* ===== MENÚ ===== */
+      .center-nav {
+        flex: 1;
+        text-align: center;
+      }
+
+      .center-nav a {
+        margin: 0 15px;
+        text-decoration: none;
+        color: #f9fdfb;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .center-nav a:hover,
+      .center-nav a.active {
+        color: #050f0d; /* Color de marca */
+      }
+
+      /* ===== ACCIONES ===== */
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      /* Buscador */
+      .search-box {
+        position: relative;
+      }
+
+      .search-box input {
+        padding: 6px 30px 6px 10px;
+        border-radius: 6px;
+        border: none;
+        outline: none;
+      }
+
+      .search-box i {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #0a0a0a;
+      }
+
+      /* Carrito */
+      .cart {
+        position: relative;
+        font-size: 20px;
+        color: hsl(0, 4%, 11%);
+        cursor: pointer;
+      }
+
+      .cart-count {
+        position: absolute;
+        top: -6px;
+        right: -10px;
+        background: #d7ddd9e5;
+        color: #111;
+        font-size: 12px;
+        font-weight: bold;
+        border-radius: 50%;
+        padding: 2px 6px;
+      }
+
+      /* Hamburguesa */
+      .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 24px;
+        color: #fff;
+        cursor: pointer;
+      }
+
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 768px) {
+        /* menú oculto en móvil */
+        .center-nav {
+          display: none;
+          flex-direction: column;
+          align-items: center; /* centrado perfecto */
+          background: #141414;
+          position: absolute;
+          top: 60px;
+          left: 0;
+          width: 100%;
+          padding: 15px 0;
+          text-align: center;
+        }
+
+        .center-nav a {
+          margin: 12px 0;
+          font-size: 18px;
+        }
+
+        /* cuando se abre */
+        .center-nav.show {
+          display: flex;
+        }
+
+        /* hamburguesa visible en móvil */
+        .menu-toggle {
+          display: block;
+        }
+
+        /* buscador más compacto */
+        .search-box input {
+          width: 120px;
+        }
+      }
+      .about-box {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        flex-wrap: wrap; /* para móvil se acomoda en columna */
+      }
+
+      .about-box p {
+        flex: 1;
+        font-size: 16px;
+        line-height: 1.6;
+        color: #333;
+      }
+
+      .about-box video {
+        flex: 1;
+        max-width: 450px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      }
+      .ver-mas {
+        display: inline-block;
+        padding: 6px 14px;
+        background: #577e61; /* color de marca */
+        color: #0f0505; /* texto oscuro para contraste */
+        font-weight: bold;
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .ver-mas:hover {
+        background: #21705e; /* un verde más oscuro */
+        color: #fff;
+        transform: translateY(-4px); /* efecto flotante */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+      }
     </style>
   </head>
   <body>
@@ -510,19 +756,21 @@
     <!-- HEADER -->
     <header>
       <!-- Logo -->
-      <div class="logo"><img src="img/logo.jpg" alt="JONZKO" /> JONZKO</div>
-
-      <!-- Menú centrado SOLO PC -->
-      <div class="center-nav">
-        <nav id="nav-menu">
-          <a href="index.html" class="active">Inicio</a>
-          <a href="tienda.html">Tienda</a>
-          <a href="nosotros.html">Nosotros</a>
-          <a href="contacto.html">Contacto</a>
-        </nav>
+      <div class="logo">
+        <a href="index.html">
+          <img src="img/logo.jpg" alt="JONZKO" />
+        </a>
       </div>
 
-      <!-- Buscador y Carrito -->
+      <!-- Menú de navegación -->
+      <nav class="center-nav" id="nav-menu">
+        <a href="index.html" class="active">Inicio</a>
+        <a href="tienda.html">Tienda</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+
+      <!-- Acciones -->
       <div class="nav-actions">
         <div class="search-box">
           <input type="text" placeholder="Buscar productos..." />
@@ -532,12 +780,11 @@
           <i class="fas fa-shopping-cart"></i>
           <span class="cart-count">0</span>
         </div>
+        <!-- Botón Hamburguesa -->
+        <button class="menu-toggle" id="menu-toggle">
+          <i class="fas fa-bars"></i>
+        </button>
       </div>
-
-      <!-- Botón Hamburguesa -->
-      <button class="menu-toggle" id="menu-toggle">
-        <i class="fas fa-bars"></i>
-      </button>
     </header>
 
     <!-- HERO -->
@@ -547,25 +794,25 @@
         <div class="hero-text">
           <span class="tag">Moda Hombre</span>
           <h1>Detalles que Importan</h1>
-          <p>Completa tu look con nuestra selección premium.</p>
+          <p>Completa tu look con nuestra selección.</p>
           <a href="polo.html" class="btn">Explorar</a>
         </div>
       </div>
       <div class="slide">
         <img src="img/slide2.jpg" alt="Mujeres" />
         <div class="hero-text">
-          <span class="tag">Moda Mujer</span>
+          <span class="tag">Moda a tu preferencia</span>
           <h1>Elegancia & Estilo</h1>
           <p>Prendas exclusivas para destacar en cualquier ocasión.</p>
           <a href="tienda.html" class="btn">Ver Colección</a>
         </div>
       </div>
       <div class="slide">
-        <img src="img/slide3.jpg" alt="Accesorios" />
+        <img src="img/Polo_premium.jpg" alt="Accesorios" />
         <div class="hero-text">
-          <span class="tag">Accesorios</span>
-          <h1>Complementa tu Look</h1>
-          <p>Bolsos, mochilas y más, hechos para ti.</p>
+          <span class="tag">POLO CALIDAD</span>
+          <h1>RESALTA</h1>
+          <p>Polos premium</p>
           <a href="tienda.html" class="btn">Ver Accesorios</a>
         </div>
       </div>
@@ -592,7 +839,7 @@
           </a>
           <h3>
             <a href="polo.html" style="color: inherit; text-decoration: none">
-              Polo Oversize
+              Polera Negra
             </a>
           </h3>
           <div class="precios">
@@ -608,12 +855,12 @@
         <div class="card-novedad">
           <span class="descuento">-12%</span>
           <a href="polera.html">
-            <img src="img/slide2.jpg" alt="Polera Negra" />
+            <img src="img/polos_basico.jpg" alt="Polera Negra" />
           </a>
-          <h3><a href="polera.html">Polera Negra</a></h3>
+          <h3><a href="polera.html">Polos Basicos</a></h3>
           <div class="precios">
-            <span class="precio">S/ 79</span>
-            <span class="precio-ant">S/ 90</span>
+            <span class="precio">S/ 33</span>
+            <span class="precio-ant">S/ 39</span>
           </div>
           <button class="btn-rapido" data-name="Polera Negra" data-price="79">
             +
@@ -623,9 +870,9 @@
         <div class="card-novedad">
           <span class="descuento">-15%</span>
           <a href="pantalon.html">
-            <img src="img/slide3.jpg" alt="Pantalón Cargo" />
+            <img src="img/Polo_premium.jpg" alt="Pantalón Cargo" />
           </a>
-          <h3><a href="pantalon.html">Pantalón Cargo</a></h3>
+          <h3><a href="pantalon.html">Polos premium</a></h3>
           <div class="precios">
             <span class="precio">S/ 99</span>
             <span class="precio-ant">S/ 115</span>
@@ -642,25 +889,25 @@
       <h2>Conócenos</h2>
       <div class="about-box">
         <p>
-          En <strong>JONZKO</strong> creemos que la moda es identidad. Diseñamos
-          ropa urbana que combina estilo, calidad y accesibilidad. Cada pieza
-          está hecha para que luzcas auténtico y único.
+          En <strong>JONZKO</strong> entendemos la moda como identidad. Nuestras
+          prendas urbanas fusionan diseño, calidad y accesibilidad, para que
+          cada detalle resalte tu autenticidad y esencia personal.
         </p>
-        <img src="img/slide2.jpg" alt="Nosotros" />
+        <video autoplay loop controls playsinline>
+          <source src="img/conocenos.mp4" type="video/mp4" />
+        </video>
       </div>
     </section>
 
     <!-- FAQ -->
-    <section class="section faq">
+    <section id="faq" class="section faq">
       <h2>Preguntas Frecuentes</h2>
       <div class="faq-box">
         <details>
           <summary>
             ¿Puedo cambiar un producto si no me gustó o por tamaño?
           </summary>
-          <p>
-            Sí, aceptamos cambios dentro de los 7 días posteriores con boleta.
-          </p>
+          <p>Sí, aceptamos cambios dentro de los 3 días.</p>
         </details>
         <details>
           <summary>¿Cómo se realizan los envíos?</summary>
@@ -671,11 +918,11 @@
         </details>
         <details>
           <summary>¿Qué métodos de pago aceptan?</summary>
-          <p>Yape, Plin, transferencias y tarjetas Visa/MasterCard.</p>
+          <p>Yape, Plin, transferencias .</p>
         </details>
         <details>
           <summary>¿De qué material están hechas las prendas?</summary>
-          <p>100% algodón premium y acabados de alta calidad.</p>
+          <p>100% algodón y acabados de calidad.</p>
         </details>
         <details>
           <summary>¿Hacen envíos internacionales?</summary>
@@ -692,28 +939,15 @@
       <h2>Reseñas de Nuestros Clientes</h2>
       <div class="reseñas-grid">
         <div class="review-card">
-          <p>"Muy hermoso me encantó, el material buenísimo. Gracias 😍"</p>
+          <p>Me gusto el polo , chevere man</p>
           <div class="review-footer">
-            <span class="stars">⭐️⭐️⭐️⭐️⭐️</span><strong>Katherine</strong>
+            <span class="stars">⭐️⭐️⭐️⭐️⭐️</span><strong>Sander M.</strong>
           </div>
         </div>
         <div class="review-card">
-          <p>"La mini bag uff demasiado bello, amo su calidad 👜❤️"</p>
+          <p>Genial bro me gustaron tus ropa ..</p>
           <div class="review-footer">
-            <span class="stars">⭐️⭐️⭐️⭐️⭐️</span><strong>Jaqui</strong>
-          </div>
-        </div>
-        <div class="review-card">
-          <p>"Las vi por TikTok y me animé en comprar. ¡No me arrepiento!"</p>
-          <div class="review-footer">
-            <span class="stars">⭐️⭐️⭐️⭐️⭐️</span
-            ><strong>Eli Fernando</strong>
-          </div>
-        </div>
-        <div class="review-card">
-          <p>"Llegó rápido y la tela es buenaza. Gracias JONZKO 🙌"</p>
-          <div class="review-footer">
-            <span class="stars">⭐️⭐️⭐️⭐️⭐️</span><strong>Daniela</strong>
+            <span class="stars">⭐️⭐️⭐️⭐️⭐️</span><strong>Luis E.</strong>
           </div>
         </div>
       </div>
@@ -723,30 +957,42 @@
     <footer class="footer">
       <div class="footer-container">
         <div class="footer-col">
-          <h3>Acerca de JONZKO</h3>
-          <p><strong>Moda urbana premium hecha en Perú</strong></p>
-          <p>🌍 Envíos: Lunes a Viernes</p>
-          <p>📦 Lima Callao: Delivery motorizado</p>
-          <p>🚚 Provincias: Agencia segura (Olva / Shalom)</p>
-        </div>
-        <div class="footer-col">
           <h3>Información</h3>
-          <a href="#">Envíos y Pagos</a><a href="#">Preguntas Frecuentes</a
-          ><a href="#">Reseñas</a>
+          <a href="#envios">📦 Envíos y Pagos</a>
+          <a href="#faq">❓ Preguntas Frecuentes</a>
+          <a href="#reseñas">⭐ Reseñas</a>
         </div>
+
         <div class="footer-col">
           <h3>Legal</h3>
-          <a href="#">Términos y Condiciones</a
-          ><a href="#">Políticas de Privacidad</a
-          ><a href="#">Libro de Reclamaciones 📖</a>
+          <a href="#">📜 Términos y Condiciones</a>
+          <a href="#">🔒 Políticas de Privacidad</a>
+          <a href="#">📖 Libro de Reclamaciones</a>
         </div>
+
         <div class="footer-col">
-          <h3>Contáctanos</h3>
-          <p>📞 +51 998989599</p>
-          <p>✉️ ventas@jonzko.com</p>
+          <h3>Contáctanos:</h3>
+          <p>
+            <img src="img/phone.png" alt="Teléfono" width="18" /> +51 998989599
+          </p>
+
+          <h3>Búscanos:</h3>
           <div class="social-icons">
-            <a href="#">📸 Instagram</a><a href="#">📘 Facebook</a
-            ><a href="#">🎵 TikTok</a>
+            <a href="https://www.instagram.com/" target="_blank">
+              <img src="img/instagram.jpg" alt="Instagram" width="28" />
+            </a>
+            <a
+              href="https://www.facebook.com/profile.php?id=61563952841904"
+              target="_blank"
+            >
+              <img src="img/facebook.jpg" alt="Facebook" width="28" />
+            </a>
+            <a href="https://www.tiktok.com/@jonzko1?lang=es" target="_blank">
+              <img src="img/tiktok.png" alt="TikTok" width="28" />
+            </a>
+            <a href="mailto:ventas@jonzko.com">
+              <img src="img/gmail.jpeg" alt="Gmail" width="28" />
+            </a>
           </div>
         </div>
       </div>
@@ -776,9 +1022,10 @@
       // NAV
       const menuToggle = document.getElementById("menu-toggle");
       const navMenu = document.getElementById("nav-menu");
-      menuToggle.addEventListener("click", () =>
-        navMenu.classList.toggle("show")
-      );
+
+      menuToggle.addEventListener("click", () => {
+        navMenu.classList.toggle("show");
+      });
       // SLIDER
       const slides = document.querySelectorAll(".slide");
       const dots = document.querySelectorAll(".dot");
@@ -860,6 +1107,5 @@
     </script>
   </body>
 </html>
-
 
 
