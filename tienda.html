@@ -302,71 +302,32 @@
         position: fixed;
         top: 0;
         right: -100%;
-        width: 360px;
-        max-width: 100%;
+        width: 360px; /* PC */
+        max-width: 100%; /* nunca se pase del ancho */
         height: 100%;
         background: #fff;
         box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
-        transition: 0.3s;
+        transition: 0.3s ease;
         z-index: 2000;
         padding: 20px;
         display: flex;
         flex-direction: column;
       }
+
       .cart-panel.show {
         right: 0;
       }
-      .cart-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 10px;
-      }
-      .cart-items {
-        flex: 1;
-        overflow-y: auto;
-      }
-      .cart-item {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 12px;
-        padding-bottom: 10px;
-        border-bottom: 1px solid #eee;
-      }
-      .cart-item img {
-        width: 50px;
-        height: 50px;
-        border-radius: 8px;
-        object-fit: cover;
-      }
-      .cart-item .details {
-        flex: 1;
-      }
-      .cart-item .details h4 {
-        font-size: 0.9rem;
-        color: var(--brand);
-      }
-      .cart-footer {
-        border-top: 1px solid #ddd;
-        padding-top: 10px;
-      }
-      .cart-footer button {
-        width: 100%;
-        margin-top: 8px;
-        padding: 10px;
-        border: none;
-        border-radius: 6px;
-        font-weight: 600;
-        cursor: pointer;
-      }
-      .checkout {
-        background: var(--brand);
-        color: #fff;
-      }
-      .clear {
-        background: var(--danger);
-        color: #fff;
+
+      /* --- SOLO PARA MÓVILES --- */
+      @media (max-width: 768px) {
+        .cart-panel {
+          width: 100%; /* ocupa toda la pantalla */
+          border-radius: 20px 20px 0 0; /* redondeado arriba estilo app */
+          right: 0;
+          bottom: 0;
+          top: auto;
+          height: 90%; /* se abre tipo modal desde abajo */
+        }
       }
 
       /* MÉTODOS DE PAGO */
@@ -546,10 +507,34 @@
 
       // PRODUCTOS
       const productos = [
-        { nombre: "Polera Negra", precio: 49, categoria: "Polera", talla: "M", img: "img/slide1.jpg" },
-        { nombre: "Polo Basico", precio: 29, categoria: "Polo", talla: "L", img: "img/polos_basico.jpg" },
-        { nombre: "Polo Premium", precio: 99, categoria: "Polos", talla: "M", img: "img/polo_premium.jpg" },
-        { nombre: "Accesorios Urbanos", precio: 59, categoria: "Accesorios", talla: "M", img: "img/slide1.jpg" }
+        {
+          nombre: "Polera Negra",
+          precio: 49,
+          categoria: "Polera",
+          talla: "M",
+          img: "img/slide1.jpg",
+        },
+        {
+          nombre: "Polo Basico",
+          precio: 29,
+          categoria: "Polo",
+          talla: "L",
+          img: "img/polos_basico.jpg",
+        },
+        {
+          nombre: "Polo Premium",
+          precio: 99,
+          categoria: "Polos",
+          talla: "M",
+          img: "img/polo_premium.jpg",
+        },
+        {
+          nombre: "Accesorios Urbanos",
+          precio: 59,
+          categoria: "Accesorios",
+          talla: "M",
+          img: "img/slide1.jpg",
+        },
       ];
       const grid = document.getElementById("product-grid");
       function renderProducts(items) {
@@ -656,3 +641,4 @@
     </script>
   </body>
 </html>
+
