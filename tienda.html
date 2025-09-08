@@ -28,11 +28,17 @@
   --radius: 12px;
   --shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
 }
+
+/* === RESET === */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+}
+html, body {
+  width: 100%;
+  overflow-x: hidden; /* evita scroll horizontal */
 }
 body {
   background: var(--bg);
@@ -182,7 +188,8 @@ nav a.active::after {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100% !important;
+  max-width: 100%;
   height: 100%;
   object-fit: cover;
   z-index: 1;
@@ -229,7 +236,8 @@ nav a.active::after {
   box-shadow: var(--shadow);
   margin: 20px auto;
   border-radius: 12px;
-  max-width: 1000px;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 .filter-bar input,
 .filter-bar select {
@@ -239,22 +247,28 @@ nav a.active::after {
   font-size: 0.9rem;
 }
 .filter-bar input {
-  flex: 1;
-  min-width: 140px;
+  flex: 1 1 auto;
+  min-width: 100px;
+  max-width: 100%;
 }
 
 /* ===== PRODUCT GRID ===== */
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 15px;
   padding: 0 4% 30px;
+  width: 100%;
+  box-sizing: border-box;
 }
 @media (max-width: 600px) {
   .product-grid {
     grid-template-columns: 1fr 1fr; /* dos columnas exactas */
     gap: 12px;
-    padding: 0 3% 20px;
+    padding: 0 12px 20px;
+  }
+  .product-card img {
+    height: 160px; /* menos alto en móvil */
   }
 }
 .product-card {
@@ -310,6 +324,7 @@ nav a.active::after {
   top: 0;
   right: -100%;
   width: 360px;
+  max-width: 100%;
   height: 100%;
   background: #fff;
   box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
@@ -318,21 +333,10 @@ nav a.active::after {
   padding: 20px;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
 }
 .cart-panel.show {
   right: 0;
-}
-/* Ajuste móvil: carrito ocupa toda la pantalla */
-@media (max-width: 600px) {
-  .cart-panel {
-    width: 100%;
-    height: 100%;
-    right: -100%;
-    border-radius: 0;
-  }
-  .cart-panel.show {
-    right: 0;
-  }
 }
 .cart-header {
   display: flex;
@@ -385,6 +389,16 @@ nav a.active::after {
 .clear {
   background: var(--danger);
   color: #fff;
+}
+@media (max-width: 600px) {
+  .cart-panel {
+    width: 100%; /* ocupa todo el ancho */
+    border-radius: 0;
+    right: -100%;
+  }
+  .cart-panel.show {
+    right: 0;
+  }
 }
 
 /* MÉTODOS DE PAGO */
@@ -440,6 +454,7 @@ footer {
 .footer-links a:hover {
   color: var(--accent);
 }
+
 
     </style>
   </head>
@@ -699,6 +714,7 @@ footer {
     </script>
   </body>
 </html>
+
 
 
 
