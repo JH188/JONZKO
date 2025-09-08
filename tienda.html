@@ -246,9 +246,16 @@
       /* ===== PRODUCT GRID ===== */
       .product-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-        gap: 20px;
-        padding: 0 6% 40px;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 15px;
+        padding: 0 4% 30px;
+      }
+      @media (max-width: 600px) {
+        .product-grid {
+          grid-template-columns: 1fr 1fr; /* dos columnas exactas */
+          gap: 12px;
+          padding: 0 3% 20px;
+        }
       }
       .product-card {
         background: #fff;
@@ -315,6 +322,12 @@
       }
       .cart-panel.show {
         right: 0;
+      }
+      @media (max-width: 500px) {
+        .cart-panel {
+          width: 100%; /* carrito ocupa todo el ancho en móviles */
+          border-radius: 0;
+        }
       }
       .cart-header {
         display: flex;
@@ -546,10 +559,34 @@
 
       // PRODUCTOS
       const productos = [
-        { nombre: "Polera Negra", precio: 49, categoria: "Polera", talla: "M", img: "img/slide1.jpg" },
-        { nombre: "Polo Basico", precio: 29, categoria: "Polo", talla: "L", img: "img/polos_basico.jpg" },
-        { nombre: "Polo Premium", precio: 99, categoria: "Polos", talla: "M", img: "img/polo_premium.jpg" },
-        { nombre: "Accesorios Urbanos", precio: 59, categoria: "Accesorios", talla: "M", img: "img/slide1.jpg" }
+        {
+          nombre: "Polera Negra",
+          precio: 49,
+          categoria: "Polera",
+          talla: "M",
+          img: "img/slide1.jpg",
+        },
+        {
+          nombre: "Polo Basico",
+          precio: 29,
+          categoria: "Polo",
+          talla: "L",
+          img: "img/polos_basico.jpg",
+        },
+        {
+          nombre: "Polo Premium",
+          precio: 99,
+          categoria: "Polos",
+          talla: "M",
+          img: "img/polo_premium.jpg",
+        },
+        {
+          nombre: "Accesorios Urbanos",
+          precio: 59,
+          categoria: "Accesorios",
+          talla: "M",
+          img: "img/slide1.jpg",
+        },
       ];
       const grid = document.getElementById("product-grid");
       function renderProducts(items) {
@@ -656,5 +693,6 @@
     </script>
   </body>
 </html>
+
 
 
