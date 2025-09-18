@@ -1,130 +1,244 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="sorbet">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Términos y Condiciones - JONZKO</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Términos y Condiciones — JONZKO</title>
+
+  <!-- Fuente -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
   <style>
-    :root {
-      --brand:#1b4332; 
-      --brand-light:#52b788; 
-      --accent:#ffb703; 
-      --bg:#f4f6f5;
-      --text:#222;
+    /* ===== Tema base (sutil, consistente con el estilo pro) ===== */
+    :root{--r:14px; --shadow:0 12px 30px rgba(0,0,0,.12); --line:rgba(0,0,0,.08); --ink:#111827;}
+    html[data-theme="sorbet"]{--bg1:#fff7f4;--bg2:#fff1f1;--a1:#ff7b7b;--a2:#ffb86b;--a3:#ffd6e7;--card:#fff;--ok:#2bb673;--accent:#ffb703}
+    *{box-sizing:border-box}
+    body{
+      margin:0; color:var(--ink); font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      background:radial-gradient(1000px 600px at 120% -20%, color-mix(in oklab, var(--a2) 18%, transparent), transparent 40%),
+                 radial-gradient(900px 500px at -10% -10%, color-mix(in oklab, var(--a1) 14%, transparent), transparent 45%),
+                 linear-gradient(180deg, #fff, var(--bg2));
     }
-    body {
-      font-family:'Poppins',sans-serif;
-      margin:0;
-      background:var(--bg);
-      color:var(--text);
+    a{color:#0f1a12; text-decoration:none; font-weight:800}
+    a:hover{color:var(--a1)}
+
+    /* Topbar mínima */
+    .topbar{background:linear-gradient(90deg, color-mix(in oklab, var(--a1) 35%, white), color-mix(in oklab, var(--a2) 35%, white));
+      color:#111; text-align:center; font-weight:900; letter-spacing:.2px; padding:8px 12px; border-bottom:1px solid rgba(0,0,0,.06)}
+    .topbar strong{color:#000}
+
+    /* Contenedor principal */
+    .wrap{max-width:1100px; margin:22px auto; padding:0 18px 40px}
+    .paper{
+      background:var(--card); border:1px solid var(--line); border-radius:18px; overflow:hidden;
+      box-shadow:var(--shadow); display:grid; grid-template-columns:260px 1fr; gap:0;
     }
-    .container {
-      max-width: 950px;
-      margin: 40px auto;
-      background: #fff;
-      padding: 40px;
-      border-radius: 16px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-      animation: fadeIn 0.8s ease-in-out;
+    @media(max-width:900px){ .paper{grid-template-columns:1fr} }
+
+    /* Índice lateral */
+    .toc{
+      padding:20px; background:linear-gradient(180deg, #fff, color-mix(in oklab, var(--a3) 20%, #fff));
+      border-right:1px solid var(--line);
+      position:sticky; top:12px; align-self:start; height:fit-content;
     }
-    h1 {
-      font-size: 2.2rem;
-      color: var(--brand);
-      text-align: center;
-      margin-bottom: 25px;
-      position: relative;
+    .toc h2{font-size:1rem; margin:0 0 10px; letter-spacing:.3px}
+    .toc a{display:block; padding:8px 10px; border-radius:10px; font-weight:700; color:#374151}
+    .toc a:hover{background:color-mix(in oklab, var(--a3) 28%, #fff)}
+    .toc small{display:block; color:#6b7280; margin-top:8px}
+
+    /* Contenido */
+    .doc{padding:28px}
+    .title{
+      text-align:center; margin:6px 0 18px; 
     }
-    h1::after {
-      content:"";
-      display:block;
-      width:80px;
-      height:4px;
-      background:var(--accent);
-      margin:12px auto 0;
-      border-radius:4px;
+    .title h1{margin:0; font-size:clamp(1.6rem,3vw,2.2rem); font-weight:900}
+    .title p{margin:6px 0 0; color:#6b7280}
+    .meta{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:8px}
+    .chip{border:1px solid var(--line); border-radius:999px; padding:6px 10px; background:#fff; font-size:.85rem}
+
+    .section{margin:22px 0}
+    .section h2{
+      font-size:1.2rem; margin:0 0 10px; padding-left:10px; border-left:4px solid color-mix(in oklab, var(--a1) 40%, #1b4332);
     }
-    h2 {
-      margin-top:30px;
-      font-size:1.4rem;
-      color:var(--brand);
-      border-left:4px solid var(--brand-light);
-      padding-left:10px;
-    }
-    p {
-      margin:10px 0;
-      line-height:1.7;
-      color:#444;
-    }
-    a {
-      color:var(--brand);
-      font-weight:600;
-      text-decoration:none;
-    }
-    a:hover {
-      color:var(--accent);
-    }
-    .update {
-      margin-top: 30px;
-      text-align:center;
-      font-size:0.9rem;
-      color:#666;
-      font-style:italic;
-    }
-    .btn-volver {
-      display: inline-block;
-      margin-top: 25px;
-      padding: 12px 24px;
-      background: var(--brand);
-      color: #fff;
-      border-radius: 8px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-    .btn-volver:hover {
-      background: var(--brand-light);
-      transform: translateY(-3px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
-    @keyframes fadeIn {
-      from {opacity:0; transform:translateY(20px);}
-      to {opacity:1; transform:translateY(0);}
-    }
+    .section p{line-height:1.75; color:#374151; margin:8px 0}
+    .note{background:#fffbe6; border:1px solid #f5d565; padding:10px 12px; border-radius:10px; color:#7a5b00}
+
+    /* Acordeones para detalles específicos */
+    details{border:1px solid var(--line); border-radius:12px; padding:10px 12px; background:#fff; margin:10px 0}
+    summary{cursor:pointer; font-weight:900}
+    details p, details ul{margin-top:8px}
+    ul{padding-left:18px}
+    li{margin:6px 0}
+
+    /* Barra acciones */
+    .actions{display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin:22px 0 0}
+    .btn{border:0; border-radius:10px; padding:10px 14px; font-weight:900; cursor:pointer}
+    .btn.primary{background:linear-gradient(90deg, var(--a1), var(--a2)); color:#111}
+    .btn.link{background:#fff; border:1px solid var(--line)}
+    .center{text-align:center}
+
+    /* Footer mini */
+    footer{max-width:1100px; margin:12px auto 30px; padding:0 18px; text-align:center; color:#6b7280}
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>📜 Términos y Condiciones</h1>
-    <p>Bienvenido a <strong>JONZKO</strong>. Al acceder y utilizar nuestro sitio web, aceptas los siguientes términos y condiciones. Te recomendamos leerlos con atención.</p>
+  <div class="topbar">📜 Términos y Condiciones — <strong>JONZKO</strong></div>
 
-    <h2>1. Uso del Sitio</h2>
-    <p>El contenido de este sitio es únicamente para fines informativos y de compra de nuestros productos. Está prohibido el uso indebido del sitio con fines fraudulentos o ilegales.</p>
+  <div class="wrap">
+    <div class="paper">
+      <!-- Índice -->
+      <aside class="toc">
+        <h2>Índice</h2>
+        <a href="#uso">1. Uso del sitio</a>
+        <a href="#productos">2. Productos y precios</a>
+        <a href="#pagos">3. Compras y pagos</a>
+        <a href="#envios">4. Envíos</a>
+        <a href="#cambios">5. Cambios y devoluciones</a>
+        <a href="#propiedad">6. Propiedad intelectual</a>
+        <a href="#promos">7. Promociones y cupones</a>
+        <a href="#responsabilidad">8. Limitación de responsabilidad</a>
+        <a href="#edad">9. Edad mínima</a>
+        <a href="#ley">10. Ley y jurisdicción</a>
+        <a href="#contacto">11. Contacto</a>
+        <small>Última actualización: <strong>enero 2025</strong></small>
+      </aside>
 
-    <h2>2. Productos y Precios</h2>
-    <p>Nos reservamos el derecho de modificar precios, descripciones e imágenes de los productos sin previo aviso. Todos los precios incluyen IGV.</p>
+      <!-- Documento -->
+      <article class="doc">
+        <header class="title">
+          <h1>Términos y Condiciones</h1>
+          <p>Al usar este sitio aceptas estos términos. Lee todo con atención.</p>
+          <div class="meta">
+            <span class="chip">Marca: JONZKO</span>
+            <span class="chip">Cobertura: Perú</span>
+            <span class="chip">Canales de venta: web y WhatsApp</span>
+          </div>
+        </header>
 
-    <h2>3. Compras y Pagos</h2>
-    <p>Las compras realizadas en nuestro sitio deben ser pagadas mediante los métodos habilitados: <strong>Yape, Plin y BCP</strong>. Una vez confirmada la compra, el cliente recibirá un comprobante digital.</p>
+        <section class="section" id="intro">
+          <p>Bienvenido a <strong>JONZKO</strong>. Estos Términos regulan el acceso y uso del sitio web, así como la compra de productos. Nos reservamos el derecho de actualizarlos en cualquier momento; los cambios tendrán efecto desde su publicación en esta página.</p>
+          <p class="note">Nota: este documento es informativo. Si necesitas asesoría legal específica, consulta con un profesional.</p>
+        </section>
 
-    <h2>4. Envíos</h2>
-    <p>Los envíos se realizan mediante motorizados en Lima y agencias seguras como Olva Courier y Shalom a nivel nacional.</p>
+        <section class="section" id="uso">
+          <h2>1. Uso del sitio</h2>
+          <p>El sitio se proporciona para navegar, informarte y adquirir productos de JONZKO. Queda prohibido:</p>
+          <ul>
+            <li>Usar el sitio con fines fraudulentos, ilícitos o que afecten a terceros.</li>
+            <li>Interferir con el funcionamiento del sitio, recoger datos sin autorización o subir contenido malicioso.</li>
+            <li>Impersonar a otra persona o falsear información de compra.</li>
+          </ul>
+        </section>
 
-    <h2>5. Cambios y Devoluciones</h2>
-    <p>El cliente podrá solicitar cambios dentro de los 7 días hábiles posteriores a la recepción del producto, siempre que el mismo se encuentre en perfectas condiciones y con boleta.</p>
+        <section class="section" id="productos">
+          <h2>2. Productos y precios</h2>
+          <p>Nos esforzamos por mostrar información precisa de productos (tallas, colores, imágenes y descripciones). No obstante, pueden existir variaciones menores por configuración de pantalla o producción.</p>
+          <ul>
+            <li>Los precios están expresados en <strong>PEN</strong> e incluyen IGV.</li>
+            <li>Podemos actualizar precios, stock, fotos o descripciones sin previo aviso.</li>
+            <li>Los productos están sujetos a disponibilidad hasta confirmar la orden.</li>
+          </ul>
+        </section>
 
-    <h2>6. Propiedad Intelectual</h2>
-    <p>Todos los diseños, logotipos e imágenes en este sitio pertenecen a <strong>JONZKO</strong> y no pueden ser utilizados sin autorización expresa.</p>
+        <section class="section" id="pagos">
+          <h2>3. Compras y pagos</h2>
+          <p>Los pedidos se confirman al completar el proceso de checkout (web o WhatsApp) y recibir confirmación.</p>
+          <details>
+            <summary>Métodos aceptados</summary>
+            <ul>
+              <li><strong>Yape</strong> y <strong>Plin</strong> (transferencia inmediata).</li>
+              <li><strong>BCP</strong> (transferencia bancaria).</li>
+            </ul>
+            <p>Conserva tu constancia de pago. Podremos solicitarla si es necesario validar una operación.</p>
+          </details>
+          <details>
+            <summary>Comprobantes</summary>
+            <p>Emitimos comprobante digital (boleta). Si requieres factura, indícalo al momento del pedido con tus datos completos.</p>
+          </details>
+        </section>
 
-    <h2>7. Contacto</h2>
-    <p>Si tienes dudas sobre estos términos, puedes escribirnos a: <a href="mailto:ventas@jonzko.com">ventas@jonzko.com</a></p>
+        <section class="section" id="envios">
+          <h2>4. Envíos</h2>
+          <p>Realizamos envíos a nivel nacional (Perú):</p>
+          <ul>
+            <li><strong>Lima</strong>: reparto por motorizado en zonas habilitadas.</li>
+            <li><strong>Provincias</strong>: agencias/curriers como Olva Courier o Shalom.</li>
+          </ul>
+          <details>
+            <summary>Plazos y seguimiento</summary>
+            <p>Los plazos estimados se informan al confirmar el pedido. El tiempo puede variar por destino y operador. Si corresponde, compartiremos el número de seguimiento.</p>
+          </details>
+          <details>
+            <summary>Costos y reintentos</summary>
+            <p>El costo de envío se calcula según distrito/ciudad y peso/volumen. Si no es posible entregar por dirección incorrecta o ausencia reiterada, podrían aplicarse cargos por reintento.</p>
+          </details>
+        </section>
 
-    <p class="update">Última actualización: Enero 2025</p>
+        <section class="section" id="cambios">
+          <h2>5. Cambios y devoluciones</h2>
+          <p>Aceptamos <strong>cambios</strong> dentro de los <strong>7 días hábiles</strong> desde la recepción, si el producto está en perfecto estado, sin uso, con etiquetas y empaque original, y presentando boleta.</p>
+          <details>
+            <summary>Proceso</summary>
+            <ul>
+              <li>Escríbenos a <a href="mailto:ventas@jonzko.com">ventas@jonzko.com</a> o por WhatsApp indicando: número de pedido, motivo y fotos.</li>
+              <li>El cambio está sujeto a stock disponible.</li>
+              <li>Los costos de envío por cambio corren por cuenta del cliente salvo error de JONZKO.</li>
+            </ul>
+          </details>
+          <details>
+            <summary>Producto con falla</summary>
+            <p>Si recibes un producto con defecto de fabricación, contáctanos dentro de los 3 días hábiles para evaluar reemplazo o solución equivalente.</p>
+          </details>
+          <p>Por higiene, ciertos accesorios pueden no aplicar a cambios (lo indicaremos en la ficha del producto si corresponde).</p>
+        </section>
 
-    <!-- Botón para volver -->
-    <div style="text-align:center;">
-      <a href="index.html" class="btn-volver">⬅ Volver al Inicio</a>
+        <section class="section" id="propiedad">
+          <h2>6. Propiedad intelectual</h2>
+          <p>Todos los diseños, logotipos, fotografías, textos y contenidos del sitio son propiedad de <strong>JONZKO</strong> o cuentan con licencias autorizadas. Queda prohibida su reproducción, distribución o uso no autorizado.</p>
+        </section>
+
+        <section class="section" id="promos">
+          <h2>7. Promociones y cupones</h2>
+          <p>Los cupones o descuentos (cuando existan) están sujetos a condiciones específicas: vigencia, categorías aplicables, montos mínimos y topes de descuento.</p>
+          <ul>
+            <li>Los cupones no son acumulables salvo indicación expresa.</li>
+            <li>Promociones sujetas a stock y a la confirmación del pedido.</li>
+          </ul>
+        </section>
+
+        <section class="section" id="responsabilidad">
+          <h2>8. Limitación de responsabilidad</h2>
+          <p>El uso del sitio es bajo tu responsabilidad. En la medida permitida por ley, JONZKO no será responsable por daños indirectos o pérdidas consecuenciales derivadas del uso del sitio o demoras del operador logístico.</p>
+        </section>
+
+        <section class="section" id="edad">
+          <h2>9. Edad mínima</h2>
+          <p>Para comprar en el sitio declaras ser mayor de edad o contar con autorización de tu representante legal.</p>
+        </section>
+
+        <section class="section" id="ley">
+          <h2>10. Ley aplicable y jurisdicción</h2>
+          <p>Estos Términos se rigen por las leyes de la <strong>República del Perú</strong>. Cualquier controversia se someterá a los tribunales competentes de Lima, salvo norma imperativa distinta.</p>
+        </section>
+
+        <section class="section" id="contacto">
+          <h2>11. Contacto</h2>
+          <p>¿Dudas sobre estos términos? Escríbenos a <a href="mailto:ventas@jonzko.com">ventas@jonzko.com</a> o vía WhatsApp: <a href="https://wa.me/51998989599" target="_blank" rel="noopener">+51 998 989 599</a>.</p>
+          <p>También puedes usar nuestro <a href="reclamaciones.html">Libro de Reclamaciones</a>.</p>
+        </section>
+
+        <div class="actions center">
+          <button class="btn primary" onclick="window.print()"><i>🖨️</i> Imprimir</button>
+          <a class="btn link" href="index.html">⬅ Volver al inicio</a>
+        </div>
+      </article>
     </div>
   </div>
+
+  <footer>
+    <small>© 2025 <strong>JONZKO</strong>. Todos los derechos reservados.</small>
+  </footer>
 </body>
 </html>
