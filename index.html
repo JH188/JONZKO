@@ -1,1436 +1,677 @@
 <!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JONZKO - Moda Urbana Premium</title>
-
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Poppins", sans-serif;
-      }
-      body {
-        background: #f9fafb;
-        color: #333;
-      }
-
-      /* TOPBAR */
-      .topbar {
-        background: #217041;
-        color: #fff;
-        text-align: center;
-        padding: 5px 10px;
-        font-size: 0.85rem;
-        font-weight: 500;
-      }
-      .topbar strong {
-        color: #ffb703;
-      }
-
-      /* HEADER */
-      header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 12px 6%;
-        background: #68887a;
-        color: #644e4e;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        flex-wrap: wrap;
-      }
-      .logo {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-weight: 700;
-        font-size: 1.3rem;
-        color: #eee6e6;
-      }
-      .logo img {
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-      }
-      nav {
-        display: flex;
-        gap: 20px;
-      }
-      nav a {
-        color: #fff;
-        text-decoration: none;
-        font-weight: 500;
-        position: relative;
-      }
-      nav a.active::after {
-        content: "";
-        display: block;
-        width: 100%;
-        height: 2px;
-        background: #ffb703;
-        position: absolute;
-        bottom: -4px;
-        left: 0;
-        border-radius: 2px;
-      }
-
-      /* MOBILE NAV */
-      .menu-toggle {
-        display: none;
-        font-size: 1.5rem;
-        background: none;
-        border: none;
-        color: #574747;
-        cursor: pointer;
-      }
-      @media (max-width: 768px) {
-        nav {
-          display: none;
-          flex-direction: column;
-          gap: 15px;
-          background: #1b4332;
-          position: absolute;
-          top: 60px;
-          right: 0;
-          width: 220px;
-          padding: 20px;
-          z-index: 2000;
-        }
-        nav.show {
-          display: flex;
-        }
-        .menu-toggle {
-          display: block;
-        }
-        nav a {
-          color: #fff;
-          font-size: 1rem;
-          padding: 8px 0;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        }
-      }
-
-      /* SEARCH + CART */
-      .nav-actions {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        flex: 1;
-        justify-content: flex-end;
-      }
-      .search-box {
-        position: relative;
-        flex: 1;
-        max-width: 200px;
-      }
-      .search-box input {
-        width: 100%;
-        padding: 6px 30px 6px 12px;
-        border-radius: 8px;
-        border: 1px solid #18238b;
-        font-size: 0.9rem;
-      }
-      .search-box i {
-        position: absolute;
-        right: 10px;
-        top: 50%;
-        transform: translateY(-50%);
-        color: #5a5555;
-      }
-      .cart {
-        position: relative;
-        font-size: 1.2rem;
-        cursor: pointer;
-        background: #d4c8c8;
-        color: #267e5a;
-        border-radius: 50%;
-        width: 38px;
-        height: 38px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .cart-count {
-        position: absolute;
-        top: -6px;
-        right: -6px;
-        background: #e6c9c9;
-        color: #6b3939;
-        font-size: 0.7rem;
-        padding: 3px 6px;
-        border-radius: 50%;
-        font-weight: bold;
-      }
-
-      /* HERO */
-      .hero {
-        position: relative;
-        overflow: hidden;
-      }
-      .slide {
-        display: none;
-        position: relative;
-      }
-      .slide.active {
-        display: block;
-      }
-      .slide img {
-        width: 100%;
-        height: 500px;
-        object-fit: cover;
-      }
-      .hero-text {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-        color: #d3bfbf;
-        z-index: 2;
-      }
-      .hero-text .tag {
-        background: #1b4332;
-        padding: 4px 12px;
-        border-radius: 20px;
-        font-size: 0.8rem;
-      }
-      .hero-text h1 {
-        font-size: 2.2rem;
-        margin: 10px 0;
-      }
-      .hero-text p {
-        margin-bottom: 15px;
-      }
-      .hero-text .btn {
-        background: #1b4332;
-        color: #fff;
-        padding: 10px 18px;
-        border-radius: 6px;
-        text-decoration: none;
-      }
-      .slider-controls {
-        position: absolute;
-        top: 50%;
-        left: 0;
-        right: 0;
-        display: flex;
-        justify-content: space-between;
-        color: #fff;
-        font-size: 2rem;
-        padding: 0 15px;
-      }
-      .slider-dots {
-        text-align: center;
-        margin: 10px 0;
-      }
-      .dot {
-        height: 10px;
-        width: 10px;
-        background: #ccc;
-        border-radius: 50%;
-        display: inline-block;
-        margin: 0 3px;
-        cursor: pointer;
-      }
-      .dot.active {
-        background: #1b4332;
-      }
-
-      /* SECCIONES */
-      .section {
-        padding: 40px 6%;
-      }
-      .section h2 {
-        text-align: center;
-        color: #1b4332;
-        margin-bottom: 20px;
-      }
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 20px;
-      }
-      .card {
-        background: #fff;
-        border-radius: 10px;
-        padding: 15px;
-        text-align: center;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-      }
-      .card img {
-        width: 100%;
-        height: 180px;
-        object-fit: cover;
-        border-radius: 8px;
-      }
-      .card h3 {
-        margin: 12px 0 6px;
-        color: #1b4332;
-      }
-      .card p {
-        font-size: 0.9rem;
-        margin-bottom: 8px;
-      }
-      .card button {
-        padding: 8px 12px;
-        background: #1b4332;
-        color: #fff;
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;
-      }
-
-      /* NOVEDADES */
-      .novedades-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 15px;
-      }
-      .novedades-scroll {
-        display: flex;
-        gap: 16px;
-        overflow-x: auto;
-        padding: 10px;
-        scroll-snap-type: x mandatory;
-      }
-      .card-novedad {
-        background: #fff;
-        border-radius: 10px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-        flex: 0 0 250px;
-        text-align: center;
-        padding: 10px;
-        position: relative;
-        scroll-snap-align: start;
-      }
-      .card-novedad img {
-        width: 100%;
-        height: 180px;
-        object-fit: cover;
-        border-radius: 8px;
-      }
-      .descuento {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        background: #ffb703;
-        color: #111;
-        padding: 3px 7px;
-        border-radius: 5px;
-        font-size: 0.75rem;
-        font-weight: bold;
-      }
-      .precios {
-        margin-top: 6px;
-      }
-      .precio {
-        color: #2d6a4f;
-        font-weight: 600;
-        margin-right: 5px;
-      }
-      .precio-ant {
-        text-decoration: line-through;
-        color: #888;
-        font-size: 0.85rem;
-      }
-      .btn-rapido {
-        position: absolute;
-        bottom: 10px;
-        right: 10px;
-        background: #1b4332;
-        color: #fff;
-        border: none;
-        padding: 5px 10px;
-        border-radius: 50%;
-        cursor: pointer;
-      }
-
-      /* CONOCENOS */
-      .about-box {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        flex-wrap: wrap;
-      }
-      .about-box p {
-        flex: 1;
-        font-size: 0.95rem;
-      }
-      .about-box img {
-        width: 300px;
-        border-radius: 10px;
-      }
-
-      /* FAQ */
-      .faq-box details {
-        margin-bottom: 10px;
-        background: #fff;
-        padding: 10px;
-        border-radius: 6px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-      }
-
-      /* RESEÑAS */
-      .reseñas-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 20px;
-      }
-      .review-card {
-        background: #fff;
-        padding: 15px;
-        border-radius: 8px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-      }
-      .review-footer {
-        margin-top: 10px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      .stars {
-        color: #ffb703;
-      }
-
-      /* FOOTER */
-      .footer {
-        background: #1b4332;
-        color: #fff;
-        padding: 30px 6%;
-      }
-      .footer-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 20px;
-      }
-      .footer-col h3 {
-        margin-bottom: 10px;
-      }
-      .footer-col a {
-        display: block;
-        color: #fff;
-        text-decoration: none;
-        margin-bottom: 5px;
-        font-size: 0.9rem;
-      }
-      .footer-bottom {
-        text-align: center;
-        margin-top: 20px;
-        font-size: 0.85rem;
-      }
-
-      /* ==== PANEL DEL CARRITO ==== */
-      .cart-panel {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 100%;
-        max-width: 380px;
-        height: 100%;
-        background: #f9fafb; /* gris claro elegante */
-        box-shadow: -4px 0 12px rgba(0, 0, 0, 0.2);
-        transition: right 0.3s ease;
-        z-index: 2000;
-        display: flex;
-        flex-direction: column;
-        font-family: "Poppins", sans-serif;
-      }
-
-      .cart-panel.show {
-        right: 0;
-      }
-
-      /* ==== HEADER ==== */
-      .cart-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background: #1b4332; /* verde marca */
-        color: #fff;
-        padding: 15px;
-        font-size: 1rem;
-        font-weight: 600;
-        border-bottom: 2px solid #145327;
-      }
-
-      .cart-header button {
-        background: none;
-        border: none;
-        color: #fff;
-        font-size: 18px;
-        cursor: pointer;
-        transition: transform 0.2s ease;
-      }
-      .cart-header button:hover {
-        transform: scale(1.2);
-      }
-
-      /* ==== ITEMS ==== */
-      .cart-items {
-        flex: 1;
-        overflow-y: auto;
-        padding: 15px;
-      }
-
-      .cart-items p {
-        text-align: center;
-        color: #777;
-        font-style: italic;
-      }
-
-      /* Caja de cada producto */
-      .cart-item {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin-bottom: 15px;
-        padding: 12px;
-        background: #fff;
-        border-radius: 8px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-      }
-
-      .cart-item img {
-        width: 55px;
-        height: 55px;
-        object-fit: cover;
-        border-radius: 6px;
-        border: 1px solid #ddd;
-      }
-
-      .item-info {
-        flex: 1;
-      }
-
-      .item-info h4 {
-        margin: 0;
-        font-size: 15px;
-        font-weight: 600;
-        color: #222;
-      }
-
-      .item-info p {
-        margin: 2px 0;
-        font-size: 13px;
-        color: #555;
-      }
-
-      /* Acciones de cantidad */
-      .item-actions {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-      }
-
-      .item-actions button {
-        padding: 4px 6px;
-        border: none;
-        border-radius: 5px;
-        font-size: 13px;
-        cursor: pointer;
-        font-weight: bold;
-        transition: all 0.2s ease;
-      }
-
-      .item-actions button:nth-child(1) {
-        background: #ff4d4d;
-        color: #fff;
-      } /* - */
-      .item-actions button:nth-child(2) {
-        background: #00d8a4;
-        color: #111;
-      } /* + */
-      .item-actions button:nth-child(3) {
-        background: #ccc;
-        color: #333;
-      } /* ❌ */
-
-      .item-actions button:hover {
-        opacity: 0.85;
-        transform: scale(1.05);
-      }
-
-      /* ==== FOOTER ==== */
-      .cart-footer {
-        padding: 15px;
-        background: #fff;
-        border-top: 2px solid #eee;
-      }
-
-      .cart-footer p {
-        font-size: 16px;
-        margin: 0 0 10px;
-        font-weight: 600;
-        color: #222;
-      }
-
-      .cart-footer button {
-        width: 100%;
-        padding: 12px;
-        margin-top: 8px;
-        border: none;
-        border-radius: 8px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-size: 15px;
-      }
-
-      /* Botón comprar */
-      .cart-footer .checkout {
-        background: #1b4332;
-        color: #fff;
-        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
-      }
-      .cart-footer .checkout:hover {
-        background: #145327;
-        transform: translateY(-2px);
-      }
-
-      /* Botón vaciar */
-      .cart-footer .clear {
-        background: #ff4d4d;
-        color: #fff;
-      }
-      .cart-footer .clear:hover {
-        background: #cc0000;
-        transform: translateY(-2px);
-      }
-
-      /* Scroll bonito */
-      .cart-items::-webkit-scrollbar {
-        width: 6px;
-      }
-      .cart-items::-webkit-scrollbar-thumb {
-        background: #00d8a4;
-        border-radius: 3px;
-      }
-
-      /* MOBILE FIX */
-      @media (max-width: 600px) {
-        .card-novedad {
-          flex: 0 0 85%;
-        }
-        .card-novedad img {
-          height: 200px;
-        }
-        .cart-panel {
-          width: 100%;
-          max-width: 100%;
-        }
-      }
-      .social-icons {
-        display: flex;
-        gap: 15px; /* espacio entre iconos */
-        margin-top: 10px;
-      }
-
-      .social-icons a img {
-        width: 28px;
-        height: 28px;
-        transition: transform 0.3s ease;
-      }
-
-      .social-icons a img:hover {
-        transform: scale(1.2);
-      }
-      .social-icons a img {
-        width: 28px;
-        height: 28px;
-        border-radius: 50%;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      .social-icons a img:hover {
-        transform: translateY(-6px); /* se eleva */
-        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* sombra elegante */
-      }
-      /* Título FAQ */
-      .section.faq h2 {
-        text-align: center;
-        font-size: 26px;
-        margin-bottom: 20px;
-        color: #052c07d5; /* verde de marca */
-      }
-
-      /* Caja de cada pregunta */
-      .faq-box details {
-        background: #f8f8f8; /* fondo claro */
-        margin: 8px 0;
-        padding: 12px 18px;
-        border-radius: 8px;
-        border: 1px solid #dddddd88;
-        transition: background 0.3s ease;
-      }
-
-      .faq-box details:hover {
-        background: #e8f5fd27; /* ligero verde cuando pasas el mouse */
-      }
-
-      /* Preguntas */
-      .faq-box summary {
-        font-weight: bold;
-        font-size: 15px;
-        color: #222;
-        cursor: pointer;
-      }
-
-      /* Respuestas */
-      .faq-box p {
-        margin-top: 8px;
-        font-size: 14px;
-        color: #444;
-        line-height: 1.5;
-      }
-      .footer-col h3 {
-        position: relative;
-        padding-bottom: 6px;
-        margin-bottom: 10px;
-      }
-
-      .footer-col h3::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 40px;
-        height: 2px;
-        background: #00d8a4; /* color de marca */
-      }
-      /* ===== HEADER GENERAL ===== */
-      header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        background: #264626;
-        padding: 10px 25px;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-      }
-
-      /* Logo */
-      .logo img {
-        height: 45px;
-        width: auto;
-      }
-
-      /* ===== MENÚ ===== */
-      .center-nav {
-        flex: 1;
-        text-align: center;
-      }
-
-      .center-nav a {
-        margin: 0 15px;
-        text-decoration: none;
-        color: #f9fdfb;
-        font-weight: 500;
-        transition: color 0.3s ease;
-      }
-
-      .center-nav a:hover,
-      .center-nav a.active {
-        color: #050f0d; /* Color de marca */
-      }
-
-      /* ===== ACCIONES ===== */
-      .nav-actions {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-      }
-
-      /* Buscador */
-      .search-box {
-        position: relative;
-      }
-
-      .search-box input {
-        padding: 6px 30px 6px 10px;
-        border-radius: 6px;
-        border: none;
-        outline: none;
-      }
-
-      .search-box i {
-        position: absolute;
-        right: 10px;
-        top: 50%;
-        transform: translateY(-50%);
-        color: #0a0a0a;
-      }
-
-      /* Carrito */
-      .cart {
-        position: relative;
-        font-size: 20px;
-        color: hsl(0, 4%, 11%);
-        cursor: pointer;
-      }
-
-      .cart-count {
-        position: absolute;
-        top: -6px;
-        right: -10px;
-        background: #d7ddd9e5;
-        color: #111;
-        font-size: 12px;
-        font-weight: bold;
-        border-radius: 50%;
-        padding: 2px 6px;
-      }
-
-      /* Hamburguesa */
-      .menu-toggle {
-        display: none;
-        background: none;
-        border: none;
-        font-size: 24px;
-        color: #fff;
-        cursor: pointer;
-      }
-
-      /* ===== RESPONSIVE ===== */
-      @media (max-width: 768px) {
-        /* menú oculto en móvil */
-        .center-nav {
-          display: none;
-          flex-direction: column;
-          align-items: center; /* centrado perfecto */
-          background: #141414;
-          position: absolute;
-          top: 60px;
-          left: 0;
-          width: 100%;
-          padding: 15px 0;
-          text-align: center;
-        }
-
-        .center-nav a {
-          margin: 12px 0;
-          font-size: 18px;
-        }
-
-        /* cuando se abre */
-        .center-nav.show {
-          display: flex;
-        }
-
-        /* hamburguesa visible en móvil */
-        .menu-toggle {
-          display: block;
-        }
-
-        /* buscador más compacto */
-        .search-box input {
-          width: 120px;
-        }
-      }
-      .about-box {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 20px;
-        flex-wrap: wrap; /* se adapta en móvil */
-      }
-
-      .about-box p {
-        flex: 1;
-        font-size: 16px;
-        line-height: 1.6;
-        color: #333;
-        min-width: 250px;
-      }
-
-      /* Video */
-      .about-box video {
-        flex: 1;
-        max-width: 450px;
-        width: 100%;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      }
-
-      /* ===== MOBILE ===== */
-      @media (max-width: 768px) {
-        .about-box {
-          flex-direction: column;
-          text-align: center;
-        }
-
-        .about-box video {
-          max-width: 100%;
-        }
-      }
-
-      .ver-mas {
-        display: inline-block;
-        padding: 6px 14px;
-        background: #577e61; /* color de marca */
-        color: #0f0505; /* texto oscuro para contraste */
-        font-weight: bold;
-        border-radius: 6px;
-        text-decoration: none;
-        transition: all 0.3s ease;
-      }
-
-      .ver-mas:hover {
-        background: #21705e; /* un verde más oscuro */
-        color: #fff;
-        transform: translateY(-4px); /* efecto flotante */
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
-      }
-      .metodo-pago {
-        margin: 12px 0;
-        padding: 10px;
-        background: #f1f5f1;
-        border-radius: 6px;
-        font-size: 14px;
-        color: #222;
-      }
-
-      .metodo-pago h4 {
-        margin-bottom: 8px;
-        font-size: 15px;
-        font-weight: 600;
-      }
-
-      .opciones-pago {
-        display: flex;
-        gap: 15px;
-        justify-content: center;
-      }
-
-      .opciones-pago label {
-        cursor: pointer;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .opciones-pago input {
-        display: none; /* ocultamos el radio */
-      }
-
-      .opciones-pago img {
-        width: 60px;
-        height: 60px;
-        object-fit: contain;
-        border: 2px solid transparent;
-        border-radius: 10px;
-        transition: all 0.3s ease;
-      }
-
-      /* Cuando está seleccionado */
-      .opciones-pago input:checked + img {
-        border-color: #1b4332; /* verde de marca */
-        box-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
-      }
-    </style>
-  </head>
-  <body>
-    <!-- TOPBAR -->
-    <div class="topbar">
-      🎉 Nueva colección disponible ahora en <strong>JONZKO</strong>
-    </div>
-
-    <!-- HEADER -->
-    <header>
-      <!-- Logo -->
-      <div class="logo">
-        <a href="index.html">
-          <img src="img/logo.jpg" alt="JONZKO" />
-        </a>
+<html lang="es" data-theme="sorbet">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>JONZKO — Moda Urbana Premium</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Moda urbana premium: polos, poleras y más. Calidad, estilo y envíos a todo el Perú.">
+  <link rel="canonical" href="https://TU_DOMINIO/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="JONZKO — Moda Urbana Premium">
+  <meta property="og:description" content="Calidad premium, estilo urbano. Envíos a todo el Perú.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://TU_DOMINIO/">
+  <meta property="og:image" content="https://TU_DOMINIO/og.jpg">
+  <meta name="theme-color" content="#ff7b7b"/>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"JONZKO",
+    "url":"https://TU_DOMINIO",
+    "logo":"https://TU_DOMINIO/img/logo.jpg",
+    "sameAs":["https://www.instagram.com/","https://www.facebook.com/profile.php?id=61563952841904","https://www.tiktok.com/@jonzko1?lang=es"],
+    "contactPoint":[{"@type":"ContactPoint","telephone":"+51-998-989-599","contactType":"customer support","areaServed":"PE","availableLanguage":["es"]}]
+  }
+  </script>
+
+  <!-- Fonts + Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    /* ===== Temas (igual que contacto) ===== */
+    :root{--r:16px; --shadow:0 14px 40px rgba(0,0,0,.14); --line:rgba(0,0,0,.08); --blur:16px}
+    html[data-theme="sorbet"]{--bg1:#fff7f4;--bg2:#fff1f1;--ink:#1a1c1f;--muted:#6b7280;--a1:#ff7b7b;--a2:#ffb86b;--a3:#ffd6e7;--card:#fff;--ok:#2bb673;--err:#d84343}
+    html[data-theme="ocean"]{--bg1:#edf9fb;--bg2:#eaf5ff;--ink:#0d1b2a;--muted:#566;--a1:#00bcd4;--a2:#66e0b6;--a3:#bee3f8;--card:#fff;--ok:#1a8f64;--err:#c0392b}
+    html[data-theme="royal"]{--bg1:#f7f5ff;--bg2:#fdf7ff;--ink:#1a152b;--muted:#6d6a7c;--a1:#9b5de5;--a2:#f15bb5;--a3:#fee440;--card:#fff;--ok:#2aa46b;--err:#d33f56}
+
+    *{box-sizing:border-box}
+    body{
+      margin:0; color:var(--ink); font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      background:radial-gradient(1000px 600px at 120% -20%, color-mix(in oklab, var(--a2) 18%, transparent), transparent 40%),
+                 radial-gradient(900px 500px at -10% -10%, color-mix(in oklab, var(--a1) 14%, transparent), transparent 45%),
+                 linear-gradient(180deg, var(--bg1), var(--bg2));
+      overflow-x:hidden;
+    }
+
+    .progress{position:fixed; top:0; left:0; height:3px; width:0%; z-index:60;
+      background:linear-gradient(90deg,var(--a1),var(--a2),var(--a3)); box-shadow:0 0 12px color-mix(in oklab, var(--a2) 50%, transparent);
+      transition:width .1s linear}
+
+    .topbar{background:linear-gradient(90deg, color-mix(in oklab, var(--a1) 35%, white), color-mix(in oklab, var(--a2) 35%, white));
+      color:#111; text-align:center; font-weight:900; letter-spacing:.3px; padding:8px 12px; border-bottom:1px solid rgba(0,0,0,.06)}
+
+    header{position:sticky; top:0; z-index:50; backdrop-filter:blur(var(--blur)) saturate(140%);
+      background:color-mix(in oklab, white 76%, var(--a3) 6%); border-bottom:1px solid rgba(0,0,0,.06)}
+    .nav{max-width:1200px; margin:0 auto; padding:12px 18px; display:flex; align-items:center; gap:16px}
+    .brand{display:flex; align-items:center; gap:12px}
+    .brand img{width:42px;height:42px;border-radius:10px;object-fit:cover; box-shadow:0 0 0 2px #fff, 0 0 0 3px color-mix(in oklab, var(--a1) 30%, transparent)}
+    .brand .name{font-weight:900; letter-spacing:.4px}
+    nav a{text-decoration:none; color:#0e0f11; font-weight:900; margin-left:22px; position:relative}
+    nav a.active::after{content:""; position:absolute; left:0; right:0; bottom:-8px; height:3px; background:linear-gradient(90deg,var(--a1), var(--a2)); border-radius:999px; box-shadow:0 2px 10px color-mix(in oklab, var(--a2) 45%, transparent)}
+    .menu{display:none;background:none;border:0;font-size:1.5rem}
+    @media(max-width:860px){
+      nav{display:none; position:absolute; top:64px; left:16px; right:16px; background:color-mix(in oklab, white 86%, var(--a3) 8%); backdrop-filter:blur(20px); border:1px solid rgba(0,0,0,.06); border-radius:16px; padding:14px}
+      nav.show{display:block; animation:fade .18s ease} .menu{display:block}
+    }
+    @keyframes fade{from{opacity:0; transform:translateY(-6px)} to{opacity:1; transform:none}}
+
+    .theme{display:flex; gap:8px; align-items:center; background:rgba(255,255,255,.8); border:1px solid rgba(0,0,0,.06); border-radius:999px; padding:6px 8px}
+    .sw{width:26px;height:26px;border-radius:999px;border:1px solid rgba(0,0,0,.1); cursor:pointer}
+    .sw.sorbet{background:conic-gradient(from 0deg, #ff7b7b, #ffb86b, #ffd6e7, #ff7b7b)}
+    .sw.ocean{background:conic-gradient(from 0deg, #00bcd4, #66e0b6, #bee3f8, #00bcd4)}
+    .sw.royal{background:conic-gradient(from 0deg, #9b5de5, #f15bb5, #fee440, #9b5de5)}
+
+    .wrap{max-width:1200px; margin:0 auto; padding:22px 18px}
+
+    /* HERO */
+    .hero{position:relative; margin-top:8px}
+    .hero-box{position:relative; height:64vh; min-height:380px; border-radius:18px; overflow:hidden; box-shadow:var(--shadow)}
+    .hero-box video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
+    .hero-overlay{position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.6))}
+    .hero-content{position:absolute; inset:auto 0 0 0; padding:22px; color:#fff; background:linear-gradient(180deg, transparent, rgba(0,0,0,.35)); text-align:center}
+    .hero-content h1{font-weight:900; font-size:clamp(1.8rem,3.8vw,3rem); margin:0 0 6px}
+    .hero-content .cta{display:flex; gap:10px; justify-content:center; flex-wrap:wrap}
+    .btn{appearance:none; border:1px solid var(--line); padding:12px 16px; border-radius:12px; background:#fff; font-weight:900; cursor:pointer}
+    .btn.primary{background:linear-gradient(90deg, var(--a1), var(--a2)); color:#111; border:0}
+
+    /* Chips categorías */
+    .chips{margin-top:-20px; display:flex; gap:10px; overflow:auto; padding:0 6px 8px}
+    .chip{flex:0 0 auto; padding:10px 14px; border-radius:999px; background:linear-gradient(180deg,#ffffff, color-mix(in oklab, var(--a3) 12%, white)); border:1px solid var(--line); font-weight:900; box-shadow:0 10px 26px rgba(0,0,0,.08)}
+
+    /* Títulos sección */
+    .head{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:10px}
+    .head h2{margin:0; font-size:1.4rem}
+
+    /* Novedades scroll */
+    .scroll{display:flex; gap:14px; overflow:auto; scroll-snap-type:x mandatory}
+    .card-h{flex:0 0 260px; background:var(--card); border:1px solid var(--line); border-radius:16px; scroll-snap-align:start; box-shadow:0 12px 30px rgba(0,0,0,.10); position:relative; overflow:hidden}
+    .card-h img{width:100%; height:180px; object-fit:cover}
+    .card-h .b{padding:12px}
+    .tag{position:absolute; left:10px; top:10px; background:linear-gradient(90deg,#ff7b7b,#ffb86b); color:#111; font-weight:900; font-size:.78rem; padding:4px 8px; border-radius:999px}
+
+    /* Grid productos destacados */
+    .grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px}
+    @media(max-width:1024px){ .grid{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:720px){ .grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:460px){ .grid{grid-template-columns:1fr}}
+    .card{position:relative; background:var(--card); border:1px solid var(--line); border-radius:16px; overflow:hidden; box-shadow:0 12px 30px rgba(0,0,0,.10); transform-style:preserve-3d}
+    .card:hover{transform:translateY(-3px)}
+    .thumb{width:100%; height:230px; object-fit:cover}
+    .body{padding:12px}
+    .title{font-weight:900; margin:0 0 2px}
+    .muted{color:var(--muted); font-size:.92rem}
+    .row{display:flex; align-items:center; justify-content:space-between; margin-top:8px}
+    .price{font-weight:900} .old{color:#9aa0a6; text-decoration:line-through; margin-left:6px}
+    .add{border:0; border-radius:10px; padding:10px 12px; font-weight:900; cursor:pointer; background:linear-gradient(90deg, var(--a1), var(--a2)); color:#111}
+
+    /* Bloque Conócenos */
+    .about{background:linear-gradient(180deg,#ffffff, color-mix(in oklab, var(--a3) 14%, white)); border:1px solid var(--line); border-radius:18px; padding:18px; box-shadow:var(--shadow)}
+    .about .wrap{display:flex; gap:16px; align-items:center; flex-wrap:wrap}
+    .about p{flex:1; min-width:240px}
+    .about video{flex:1; min-width:280px; max-width:520px; border-radius:12px; box-shadow:0 8px 22px rgba(0,0,0,.12)}
+
+    /* FAQ + Reseñas */
+    details{background:#fff; border:1px solid var(--line); border-radius:12px; padding:10px 14px; margin-bottom:10px}
+    summary{cursor:pointer; font-weight:900}
+    .reviews{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px}
+    .rev{background:#fff; border:1px solid var(--line); border-radius:12px; padding:12px; box-shadow:0 8px 22px rgba(0,0,0,.06)}
+    .stars{color:#f59e0b}
+
+    /* Footer */
+    footer{border-top:1px solid var(--line); background:linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,.9)); text-align:center; padding:26px 18px; margin-top:26px}
+    .f-links{display:flex; gap:20px; justify-content:center; flex-wrap:wrap; margin-bottom:10px}
+    .f-links a{position:relative; text-decoration:none; font-weight:900; color:#0e0f11}
+    .social{display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:10px}
+    .soc{width:42px; height:42px; display:grid; place-items:center; border-radius:999px; background:linear-gradient(180deg,#ffffff, color-mix(in oklab, var(--a3) 8%, white)); border:1px solid var(--line)}
+    .soc img{width:26px; height:26px; object-fit:contain}
+
+    /* WhatsApp flotante */
+    .wa{position:fixed; right:16px; bottom:16px; z-index:70; width:56px; height:56px; display:grid; place-items:center; border-radius:999px; background:linear-gradient(180deg,#ffffff, color-mix(in oklab, var(--a3) 12%, white)); border:1px solid var(--line); box-shadow:0 12px 28px rgba(0,0,0,.12); animation:wa-pulse 3s ease-in-out infinite}
+    @keyframes wa-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+
+    /* Toast */
+    .toast{position:fixed; left:50%; bottom:16px; transform:translateX(-50%) translateY(16px); opacity:0; pointer-events:none; background:#fff; border:1px solid var(--line); border-radius:12px; padding:10px 14px; box-shadow:var(--shadow); z-index:90; display:flex; align-items:center; gap:8px}
+    .toast.show{opacity:1; transform:translateX(-50%)}
+
+    /* Carrito + Modal */
+    .cart{position:fixed; top:0; right:-100%; width:100%; max-width:400px; height:100%; background:#fff; box-shadow:-6px 0 22px rgba(0,0,0,.18); transition:right .25s ease; z-index:80; display:flex; flex-direction:column}
+    .cart.show{right:0}
+    .cart-header{display:flex; align-items:center; justify-content:space-between; padding:14px; background:linear-gradient(90deg,var(--a1),var(--a2)); color:#111; font-weight:900}
+    .cart-list{flex:1; overflow:auto; padding:12px}
+    .citem{display:grid; grid-template-columns:60px 1fr auto; gap:10px; align-items:center; padding:10px; border:1px solid var(--line); border-radius:10px; margin-bottom:10px}
+    .citem img{width:60px; height:60px; object-fit:cover; border-radius:8px}
+    .caux{font-size:.85rem; color:var(--muted)}
+    .cqty{display:flex; align-items:center; gap:6px}
+    .cqty input{width:56px; padding:6px; border:1px solid var(--line); border-radius:8px; text-align:center}
+    .cprice{font-weight:900; text-align:right}
+    .bar{padding:10px 12px; border-bottom:1px solid var(--line); background:linear-gradient(90deg, color-mix(in oklab, var(--a3) 35%, white), #fff); font-weight:900}
+    .cart-footer{border-top:1px solid var(--line); padding:12px}
+    .row2{display:flex; justify-content:space-between; align-items:center; margin:6px 0}
+    .btn-full{width:100%; padding:12px; border:0; border-radius:10px; font-weight:900; cursor:pointer}
+    .btn-full.primary{background:linear-gradient(90deg,var(--a1),var(--a2)); color:#111}
+    .btn-full.danger{background:#d62828; color:#fff}
+
+    .modal{position:fixed; inset:0; background:rgba(0,0,0,.34); display:none; align-items:center; justify-content:center; z-index:85}
+    .modal.show{display:flex}
+    .modal-card{width:min(520px,92vw); background:#fff; border-radius:16px; border:1px solid var(--line); box-shadow:var(--shadow); overflow:hidden}
+    .modal-head{display:flex; justify-content:space-between; align-items:center; padding:12px 14px; background:linear-gradient(90deg,var(--a1),var(--a2)); color:#111; font-weight:900}
+    .modal-body{padding:12px 14px; display:grid; grid-template-columns:110px 1fr; gap:12px}
+    .modal-body img{width:110px; height:110px; object-fit:cover; border-radius:12px}
+    .opt{display:flex; gap:8px; flex-wrap:wrap}
+    .pill{padding:8px 12px; border:1px solid var(--line); border-radius:999px; cursor:pointer; background:#fff}
+    .pill.active{border-color:color-mix(in oklab, var(--a1) 50%, #ddd); box-shadow:0 0 0 4px color-mix(in oklab, var(--a1) 18%, transparent)}
+    .qty{display:flex; align-items:center; gap:8px; margin-top:8px}
+    .qty input{width:70px; padding:8px; border:1px solid var(--line); border-radius:8px; text-align:center}
+    .modal-foot{padding:12px 14px; border-top:1px solid var(--line); display:flex; gap:10px; flex-wrap:wrap}
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+  <div class="topbar">✨ <strong>JONZKO</strong> • Calidad premium • Envíos a todo el Perú</div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="nav">
+      <div class="brand">
+        <a href="index.html"><img src="img/logo.jpg" alt="JONZKO"></a>
+        <div class="name">JONZKO</div>
       </div>
 
-      <!-- Menú de navegación -->
-      <nav class="center-nav" id="nav-menu">
+      <!-- Themes -->
+      <div class="theme" aria-label="Tema">
+        <button class="sw sorbet" title="Sorbet" data-set-theme="sorbet"></button>
+        <button class="sw ocean"  title="Ocean"  data-set-theme="ocean"></button>
+        <button class="sw royal"  title="Royal"  data-set-theme="royal"></button>
+      </div>
+
+      <button class="menu" id="menuBtn" aria-label="Abrir menú"><i class="fa-solid fa-bars"></i></button>
+      <nav id="navBar">
         <a href="index.html" class="active">Inicio</a>
         <a href="tienda.html">Tienda</a>
         <a href="nosotros.html">Nosotros</a>
         <a href="contacto.html">Contacto</a>
       </nav>
 
-      <!-- Acciones -->
-      <div class="nav-actions">
-        <div class="search-box">
-          <input type="text" placeholder="Buscar productos..." />
-          <i class="fas fa-search"></i>
+      <div class="actions">
+        <div class="search">
+          <input id="q" type="search" placeholder="Buscar…">
+          <i class="fa-solid fa-magnifying-glass"></i>
         </div>
-        <div class="cart" id="cart-btn">
-          <i class="fas fa-shopping-cart"></i>
-          <span class="cart-count">0</span>
-        </div>
-        <!-- Botón Hamburguesa -->
-        <button class="menu-toggle" id="menu-toggle">
-          <i class="fas fa-bars"></i>
-        </button>
+        <button id="openCart" class="btn" aria-label="Carrito"><i class="fa-solid fa-bag-shopping"></i> <span id="cartCount">0</span></button>
       </div>
-    </header>
+    </div>
+  </header>
 
-    <!-- HERO -->
-    <div class="hero">
-      <div class="slide active">
-        <img src="img/slide1.jpg" alt="Hombres" />
-        <div class="hero-text">
-          <span class="tag">Moda Hombre</span>
-          <h1>Detalles que Importan</h1>
-          <p>Completa tu look con nuestra selección.</p>
-          <a href="tienda.html" class="btn">Explorar</a>
+  <!-- HERO -->
+  <section class="wrap hero">
+    <div class="hero-box tilt">
+      <video autoplay muted loop playsinline poster="img/slide1.jpg">
+        <source src="img/conocenos.mp4" type="video/mp4">
+      </video>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1>Moda urbana premium con actitud</h1>
+        <p>Polos, poleras y más — calidad real, detalles que suman</p>
+        <div class="cta">
+          <a class="btn primary mag" href="tienda.html"><i class="fa-solid fa-store"></i> Ver Tienda</a>
+          <a class="btn mag" href="contacto.html"><i class="fa-solid fa-headset"></i> Soporte</a>
         </div>
-      </div>
-      <div class="slide">
-        <img src="img/slide2.jpg" alt="Mujeres" />
-        <div class="hero-text">
-          <span class="tag">Moda a tu preferencia</span>
-          <h1>Elegancia & Estilo</h1>
-          <p>Prendas exclusivas para destacar en cualquier ocasión.</p>
-          <a href="tienda.html" class="btn">Ver Colección</a>
-        </div>
-      </div>
-      <div class="slide">
-        <img src="img/Polo_premium.jpg" alt="Accesorios" />
-        <div class="hero-text">
-          <span class="tag">POLO CALIDAD</span>
-          <h1>RESALTA</h1>
-          <p>Polos premium</p>
-          <a href="tienda.html" class="btn">Ver Accesorios</a>
-        </div>
-      </div>
-      <div class="slider-controls">
-        <span class="prev">&#10094;</span><span class="next">&#10095;</span>
-      </div>
-      <div class="slider-dots">
-        <span class="dot active"></span><span class="dot"></span
-        ><span class="dot"></span>
       </div>
     </div>
 
-    <!-- NOVEDADES -->
-    <section class="section novedades">
-      <div class="novedades-header">
-        <h2>Novedades</h2>
-        <a href="tienda.html" class="ver-mas">Ver más →</a>
-      </div>
+    <!-- Chips -->
+    <div class="chips" aria-label="Categorías rápidas">
+      <a class="chip" href="tienda.html"><i class="fa-solid fa-shirt"></i> Polos</a>
+      <a class="chip" href="tienda.html"><i class="fa-solid fa-hoodie"></i> Poleras</a>
+      <a class="chip" href="tienda.html"><i class="fa-solid fa-person-walking"></i> Pantalones</a>
+      <a class="chip" href="tienda.html"><i class="fa-solid fa-star"></i> Ofertas</a>
+    </div>
+  </section>
 
-      <div class="novedades-scroll">
-        <!-- Producto 1 -->
-        <div class="card-novedad">
-          <span class="descuento">-10%</span>
-          <a href="javascript:void(0)">
-            <img src="img/slide1.jpg" alt="Polera Negra" />
-          </a>
-          <h3>
-            <a href="polo.html" style="color: inherit; text-decoration: none">
-              Polera Negra
-            </a>
-          </h3>
-          <div class="precios">
-            <span class="precio">S/ 49</span>
-            <span class="precio-ant">S/ 55</span>
-          </div>
-          <button
-            class="btn-rapido"
-            data-name="Polera Negra"
-            data-price="49"
-            data-img="img/slide1.jpg"
-          >
-            +
-          </button>
+  <!-- NOVEDADES -->
+  <section class="wrap">
+    <div class="head"><h2>Novedades</h2><a class="btn mag" href="tienda.html">Ver más →</a></div>
+    <div class="scroll" id="novScroll">
+      <article class="card-h">
+        <span class="tag">-10%</span>
+        <img src="img/slide1.jpg" alt="Polera Negra">
+        <div class="b">
+          <strong>Polera Negra</strong>
+          <div><span class="price">S/ 49</span> <span class="old">S/ 55</span></div>
+          <button class="btn add-to-cart mag" data-id="n1" data-name="Polera Negra" data-price="49" data-img="img/slide1.jpg">Añadir</button>
         </div>
-
-        <!-- Producto 2 -->
-        <div class="card-novedad">
-          <span class="descuento">-12%</span>
-          <a href="javascript:void(0)">
-            <img src="img/polos_basico.jpg" alt="Polos Básicos" />
-          </a>
-          <h3>
-            <a href="polera.html" style="color: inherit; text-decoration: none">
-              Polos Básicos
-            </a>
-          </h3>
-          <div class="precios">
-            <span class="precio">S/ 33</span>
-            <span class="precio-ant">S/ 39</span>
-          </div>
-          <button
-            class="btn-rapido"
-            data-name="Polos Básicos"
-            data-price="33"
-            data-img="img/polos_basico.jpg"
-          >
-            +
-          </button>
+      </article>
+      <article class="card-h">
+        <span class="tag">-12%</span>
+        <img src="img/polos_basico.jpg" alt="Polos Básicos">
+        <div class="b">
+          <strong>Polos Básicos</strong>
+          <div><span class="price">S/ 33</span> <span class="old">S/ 39</span></div>
+          <button class="btn add-to-cart mag" data-id="n2" data-name="Polos Básicos" data-price="33" data-img="img/polos_basico.jpg">Añadir</button>
         </div>
-
-        <!-- Producto 3 -->
-        <div class="card-novedad">
-          <span class="descuento">-15%</span>
-          <a href="javascript:void(0)">
-            <img src="img/Polo_premium.jpg" alt="Polos Premium" />
-          </a>
-          >
-          <h3>
-            <a
-              href="pantalon.html"
-              style="color: inherit; text-decoration: none"
-            >
-              Polos Premium
-            </a>
-          </h3>
-          <div class="precios">
-            <span class="precio">S/ 99</span>
-            <span class="precio-ant">S/ 115</span>
-          </div>
-          <button
-            class="btn-rapido"
-            data-name="Polos Premium"
-            data-price="99"
-            data-img="img/Polo_premium.jpg"
-          >
-            +
-          </button>
+      </article>
+      <article class="card-h">
+        <span class="tag">-15%</span>
+        <img src="img/Polo_premium.jpg" alt="Polos Premium">
+        <div class="b">
+          <strong>Polos Premium</strong>
+          <div><span class="price">S/ 99</span> <span class="old">S/ 115</span></div>
+          <button class="btn add-to-cart mag" data-id="n3" data-name="Polos Premium" data-price="99" data-img="img/Polo_premium.jpg">Añadir</button>
         </div>
-      </div>
-    </section>
+      </article>
+    </div>
+  </section>
 
-    <!-- CONOCENOS -->
-    <section class="section conocenos">
-      <h2>Conócenos</h2>
-      <div class="about-box">
+  <!-- DESTACADOS -->
+  <section class="wrap">
+    <div class="head"><h2>Destacados</h2></div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <!-- CONÓCENOS -->
+  <section class="wrap">
+    <div class="about tilt">
+      <div class="head"><h2>Conócenos</h2></div>
+      <div class="wrap">
         <p>
-          En <strong>JONZKO</strong> entendemos la moda como identidad. Nuestras
-          prendas urbanas fusionan diseño, calidad y accesibilidad, para que
-          cada detalle resalte tu autenticidad y esencia personal.
+          En <strong>JONZKO</strong> entendemos la moda como identidad. Nuestras prendas urbanas
+          fusionan diseño, calidad y accesibilidad para que cada detalle resalte tu autenticidad.
         </p>
-        <video autoplay loop controls playsinline>
-          <source src="img/conocenos.mp4" type="video/mp4" />
+        <video autoplay loop controls playsinline poster="img/slide2.jpg">
+          <source src="img/conocenos.mp4" type="video/mp4">
         </video>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- FAQ -->
-    <section id="faq" class="section faq">
-      <h2>Preguntas Frecuentes</h2>
-      <div class="faq-box">
-        <details>
-          <summary>
-            ¿Puedo cambiar un producto si no me gustó o por tamaño?
-          </summary>
-          <p>Sí, aceptamos cambios dentro de los 3 días.</p>
-        </details>
-        <details>
-          <summary>¿Cómo se realizan los envíos?</summary>
-          <p>
-            Envíos motorizados en Lima y agencias seguras a provincias (Olva,
-            Shalom).
-          </p>
-        </details>
-        <details>
-          <summary>¿Qué métodos de pago aceptan?</summary>
-          <p>Yape, Plin, transferencias .</p>
-        </details>
-        <details>
-          <summary>¿De qué material están hechas las prendas?</summary>
-          <p>100% algodón y acabados de calidad.</p>
-        </details>
-        <details>
-          <summary>¿Hacen envíos internacionales?</summary>
-          <p>
-            Por ahora solo Perú, pero pronto estaremos disponibles fuera del
-            país.
-          </p>
-        </details>
+  <!-- FAQ -->
+  <section class="wrap">
+    <div class="head"><h2>Preguntas frecuentes</h2></div>
+    <details><summary>¿Puedo cambiar un producto por talla?</summary><p>Sí, dentro de 3 días hábiles (prenda nueva con etiquetas).</p></details>
+    <details><summary>¿Cómo se realizan los envíos?</summary><p>Lima por motorizado; provincias por Olva/Shalom (tracking por WhatsApp).</p></details>
+    <details><summary>¿Qué métodos de pago aceptan?</summary><p>Yape, Plin, transferencias, depósito BCP.</p></details>
+  </section>
+
+  <!-- RESEÑAS -->
+  <section class="wrap">
+    <div class="head"><h2>Reseñas</h2></div>
+    <div class="reviews">
+      <div class="rev"><p>“Me gustó el polo, chévere man.”</p><div class="stars">⭐️⭐️⭐️⭐️⭐️</div><strong>- Sander M.</strong></div>
+      <div class="rev"><p>“Genial bro, me gustaron tus ropas.”</p><div class="stars">⭐️⭐️⭐️⭐️⭐️</div><strong>- Luis E.</strong></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="f-links">
+      <a href="terminos.html">📜 Términos</a>
+      <a href="privacidad.html">🔒 Privacidad</a>
+      <a href="reclamaciones.html">📖 Reclamos</a>
+    </div>
+    <div class="social" style="margin-bottom:10px">
+      <a class="soc" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+        <img src="img/instagram.jpg" alt="Instagram" width="28" height="28" loading="lazy" decoding="async">
+      </a>
+      <a class="soc" href="https://www.facebook.com/profile.php?id=61563952841904" target="_blank" rel="noopener" aria-label="Facebook">
+        <img src="img/facebook.jpg" alt="Facebook" width="28" height="28" loading="lazy" decoding="async">
+      </a>
+      <a class="soc" href="https://www.tiktok.com/@jonzko1?lang=es" target="_blank" rel="noopener" aria-label="TikTok">
+        <img src="img/tiktok.png" alt="TikTok" width="28" height="28" loading="lazy" decoding="async">
+      </a>
+      <a class="soc" href="mailto:ventas@jonzko.com" aria-label="Correo">
+        <img src="img/gmail.jpeg" alt="Correo" width="28" height="28" loading="lazy" decoding="async">
+      </a>
+      <a class="soc" href="https://wa.me/51998989599" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <img src="img/phone.png" alt="WhatsApp" width="28" height="28" loading="lazy" decoding="async">
+      </a>
+    </div>
+    <div class="muted">© 2025 <strong>JONZKO</strong>. Todos los derechos reservados.</div>
+  </footer>
+
+  <!-- CARRITO -->
+  <aside id="cart" class="cart" aria-label="Carrito">
+    <div class="cart-header">
+      <strong>🛍️ Tu carrito</strong>
+      <button id="closeCart" class="btn" style="padding:6px 10px; border-radius:8px"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="bar" id="shipBar">Envió estimado: S/ 12 — ¡Llega gratis desde S/ 250!</div>
+    <div id="cartList" class="cart-list"></div>
+    <div class="cart-footer">
+      <div class="row2"><span>Subtotal</span><strong>S/ <span id="subTotal">0.00</span></strong></div>
+      <div class="row2"><span>Envío (est.)</span><span id="ship">S/ 12.00</span></div>
+      <div class="row2"><span>Cupón</span>
+        <span>
+          <input id="coupon" placeholder="JONZKO10" style="padding:6px;border:1px solid var(--line);border-radius:8px;width:120px">
+          <button id="applyCoupon" class="btn" style="padding:6px 10px;border-radius:8px">Aplicar</button>
+        </span>
       </div>
-    </section>
+      <div class="row2" style="border-top:1px solid var(--line); padding-top:8px"><span>Total</span><strong>S/ <span id="grandTotal">0.00</span></strong></div>
+      <div class="row2" style="gap:8px; flex-wrap:wrap">
+        <img src="img/yape.png" alt="Yape" width="36" height="36">
+        <img src="img/plin.jpg" alt="Plin" width="36" height="36">
+        <img src="img/bcp.jpg" alt="BCP" width="36" height="36">
+      </div>
+      <button id="goWsp" class="btn-full primary" style="margin-top:8px"><i class="fa-brands fa-whatsapp"></i> Finalizar por WhatsApp</button>
+      <button id="clearCart" class="btn-full danger" style="margin-top:8px">Vaciar</button>
+    </div>
+  </aside>
 
-    <!-- RESEÑAS -->
-    <section class="section reseñas">
-      <h2>Reseñas de Nuestros Clientes</h2>
-      <div class="reseñas-grid">
-        <div class="review-card">
-          <p>Me gusto el polo , chevere man</p>
-          <div class="review-footer">
-            <span class="stars">⭐️⭐️⭐️⭐️⭐️</span><strong>Sander M.</strong>
+  <!-- MODAL COMPRA RÁPIDA -->
+  <div id="quickModal" class="modal" aria-hidden="true">
+    <div class="modal-card tilt">
+      <div class="modal-head">
+        <span id="qmTitle">Compra rápida</span>
+        <button id="qmClose" class="btn" style="padding:6px 10px; border-radius:8px"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <img id="qmImg" src="" alt="">
+        <div>
+          <div style="font-weight:900" id="qmName">Producto</div>
+          <div class="caux">S/ <span id="qmPrice">0.00</span></div>
+
+          <div class="caux" style="margin-top:8px">Talla</div>
+          <div class="opt" id="optSize">
+            <button class="pill" data-val="S">S</button>
+            <button class="pill" data-val="M">M</button>
+            <button class="pill" data-val="L">L</button>
+            <button class="pill" data-val="XL">XL</button>
+          </div>
+
+          <div class="caux" style="margin-top:8px">Color</div>
+          <div class="opt" id="optColor">
+            <button class="pill" data-val="Negro">Negro</button>
+            <button class="pill" data-val="Blanco">Blanco</button>
+            <button class="pill" data-val="Gris">Gris</button>
+          </div>
+
+          <div class="qty">
+            <span class="caux">Cantidad</span>
+            <input id="qmQty" type="number" min="1" max="50" value="1">
           </div>
         </div>
-        <div class="review-card">
-          <p>Genial bro me gustaron tus ropa ..</p>
-          <div class="review-footer">
-            <span class="stars">⭐️⭐️⭐️⭐️⭐️</span><strong>Luis E.</strong>
-          </div>
-        </div>
       </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-      <div class="footer-container">
-        <div class="footer-col">
-          <h3>Información</h3>
-          <a href="#envios">📦 Envíos y Pagos</a>
-          <a href="#faq">❓ Preguntas Frecuentes</a>
-          <a href="#reseñas">⭐ Reseñas</a>
-        </div>
-
-        <div class="footer-col">
-          <h3>Legal</h3>
-          <a href="terminos.html">📜 Términos y Condiciones</a>
-          <a href="privacidad.html">🔒 Políticas de Privacidad</a>
-          <a href="reclamaciones.html">📖 Libro de Reclamaciones</a>
-        </div>
-
-        <div class="footer-col">
-          <h3>Contáctanos:</h3>
-          <p>
-            <img src="img/phone.png" alt="Teléfono" width="18" /> +51 998989599
-          </p>
-
-          <h3>Búscanos:</h3>
-          <div class="social-icons">
-            <a href="https://www.instagram.com/" target="_blank">
-              <img src="img/instagram.jpg" alt="Instagram" width="28" />
-            </a>
-            <a
-              href="https://www.facebook.com/profile.php?id=61563952841904"
-              target="_blank"
-            >
-              <img src="img/facebook.jpg" alt="Facebook" width="28" />
-            </a>
-            <a href="https://www.tiktok.com/@jonzko1?lang=es" target="_blank">
-              <img src="img/tiktok.png" alt="TikTok" width="28" />
-            </a>
-            <a href="mailto:ventas@jonzko.com">
-              <img src="img/gmail.jpeg" alt="Gmail" width="28" />
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>© 2025 <strong>JONZKO</strong>. Todos los derechos reservados.</p>
-      </div>
-    </footer>
-
-    <!-- CARRITO -->
-    <div id="cart-panel" class="cart-panel">
-      <div class="cart-header">
-        <h3>🛍️ Tu Carrito</h3>
-        <button id="close-cart">❌</button>
-      </div>
-
-      <div class="cart-items" id="cart-items">
-        <p id="cart-empty">⚠️ No tienes productos aún</p>
-      </div>
-
-      <div class="cart-footer">
-        <p><strong>Total:</strong> S/ <span id="cart-total">0.00</span></p>
-        <!-- Métodos de pago -->
-        <div class="metodo-pago">
-          <h4>Método de pago</h4>
-          <div class="opciones-pago">
-            <label>
-              <input type="radio" name="pago" value="Yape" checked />
-              <img src="img/yape.png" alt="Yape" />
-            </label>
-            <label>
-              <input type="radio" name="pago" value="Plin" />
-              <img src="img/plin.jpg" alt="Plin" />
-            </label>
-            <label>
-              <input type="radio" name="pago" value="BCP" />
-              <img src="img/bcp.jpg" alt="BCP" />
-            </label>
-          </div>
-        </div>
-
-        <button class="checkout" id="checkout">Finalizar Compra</button>
-        <button class="clear" id="clear-cart">Vaciar</button>
+      <div class="modal-foot">
+        <button id="qmAdd" class="btn primary" style="flex:1"><i class="fa-solid fa-cart-plus"></i> Añadir al carrito</button>
+        <button id="qmWsp" class="btn" style="flex:1"><i class="fa-brands fa-whatsapp"></i> Consultar</button>
       </div>
     </div>
+  </div>
 
-    <!-- JS -->
-    <script>
-      // ================== NAV ==================
-      const menuToggle = document.getElementById("menu-toggle");
-      const navMenu = document.getElementById("nav-menu");
+  <!-- WhatsApp flotante (tu ícono) -->
+  <a class="wa" href="https://wa.me/51998989599?text=Hola%20JONZKO%2C%20quiero%20info%20de%20[producto]" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <img src="img/whassapp.png" alt="" aria-hidden="true" width="28" height="28" decoding="async">
+  </a>
 
-      menuToggle.addEventListener("click", () => {
-        navMenu.classList.toggle("show");
+  <!-- Toast -->
+  <div id="toast" class="toast"><i class="fa-solid fa-circle-check" style="color:#22c55e"></i><span>Listo</span></div>
+
+  <script>
+    /* ===== Progreso scroll ===== */
+    const progress=document.getElementById('progress');
+    const onScroll=()=>{const h=document.documentElement; const sc=h.scrollTop/(h.scrollHeight-h.clientHeight)*100; progress.style.width=sc+'%';};
+    document.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+    /* ===== Theme persistente ===== */
+    const html=document.documentElement;
+    const saved=localStorage.getItem('jonzko-theme'); if(saved) html.setAttribute('data-theme', saved);
+    document.querySelectorAll('[data-set-theme]').forEach(b=>{
+      b.addEventListener('click',()=>{ html.setAttribute('data-theme', b.dataset.setTheme); localStorage.setItem('jonzko-theme', b.dataset.setTheme); });
+    });
+
+    /* ===== Menú ===== */
+    const menuBtn=document.getElementById('menuBtn');
+    const navBar=document.getElementById('navBar');
+    menuBtn?.addEventListener('click',()=> navBar.classList.toggle('show'));
+
+    /* ===== Tilt 3D ===== */
+    document.querySelectorAll('.tilt').forEach(card=>{
+      card.addEventListener('mousemove',e=>{
+        const r=card.getBoundingClientRect(); const x=e.clientX-r.left, y=e.clientY-r.top;
+        const rx=((y/r.height)-0.5)*-6, ry=((x/r.width)-0.5)*6;
+        card.style.transform=`perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(6px)`;
+      });
+      card.addEventListener('mouseleave',()=> card.style.transform='perspective(1000px) rotateX(0) rotateY(0) translateZ(0)');
+    });
+
+    /* ===== Botones magnéticos/ripple ===== */
+    function mag(e,el){const r=el.getBoundingClientRect(); el.style.setProperty('--mx',(e.clientX-r.left)+'px'); el.style.setProperty('--my',(e.clientY-r.top)+'px');}
+    document.querySelectorAll('.mag,.btn').forEach(btn=>{
+      btn.addEventListener('mousemove', e=>mag(e,btn));
+      btn.addEventListener('mouseleave', ()=>{btn.style.removeProperty('--mx'); btn.style.removeProperty('--my');});
+      btn.addEventListener('click', (e)=>{const rip=document.createElement('span'); rip.className='ripple'; rip.style.cssText='position:absolute;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;opacity:.4;background:radial-gradient(circle, '+getComputedStyle(document.documentElement).getPropertyValue('--a2')+' 10%, transparent 60%); width:10px;height:10px; animation:rip .6s ease-out; left:'+e.offsetX+'px; top:'+e.offsetY+'px'; btn.appendChild(rip); setTimeout(()=>rip.remove(), 600);});
+    });
+
+    /* ===== Datos demo ===== */
+    const DESTACADOS=[
+      {id:'d1', nombre:'Hoodie Arena', categoria:'Poleras', precio:149, old:169, img:'img/slide2.jpg'},
+      {id:'d2', nombre:'Polo Básico Blanco', categoria:'Polos', precio:59, img:'img/polos_basico.jpg'},
+      {id:'d3', nombre:'Polo Premium Noir', categoria:'Polos', precio:99, img:'img/Polo_premium.jpg'},
+      {id:'d4', nombre:'Cargo Street Kaki', categoria:'Pantalones', precio:159, img:'img/slide1.jpg'}
+    ];
+
+    /* ===== Render destacados ===== */
+    const grid=document.getElementById('grid');
+    function card(p){
+      return `
+        <article class="card">
+          <img class="thumb" src="${p.img}" alt="${p.nombre}" loading="lazy" decoding="async">
+          <div class="body">
+            <h3 class="title">${p.nombre}</h3>
+            <div class="muted">${p.categoria}</div>
+            <div class="row">
+              <div><span class="price">S/ ${p.precio.toFixed(2)}</span>${p.old?`<span class="old">S/ ${p.old.toFixed?p.old.toFixed(2):p.old}</span>`:''}</div>
+              <button class="add add-to-cart mag" data-id="${p.id}" data-name="${p.nombre}" data-price="${p.precio}" data-img="${p.img}"><i class="fa-solid fa-cart-plus"></i> Añadir</button>
+            </div>
+          </div>
+        </article>`;
+    }
+    function renderDestacados(){ grid.innerHTML= DESTACADOS.map(card).join(''); }
+    renderDestacados();
+
+    /* ===== Toast ===== */
+    const toastEl=document.getElementById('toast');
+    function toast(msg,ok=true){
+      toastEl.querySelector('span').textContent=msg;
+      toastEl.firstElementChild.style.color= ok ? '#22c55e' : '#d62828';
+      toastEl.classList.add('show'); setTimeout(()=>toastEl.classList.remove('show'),1600);
+    }
+
+    /* ===== Carrito ===== */
+    const state={ cart: JSON.parse(localStorage.getItem('cart')||'[]'), coupon:null };
+    const $cart=document.getElementById('cart');
+    const $openCart=document.getElementById('openCart');
+    const $closeCart=document.getElementById('closeCart');
+    const $cartList=document.getElementById('cartList');
+    const $subTotal=document.getElementById('subTotal');
+    const $ship=document.getElementById('ship');
+    const $grand=document.getElementById('grandTotal');
+    const $count=document.getElementById('cartCount');
+    const $shipBar=document.getElementById('shipBar');
+
+    const FREESHIP=250; const SHIP=12;
+
+    $openCart.addEventListener('click',()=> $cart.classList.add('show'));
+    $closeCart.addEventListener('click',()=> $cart.classList.remove('show'));
+    document.getElementById('clearCart').addEventListener('click',()=>{ state.cart=[]; renderCart(); });
+
+    function saveCart(){ localStorage.setItem('cart', JSON.stringify(state.cart)); }
+    function cartCount(){ return state.cart.reduce((a,b)=>a+(b.qty||1),0); }
+    function subTotal(){ return state.cart.reduce((a,b)=>a + (b.precio * (b.qty||1)), 0); }
+    function shipping(total){ return total>=FREESHIP ? 0 : SHIP; }
+    function couponDiscount(total){
+      if(state.coupon==='JONZKO10') return Math.min(30, total*0.10); // 10% top S/30
+      return 0;
+    }
+
+    function renderCart(){
+      $cartList.innerHTML='';
+      if(state.cart.length===0){ $cartList.innerHTML='<p class="caux">✨ Aún no tienes productos en tu carrito</p>'; }
+      state.cart.forEach((it,idx)=>{
+        const row=document.createElement('div');
+        row.className='citem';
+        row.innerHTML=`
+          <img src="${it.img}" alt="${it.nombre}">
+          <div>
+            <div style="font-weight:900">${it.nombre}</div>
+            <div class="caux">${it.talla?`Talla: ${it.talla} • `:''}${it.color?`Color: ${it.color} • `:''}S/ ${it.precio.toFixed(2)}</div>
+            <div class="cqty">
+              <label for="c_${idx}" class="caux">Cant.</label>
+              <input id="c_${idx}" type="number" min="1" max="50" value="${it.qty||1}">
+              <button class="btn" data-del="${idx}" style="padding:6px 10px; border-radius:8px"><i class="fa-solid fa-trash"></i></button>
+            </div>
+          </div>
+          <div class="cprice">S/ ${(it.precio*(it.qty||1)).toFixed(2)}</div>`;
+        $cartList.appendChild(row);
       });
 
-      // ================== SLIDER ==================
-      const slides = document.querySelectorAll(".slide");
-      const dots = document.querySelectorAll(".dot");
-      let index = 0;
+      let st=subTotal();
+      const disc=couponDiscount(st);
+      st-=disc;
+      const sh=shipping(st);
+      const gt=st+sh;
+      $subTotal.textContent=st.toFixed(2);
+      $ship.textContent='S/ '+sh.toFixed(2);
+      $grand.textContent=gt.toFixed(2);
+      $count.textContent=cartCount();
 
-      function showSlide(i) {
-        slides.forEach((s, idx) => {
-          s.classList.remove("active");
-          dots[idx].classList.remove("active");
-        });
-        slides[i].classList.add("active");
-        dots[i].classList.add("active");
+      const left=Math.max(0, FREESHIP - st);
+      $shipBar.textContent= left>0 ? `Envió estimado: S/ ${sh.toFixed(2)} — Te faltan S/ ${left.toFixed(2)} para envío GRATIS` : '¡Tienes envío GRATIS!';
+
+      saveCart();
+    }
+    $cartList.addEventListener('input', (e)=>{
+      const id=e.target.id||''; if(!id.startsWith('c_')) return;
+      const idx=Number(id.split('_')[1]); const v=Math.max(1, Math.min(50, Number(e.target.value||1)));
+      state.cart[idx].qty=v; renderCart();
+    });
+    $cartList.addEventListener('click',(e)=>{
+      const del=e.target.closest('[data-del]'); if(!del) return;
+      const idx=Number(del.dataset.del); state.cart.splice(idx,1); renderCart();
+    });
+
+    /* ===== Quick Modal ===== */
+    const qm=document.getElementById('quickModal');
+    const qmClose=document.getElementById('qmClose');
+    const qmImg=document.getElementById('qmImg');
+    const qmName=document.getElementById('qmName');
+    const qmPrice=document.getElementById('qmPrice');
+    const qmQty=document.getElementById('qmQty');
+    const qmAdd=document.getElementById('qmAdd');
+    const qmWsp=document.getElementById('qmWsp');
+    let currentItem=null;
+    const optGroup=(id)=>Array.from(document.getElementById(id).querySelectorAll('.pill'));
+
+    function openModal(data){
+      currentItem={...data, talla:null, color:null};
+      qmImg.src=data.img; qmName.textContent=data.nombre; qmPrice.textContent=Number(data.precio).toFixed(2); qmQty.value=1;
+      optGroup('optSize').forEach(el=>el.classList.remove('active'));
+      optGroup('optColor').forEach(el=>el.classList.remove('active'));
+      qm.classList.add('show'); qm.setAttribute('aria-hidden','false');
+    }
+    function closeModal(){ qm.classList.remove('show'); qm.setAttribute('aria-hidden','true'); }
+
+    qmClose.addEventListener('click', closeModal);
+    qm.addEventListener('click', e=>{ if(e.target===qm) closeModal(); });
+
+    // seleccionar opciones
+    document.getElementById('optSize').addEventListener('click', e=>{
+      const b=e.target.closest('.pill'); if(!b) return;
+      optGroup('optSize').forEach(x=>x.classList.remove('active'));
+      b.classList.add('active'); currentItem.talla=b.dataset.val;
+    });
+    document.getElementById('optColor').addEventListener('click', e=>{
+      const b=e.target.closest('.pill'); if(!b) return;
+      optGroup('optColor').forEach(x=>x.classList.remove('active'));
+      b.classList.add('active'); currentItem.color=b.dataset.val;
+    });
+
+    qmAdd.addEventListener('click', ()=>{
+      if(!currentItem) return;
+      const qty=Math.max(1, Math.min(50, Number(qmQty.value||1)));
+      const {nombre, precio, img, talla, color}=currentItem;
+      const existing=state.cart.find(x=>x.nombre===nombre && x.talla===talla && x.color===color);
+      if(existing) existing.qty=(existing.qty||1)+qty; else state.cart.push({nombre,precio:+precio,img,talla,color,qty});
+      closeModal(); renderCart(); toast('Agregado al carrito ✅', true); $cart.classList.add('show');
+    });
+
+    qmWsp.addEventListener('click', ()=>{
+      if(!currentItem) return;
+      const t=currentItem.talla?`Talla: ${currentItem.talla}`:''; const c=currentItem.color?`Color: ${currentItem.color}`:'';
+      const msg=`Hola JONZKO, consulta sobre ${currentItem.nombre}. ${t} ${c}`.trim();
+      window.open(`https://wa.me/51998989599?text=${encodeURIComponent(msg)}`,'_blank');
+    });
+
+    /* ===== Añadir: abre Quick Modal ===== */
+    document.addEventListener('click',(e)=>{
+      const btn=e.target.closest('.add-to-cart'); if(!btn) return;
+      const data={id:btn.dataset.id, nombre:btn.dataset.name, precio:parseFloat(btn.dataset.price), img:btn.dataset.img};
+      openModal(data);
+    });
+
+    /* ===== Checkout WhatsApp ===== */
+    document.getElementById('goWsp').addEventListener('click',()=>{
+      if(state.cart.length===0){ toast('Tu carrito está vacío', false); return; }
+      const lines=state.cart.map(it=>`• ${it.nombre}${it.talla?` (${it.talla}`:''}${it.color?`${it.talla?` / `:''}${it.color}`:''}${it.talla?`)`:''} x${it.qty||1} — S/ ${(it.precio*(it.qty||1)).toFixed(2)}`);
+      const msg=[
+        '🛍️ *Nuevo Pedido JONZKO*',
+        ...lines,
+        `Subtotal: S/ ${subTotal().toFixed(2)}`,
+        state.coupon?`Cupón ${state.coupon} aplicado`:null,
+        `Envío (estimado): ${document.getElementById('ship').textContent}`,
+        `Total: S/ ${document.getElementById('grandTotal').textContent}`,
+        '',
+        '*Datos:*',
+        'Nombre y Apellido:',
+        'Distrito/Ciudad:',
+        'Referencia:'
+      ].filter(Boolean).join('\n');
+      window.open(`https://wa.me/51998989599?text=${encodeURIComponent(msg)}`,'_blank');
+    });
+
+    /* ===== Cupón ===== */
+    document.getElementById('applyCoupon').addEventListener('click', ()=>{
+      const code=(document.getElementById('coupon').value||'').trim().toUpperCase();
+      if(!code){ toast('Ingresa un cupón', false); return; }
+      if(code==='JONZKO10'){ state.coupon=code; toast('Cupón aplicado (10% hasta S/30)', true); }
+      else{ state.coupon=null; toast('Cupón inválido', false); }
+      renderCart();
+    });
+
+    /* ===== Contador y render inicial ===== */
+    function syncCounter(){ document.getElementById('cartCount').textContent= cartCount(); }
+    function fullRender(){ renderCart(); syncCounter(); }
+    fullRender();
+
+    /* ===== Buscador simple (demo) ===== */
+    document.getElementById('q').addEventListener('keydown', (e)=>{
+      if(e.key!=='Enter') return;
+      const q=e.target.value.toLowerCase();
+      const hit=DESTACADOS.find(p=>p.nombre.toLowerCase().includes(q));
+      if(hit){
+        openModal({id:hit.id, nombre:hit.nombre, precio:hit.precio, img:hit.img});
+      }else{
+        toast('No encontramos ese producto', false);
       }
-
-      document.querySelector(".prev").addEventListener("click", () => {
-        index = index > 0 ? index - 1 : slides.length - 1;
-        showSlide(index);
-      });
-      document.querySelector(".next").addEventListener("click", () => {
-        index = index < slides.length - 1 ? index + 1 : 0;
-        showSlide(index);
-      });
-      dots.forEach((d, i) => {
-        d.addEventListener("click", () => {
-          index = i;
-          showSlide(i);
-        });
-      });
-      setInterval(() => {
-        index = index < slides.length - 1 ? index + 1 : 0;
-        showSlide(index);
-      }, 3000);
-
-      // ================== CARRITO ==================
-      let cart = JSON.parse(localStorage.getItem("cart")) || [];
-      const cartBtn = document.getElementById("cart-btn");
-      const cartPanel = document.getElementById("cart-panel");
-      const closeCart = document.getElementById("close-cart");
-      const cartItems = document.getElementById("cart-items");
-      const cartTotal = document.getElementById("cart-total");
-      const cartCount = document.querySelector(".cart-count");
-      const clearCart = document.getElementById("clear-cart");
-
-      cartBtn.addEventListener("click", () => cartPanel.classList.add("show"));
-      closeCart.addEventListener("click", () =>
-        cartPanel.classList.remove("show")
-      );
-      clearCart.addEventListener("click", () => {
-        cart = [];
-        updateCart();
-      });
-
-      // Renderizar carrito
-      function updateCart() {
-        cartItems.innerHTML = "";
-        let total = 0;
-
-        if (cart.length === 0) {
-          cartItems.innerHTML =
-            "<p>✨ Aún no tienes productos en tu carrito :(.</p>";
-        }
-
-        cart.forEach((item, i) => {
-          total += item.precio * (item.qty || 1);
-
-          cartItems.innerHTML += `
-      <div class="cart-item">
-        <img src="${item.img}" alt="${item.nombre}">
-        <div class="item-info">
-          <h4>${item.nombre}</h4>
-          <p>S/ ${item.precio.toFixed(2)}</p>
-          <p>Cant: ${item.qty || 1}</p>
-        </div>
-        <div class="item-actions">
-          <button onclick="updateQty(${i}, -1)">-</button>
-          <button onclick="updateQty(${i}, 1)">+</button>
-          <button onclick="removeItem(${i})">❌</button>
-        </div>
-      </div>
-    `;
-        });
-
-        cartTotal.textContent = total.toFixed(2);
-        cartCount.textContent = cart.length;
-        localStorage.setItem("cart", JSON.stringify(cart));
-      }
-
-      // Actualizar cantidad
-      function updateQty(i, change) {
-        if (!cart[i].qty) cart[i].qty = 1;
-        cart[i].qty += change;
-        if (cart[i].qty <= 0) cart.splice(i, 1);
-        updateCart();
-      }
-
-      // Eliminar producto
-      function removeItem(i) {
-        cart.splice(i, 1);
-        updateCart();
-      }
-
-      // Agregar producto
-      document.addEventListener("click", (e) => {
-        if (
-          e.target.classList.contains("add-to-cart") ||
-          e.target.classList.contains("btn-rapido")
-        ) {
-          const nombre = e.target.dataset.name;
-          const precio = parseFloat(e.target.dataset.price);
-          const img = e.target.dataset.img;
-
-          const existing = cart.find((item) => item.nombre === nombre);
-          if (existing) {
-            existing.qty++;
-          } else {
-            cart.push({ nombre, precio, img, qty: 1 });
-          }
-          updateCart();
-        }
-      });
-
-      updateCart();
-
-      // ================== FINALIZAR COMPRA (WHATSAPP) ==================
-      const checkoutBtn = document.getElementById("checkout");
-
-      checkoutBtn.addEventListener("click", () => {
-        if (cart.length === 0) {
-          alert("⚠️ Tu carrito está vacío");
-          return;
-        }
-
-        // Leer método de pago seleccionado
-        const metodoPago = document.querySelector(
-          'input[name="pago"]:checked'
-        ).value;
-
-        // Armar mensaje
-        let message = "🛍️ *Nuevo Pedido JONZKO*%0A%0A";
-        cart.forEach((item) => {
-          message += `• ${item.nombre} x${item.qty} - S/ ${(
-            item.precio * item.qty
-          ).toFixed(2)}%0A`;
-        });
-        message += `%0A🔢 *Total:* S/ ${cart
-          .reduce((sum, item) => sum + item.precio * item.qty, 0)
-          .toFixed(2)}%0A`;
-        message += `💳 *Método de pago:* ${metodoPago}%0A`;
-        message += `%0AGracias por tu compra 🙌🔥`;
-
-        // Abrir WhatsApp
-        window.open(`https://wa.me/51998989599?text=${message}`, "_blank");
-      });
-    </script>
-  </body>
+    });
+  </script>
+</body>
 </html>
-
-
