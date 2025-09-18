@@ -272,18 +272,21 @@
       <h1>Hablemos con <span style="background:linear-gradient(90deg,var(--a1),var(--a2));-webkit-background-clip:text;background-clip:text;color:transparent">estilo</span>.</h1>
       <p class="subtitle">Consultas de tallas, materiales, envíos y pedidos corporativos. <strong>Respuesta ~1–2 h</strong> (9:00–19:00).</p>
 
-      <!-- Video dual: 16:9 desktop / 9:16 mobile -->
-      <div class="hero-video">
-        <video class="vh v-land" poster="media/hero-16x9.jpg" muted loop playsinline preload="metadata">
-          <source src="media/hero-16x9.webm" type="video/webm">
-          <source src="media/hero-16x9.mp4" type="video/mp4">
-        </video>
-        <video class="vh v-port" poster="media/hero-9x16.jpg" muted loop playsinline preload="metadata">
-          <source src="media/hero-9x16.webm" type="video/webm">
-          <source src="media/hero-9x16.mp4" type="video/mp4">
-        </video>
-      </div>
-    </div>
+       <!-- Video dual: 16:9 desktop / 9:16 mobile -->
+<div class="hero-video">
+  <!-- Versión desktop -->
+  <video class="vh v-land" autoplay muted playsinline loop preload="auto" poster="img/slide1.jpg">
+    <source src="img/conocenos.mp4" type="video/mp4">
+    Tu navegador no soporta video HTML5.
+  </video>
+
+  <!-- Versión móvil (mismo archivo por ahora) -->
+  <video class="vh v-port" autoplay muted playsinline loop preload="auto" poster="img/slide1.jpg">
+    <source src="img/conocenos.mp4" type="video/mp4">
+    Tu navegador no soporta video HTML5.
+  </video>
+</div>
+
 
     <!-- GRID -->
     <div class="grid">
@@ -653,4 +656,5 @@
   </script>
 </body>
 </html>
+
 
