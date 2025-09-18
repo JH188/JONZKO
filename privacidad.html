@@ -1,130 +1,289 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="sorbet">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Política de Privacidad - JONZKO</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>JONZKO — Política de Privacidad</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Política de Privacidad de JONZKO. Conoce qué datos recopilamos, para qué los usamos y cómo ejercer tus derechos.">
+  <link rel="canonical" href="https://TU_DOMINIO/privacidad.html">
+  <meta name="theme-color" content="#ff7b7b"/>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="JONZKO — Política de Privacidad">
+  <meta property="og:description" content="Transparencia y control de tus datos personales.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://TU_DOMINIO/og.jpg">
+  <meta property="og:url" content="https://TU_DOMINIO/privacidad.html">
+
+  <!-- Fonts + Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
   <style>
-    :root {
-      --brand:#1b4332; 
-      --brand-light:#52b788; 
-      --accent:#ffb703; 
-      --bg:#f4f6f5;
-      --text:#222;
+    :root{--radius:18px;--shadow-1:0 18px 40px rgba(0,0,0,.10);--line:rgba(0,0,0,.08);--blur:16px}
+    html[data-theme="sorbet"]{--bg1:#fff7f4;--bg2:#fff1f1;--ink:#211f27;--muted:#6b7280;--a1:#ff7b7b;--a2:#ffb86b;--a3:#ffd6e7;--chip:#fff0e3;--card:#fff;--accentText:#1f2937;--ok:#2bb673;--err:#d84343}
+    *{box-sizing:border-box} html,body{height:100%}
+    body{
+      margin:0;color:var(--ink);
+      background:radial-gradient(1200px 700px at 120% -20%, color-mix(in oklab, var(--a2) 18%, transparent), transparent 40%),
+                 radial-gradient(900px 500px at -10% -10%, color-mix(in oklab, var(--a1) 14%, transparent), transparent 45%),
+                 linear-gradient(180deg, var(--bg1), var(--bg2));
+      font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial; overflow-x:hidden;
     }
-    body {
-      font-family:'Poppins',sans-serif;
-      margin:0;
-      background:var(--bg);
-      color:var(--text);
+
+    /* Blobs */
+    .blobs{position:fixed; inset:0; pointer-events:none; z-index:0}
+    .blob{position:absolute; width:680px; height:680px; border-radius:50%; filter:blur(60px); opacity:.35; mix-blend-mode:multiply}
+    .b1{left:-120px; top:-140px; background:radial-gradient(circle at 30% 30%, var(--a1), transparent 60%); animation:float1 18s ease-in-out infinite}
+    .b2{right:-160px; top:10vh; background:radial-gradient(circle at 70% 40%, var(--a2), transparent 60%); animation:float2 21s ease-in-out infinite}
+    .b3{left:50%; bottom:-220px; transform:translateX(-50%); background:radial-gradient(circle at 50% 50%, var(--a3), transparent 60%); animation:float3 22s ease-in-out infinite}
+    @keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(30px,20px)}}
+    @keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,-25px)}}
+    @keyframes float3{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-45%,-20px)}}
+
+    /* Topbar */
+    .topbar{position:relative; z-index:5; background:linear-gradient(90deg, color-mix(in oklab, var(--a1) 35%, white), color-mix(in oklab, var(--a2) 35%, white));
+      color:var(--accentText); text-align:center; font-weight:800; letter-spacing:.3px; padding:.6rem 1rem; border-bottom:1px solid color-mix(in oklab, var(--a1) 25%, white)}
+
+    /* Header mini */
+    header{position:sticky; top:0; z-index:50; backdrop-filter:blur(var(--blur)) saturate(140%); background:color-mix(in oklab, white 70%, var(--a3) 5%); border-bottom:1px solid rgba(0,0,0,.06)}
+    .nav{max-width:1180px; margin:0 auto; padding:12px 18px; display:flex; align-items:center; justify-content:space-between; gap:16px}
+    .brand{display:flex; align-items:center; gap:12px}
+    .brand img{width:42px;height:42px;border-radius:50%;object-fit:cover; box-shadow:0 0 0 2px #fff, 0 0 0 3px color-mix(in oklab, var(--a1) 30%, transparent)}
+    .brand .name{font-weight:900; font-size:1.05rem; letter-spacing:.3px}
+    nav a{text-decoration:none; color:#0e0f11; font-weight:900; margin-left:18px}
+    nav a:hover{color:var(--a1)}
+    .menu{display:none;background:none;border:0;font-size:1.5rem}
+    @media(max-width:860px){
+      nav{display:none; position:absolute; top:64px; left:16px; right:16px; background:color-mix(in oklab, white 86%, var(--a3) 8%); backdrop-filter:blur(20px); border:1px solid rgba(0,0,0,.06); border-radius:16px; padding:14px}
+      nav.show{display:block; animation:fade .18s ease} .menu{display:block}
     }
-    .container {
-      max-width: 950px;
-      margin: 40px auto;
-      background: #fff;
-      padding: 40px;
-      border-radius: 16px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-      animation: fadeIn 0.8s ease-in-out;
-    }
-    h1 {
-      font-size: 2.2rem;
-      color: var(--brand);
-      text-align: center;
-      margin-bottom: 25px;
-      position: relative;
-    }
-    h1::after {
-      content:"";
-      display:block;
-      width:100px;
-      height:4px;
-      background:var(--accent);
-      margin:12px auto 0;
-      border-radius:4px;
-    }
-    h2 {
-      margin-top:30px;
-      font-size:1.4rem;
-      color:var(--brand);
-      border-left:4px solid var(--brand-light);
-      padding-left:10px;
-    }
-    p {
-      margin:10px 0;
-      line-height:1.7;
-      color:#444;
-    }
-    a {
-      color:var(--brand);
-      font-weight:600;
-      text-decoration:none;
-    }
-    a:hover {
-      color:var(--accent);
-    }
-    .update {
-      margin-top: 30px;
-      text-align:center;
-      font-size:0.9rem;
-      color:#666;
-      font-style:italic;
-    }
-    .btn-volver {
-      display: inline-block;
-      margin-top: 25px;
-      padding: 12px 24px;
-      background: var(--brand);
-      color: #fff;
-      border-radius: 8px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-    .btn-volver:hover {
-      background: var(--brand-light);
-      transform: translateY(-3px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
-    @keyframes fadeIn {
-      from {opacity:0; transform:translateY(20px);}
-      to {opacity:1; transform:translateY(0);}
-    }
+    @keyframes fade{from{opacity:0; transform:translateY(-6px)} to{opacity:1; transform:none}}
+
+    .wrap{max-width:1180px; margin:0 auto; padding:28px 18px 70px; position:relative; z-index:1}
+    .hero{text-align:center; margin:10px 0 18px}
+    .kicker{display:inline-flex; align-items:center; gap:8px; font-weight:900; letter-spacing:.45px; font-size:.82rem; color:var(--accentText); border:1px solid rgba(0,0,0,.06); padding:6px 12px; border-radius:999px; background:linear-gradient(180deg,#fff, color-mix(in oklab, var(--a3) 14%, white))}
+    .kicker .dot{width:6px;height:6px;border-radius:999px;background:var(--ok);box-shadow:0 0 0 6px color-mix(in oklab, var(--ok) 25%, transparent)}
+    h1{margin:14px 0 10px; line-height:1.08; font-weight:800; font-size:clamp(1.8rem,3.4vw,2.6rem); letter-spacing:.2px; background:linear-gradient(90deg,var(--ink) 0%, color-mix(in oklab, var(--ink) 45%, white) 30%, var(--ink) 60%); -webkit-background-clip:text; background-clip:text; color:transparent}
+    .subtitle{max-width:820px; margin:0 auto 10px; color:var(--muted)}
+
+    /* Grid principal */
+    .grid{margin-top:24px; display:grid; grid-template-columns: 1.2fr .8fr; gap:22px; align-items:start}
+    @media(max-width:1100px){ .grid{grid-template-columns:1fr} }
+
+    .card{position:relative; padding:22px; border-radius:var(--radius); background:linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.72)); border:1px solid var(--line); box-shadow:var(--shadow-1); overflow:hidden; transform-style:preserve-3d; transition:transform .15s ease; isolation:isolate}
+    .card::before{content:""; position:absolute; inset:-2px; background:conic-gradient(from var(--angle, 0deg), color-mix(in oklab, var(--a1) 28%, transparent), color-mix(in oklab, var(--a2) 28%, transparent), color-mix(in oklab, var(--a3) 28%, transparent), color-mix(in oklab, var(--a1) 28%, transparent)); filter:blur(18px); opacity:.6; z-index:-1; animation:spin 18s linear infinite}
+    @keyframes spin{to{--angle:360deg}}
+    .title{display:flex; align-items:center; gap:10px; margin:0 0 14px}
+    .title i{color:color-mix(in oklab, var(--a1) 60%, black)}
+    .muted{color:var(--muted)}
+    .chip{display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; border:1px solid var(--line); background:linear-gradient(180deg,#fff, color-mix(in oklab, var(--a3) 10%, white)); font-weight:800; font-size:.82rem}
+
+    .section h3{margin:14px 0 8px}
+    .section p{margin:8px 0; color:#374151; line-height:1.65}
+    .list{margin:0; padding-left:18px}
+    .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace; background:#111; color:#fff; padding:2px 6px; border-radius:6px; font-size:.78rem}
+
+    /* Tabla simple */
+    .table{width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; border:1px solid var(--line); border-radius:14px; background:#fff}
+    .table th,.table td{padding:12px 14px; text-align:left; border-bottom:1px dashed var(--line); vertical-align:top}
+    .table th{background:linear-gradient(180deg,#fff, color-mix(in oklab, var(--a3) 10%, white)); font-weight:900}
+    .table tr:last-child td{border-bottom:0}
+
+    /* Footer + WA */
+    footer{border-top:1px solid var(--line); background:linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,.9)); text-align:center; padding:26px 18px; margin-top:48px}
+    .f-links{display:flex; gap:20px; justify-content:center; flex-wrap:wrap; margin-bottom:10px}
+    .f-links a{position:relative; text-decoration:none; font-weight:900; letter-spacing:.3px; color:#0e0f11}
+    .social{display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:10px}
+    .soc{width:42px; height:42px; display:grid; place-items:center; border-radius:999px; background:#fff; border:1px solid rgba(0,0,0,.08)}
+    .soc img{width:26px; height:26px; object-fit:contain}
+    .wa{position:fixed; right:16px; bottom:16px; z-index:40; width:56px;height:56px; display:grid; place-items:center; border-radius:999px; color:#0e0f11; background:linear-gradient(180deg,#ffffff, color-mix(in oklab, var(--a3) 12%, white)); border:1px solid var(--line); box-shadow:0 12px 28px rgba(17,17,19,.12); animation: wa-pulse 3s ease-in-out infinite}
+    @keyframes wa-pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.06)} }
+
+    .sr-only{position:absolute; left:-9999px}
+    :focus-visible{outline:3px solid color-mix(in oklab, var(--a1) 55%, white); outline-offset:2px}
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>🔒 Política de Privacidad</h1>
-    <p>En <strong>JONZKO</strong>, respetamos y protegemos la privacidad de todos nuestros clientes y visitantes. Este documento describe cómo recopilamos, usamos y protegemos tu información.</p>
+  <!-- Fondo vivo -->
+  <div class="blobs"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
 
-    <h2>1. Información que recopilamos</h2>
-    <p>Podemos recopilar datos personales como tu nombre, correo electrónico, número de teléfono y dirección de envío, únicamente para fines de compra y entrega de productos.</p>
+  <div class="topbar">🔒 <strong>Política de Privacidad</strong> • Transparencia y control de tus datos</div>
 
-    <h2>2. Uso de la información</h2>
-    <p>Utilizamos tu información para procesar tus pedidos, enviarte confirmaciones de compra, coordinar envíos y ofrecerte promociones relacionadas con nuestros productos.</p>
+  <!-- NAV MINI -->
+  <header>
+    <div class="nav" role="navigation" aria-label="Navegación">
+      <div class="brand">
+        <img src="img/logo.jpg" alt="JONZKO">
+        <div class="name">JONZKO</div>
+      </div>
 
-    <h2>3. Protección de datos</h2>
-    <p>Tu información es tratada con estricta confidencialidad. Implementamos medidas de seguridad digitales y físicas para proteger tus datos contra accesos no autorizados.</p>
-
-    <h2>4. Compartición de datos</h2>
-    <p>No compartimos tus datos con terceros, salvo con empresas de mensajería (Olva Courier, Shalom) únicamente para la entrega de tus pedidos.</p>
-
-    <h2>5. Derechos del usuario</h2>
-    <p>Tienes derecho a acceder, actualizar o solicitar la eliminación de tu información personal en cualquier momento, escribiéndonos a: <a href="mailto:ventas@jonzko.com">ventas@jonzko.com</a>.</p>
-
-    <h2>6. Cookies</h2>
-    <p>Nuestro sitio puede utilizar cookies para mejorar tu experiencia de navegación y mostrarte contenido personalizado.</p>
-
-    <h2>7. Cambios en esta política</h2>
-    <p>Nos reservamos el derecho de actualizar esta política en cualquier momento para adaptarla a cambios legales o mejoras en nuestro servicio.</p>
-
-    <p class="update">Última actualización: Enero 2025</p>
-
-    <!-- Botón para volver -->
-    <div style="text-align:center;">
-      <a href="index.html" class="btn-volver">⬅ Volver al Inicio</a>
+      <button class="menu" id="menuBtn" aria-label="Abrir menú" aria-controls="navBar" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+      <nav id="navBar">
+        <a href="index.html">Inicio</a>
+        <a href="tienda.html">Tienda</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
     </div>
-  </div>
+  </header>
+
+  <!-- CONTENIDO -->
+  <section class="wrap">
+    <div class="hero">
+      <span class="kicker"><span class="dot" aria-hidden="true"></span> Política de Privacidad</span>
+      <h1>Tu información, <span style="background:linear-gradient(90deg,var(--a1),var(--a2));-webkit-background-clip:text;background-clip:text;color:transparent">siempre protegida</span>.</h1>
+      <p class="subtitle">Esta política explica qué datos recopilamos, con qué fines, los derechos que puedes ejercer y cómo resguardamos tu privacidad.</p>
+    </div>
+
+    <div class="grid">
+      <!-- CONTENIDO PRINCIPAL -->
+      <article class="card tilt section" aria-labelledby="p-intro">
+        <h3 class="title" id="p-intro"><i class="fa-solid fa-shield-halved"></i> 1) Alcance y responsable</h3>
+        <p>Esta política aplica a todos los visitantes y clientes de <strong>JONZKO</strong> que interactúan con nuestros canales (web, WhatsApp, redes sociales). Somos responsables del tratamiento de tus datos personales para fines comerciales y de atención al cliente en el Perú.</p>
+
+        <h3 class="title"><i class="fa-solid fa-database"></i> 2) Datos que recopilamos</h3>
+        <table class="table" aria-label="Categorías de datos">
+          <thead>
+            <tr><th>Categoría</th><th>Ejemplos</th><th>Origen</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Identificación y contacto</td>
+              <td>Nombre, correo, teléfono, dirección</td>
+              <td>Formulario de compra, contacto o reclamos</td>
+            </tr>
+            <tr>
+              <td>Transaccionales</td>
+              <td>Productos comprados, importe, método de pago*</td>
+              <td>Durante el proceso de compra</td>
+            </tr>
+            <tr>
+              <td>Uso del sitio</td>
+              <td>Páginas visitadas, búsquedas, cookies</td>
+              <td>Navegación en el sitio (ver Cookies)</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="muted" style="margin-top:6px">*No almacenamos datos de tarjetas. Si un tercero procesa pagos, recibimos solo confirmaciones necesarias.</p>
+
+        <h3 class="title"><i class="fa-solid fa-bullseye"></i> 3) Finalidades</h3>
+        <ul class="list">
+          <li>Gestionar compras, cambios y garantías.</li>
+          <li>Atender consultas y reclamos (Libro de Reclamaciones).</li>
+          <li>Comunicar estado de pedidos y novedades relevantes.</li>
+          <li>Mejorar la experiencia del sitio (análisis de uso y rendimiento).</li>
+          <li>Marketing opcional (promos; puedes darte de baja en cualquier momento).</li>
+        </ul>
+
+        <h3 class="title"><i class="fa-solid fa-scale-balanced"></i> 4) Base legal</h3>
+        <p>Tratamos tus datos sobre la base de ejecución de contrato (compras), cumplimiento de obligaciones legales (comprobantes, reclamos) y consentimiento (marketing, cookies no esenciales).</p>
+
+        <h3 class="title"><i class="fa-solid fa-file-export"></i> 5) Cesiones y terceros</h3>
+        <p>No vendemos tus datos. Podemos compartirlos con proveedores que nos ayudan a operar:</p>
+        <ul class="list">
+          <li>Mensajería/Envíos (p. ej., Olva Courier, Shalom) para entregar pedidos.</li>
+          <li>Plataformas de pago/validación (solo datos mínimos necesarios).</li>
+          <li>Herramientas de analítica o email (para métricas y comunicaciones).</li>
+        </ul>
+
+        <h3 class="title"><i class="fa-solid fa-cookie-bite"></i> 6) Cookies</h3>
+        <p>Usamos cookies propias para funciones básicas (p. ej., carrito) y, eventualmente, de terceros para analítica/marketing. Puedes gestionar cookies desde tu navegador. Si las desactivas, algunas funciones podrían no operar al 100%.</p>
+
+        <h3 class="title"><i class="fa-solid fa-user-shield"></i> 7) Seguridad</h3>
+        <p>Aplicamos medidas técnicas y organizativas razonables (control de accesos, cifrado en tránsito, backups) para reducir riesgos de acceso no autorizado, pérdida o alteración.</p>
+
+        <h3 class="title"><i class="fa-solid fa-hourglass-half"></i> 8) Conservación</h3>
+        <p>Guardamos datos solo el tiempo necesario para cumplir las finalidades o lo exigido por ley (p. ej., documentos tributarios). Luego, se eliminan o anonimizan de forma segura.</p>
+
+        <h3 class="title"><i class="fa-solid fa-children"></i> 9) Menores de edad</h3>
+        <p>Nuestros productos y sitio no están dirigidos a menores de 14 años. Si crees que un menor nos brindó datos sin autorización, escríbenos para eliminarlos.</p>
+
+        <h3 class="title"><i class="fa-solid fa-rights"></i> 10) Tus derechos</h3>
+        <p>Como titular de datos puedes solicitar: acceso, rectificación, actualización, oposición y supresión. Escríbenos a <a href="mailto:ventas@jonzko.com">ventas@jonzko.com</a> indicando en el asunto: <span class="kbd">Derechos de datos</span>. Atenderemos tu solicitud conforme a los plazos legales aplicables.</p>
+
+        <h3 class="title"><i class="fa-solid fa-earth-americas"></i> 11) Transferencias internacionales</h3>
+        <p>Si usamos proveedores ubicados fuera del país, exigimos garantías adecuadas de protección de datos y solo transferimos la información necesaria para el servicio.</p>
+
+        <h3 class="title"><i class="fa-solid fa-rotate"></i> 12) Cambios en esta política</h3>
+        <p>Podemos actualizar esta política para reflejar mejoras o requisitos legales. La versión vigente se publica en este mismo enlace.</p>
+
+        <div class="chip" style="margin-top:8px"><i class="fa-regular fa-calendar"></i> Última actualización: Enero 2025</div>
+      </article>
+
+      <!-- LATERAL -->
+      <aside class="card tilt" aria-labelledby="p-ayuda">
+        <h3 class="title" id="p-ayuda"><i class="fa-solid fa-circle-info"></i> Centro de ayuda</h3>
+        <p class="muted">¿Dudas sobre tus datos o esta política? Contáctanos por estos medios:</p>
+        <ul class="list">
+          <li>Correo: <a href="mailto:ventas@jonzko.com">ventas@jonzko.com</a></li>
+          <li>WhatsApp: <a href="https://wa.me/51998989599" target="_blank" rel="noopener">+51 998 989 599</a></li>
+          <li>Libro de Reclamaciones: <a href="reclamaciones.html">Registrar reclamo</a></li>
+        </ul>
+
+        <h4 style="margin:14px 0 8px"><i class="fa-solid fa-shield"></i> Buenas prácticas</h4>
+        <ul class="list">
+          <li>Revisa permisos de cookies en tu navegador.</li>
+          <li>Evita compartir claves y usa contraseñas seguras.</li>
+          <li>Verifica que escribes en nuestro dominio oficial.</li>
+        </ul>
+
+        <div class="chip" style="margin-top:10px"><i class="fa-solid fa-lock"></i> Compromiso JONZKO con tu privacidad</div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="f-links">
+      <a href="terminos.html">📜 Términos</a>
+      <a href="privacidad.html" aria-current="page">🔒 Privacidad</a>
+      <a href="reclamaciones.html">📖 Reclamos</a>
+    </div>
+    <div class="social" style="margin-bottom:10px">
+      <a class="soc" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+        <img src="img/instagram.jpg" alt="Instagram" width="28" height="28" loading="lazy" decoding="async">
+      </a>
+      <a class="soc" href="https://www.facebook.com/profile.php?id=61563952841904" target="_blank" rel="noopener" aria-label="Facebook">
+        <img src="img/facebook.jpg" alt="Facebook" width="28" height="28" loading="lazy" decoding="async">
+      </a>
+      <a class="soc" href="https://www.tiktok.com/@jonzko1?lang=es" target="_blank" rel="noopener" aria-label="TikTok">
+        <img src="img/tiktok.png" alt="TikTok" width="28" height="28" loading="lazy" decoding="async">
+      </a>
+      <a class="soc" href="mailto:ventas@jonzko.com" aria-label="Correo">
+        <img src="img/gmail.jpeg" alt="Correo" width="28" height="28" loading="lazy" decoding="async">
+      </a>
+      <a class="soc" href="https://wa.me/51998989599" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <img src="img/phone.png" alt="WhatsApp" width="28" height="28" loading="lazy" decoding="async">
+      </a>
+    </div>
+    <div class="muted">© 2025 <strong>JONZKO</strong>. Todos los derechos reservados.</div>
+  </footer>
+
+  <!-- WhatsApp flotante -->
+  <a class="wa" href="https://wa.me/51998989599?text=Hola%20JONZKO%2C%20tengo%20una%20consulta%20sobre%20privacidad" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <img src="img/whassapp.png" alt="" aria-hidden="true" width="28" height="28" decoding="async">
+  </a>
+
+  <script>
+    // Menú móvil
+    const menuBtn=document.getElementById('menuBtn');
+    const navBar=document.getElementById('navBar');
+    menuBtn?.addEventListener('click',()=>{const open=navBar.classList.toggle('show'); menuBtn.setAttribute('aria-expanded', open ? 'true':'false');});
+
+    // Tilt 3D
+    document.querySelectorAll('.tilt').forEach(card=>{
+      card.addEventListener('mousemove',e=>{
+        const r=card.getBoundingClientRect(); const x=e.clientX - r.left, y=e.clientY - r.top;
+        const rx=((y/r.height)-0.5)*-6, ry=((x/r.width)-0.5)*6;
+        card.style.transform=`perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(6px)`;
+      });
+      card.addEventListener('mouseleave',()=> card.style.transform='perspective(1000px) rotateX(0) rotateY(0) translateZ(0)');
+    });
+  </script>
 </body>
 </html>
