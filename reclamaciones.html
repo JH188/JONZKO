@@ -1,155 +1,435 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="sorbet">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Libro de Reclamaciones - JONZKO</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>JONZKO — Libro de Reclamaciones</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Libro de Reclamaciones JONZKO. Registra tu reclamo o queja. Respuesta según normativa peruana.">
+  <link rel="canonical" href="https://TU_DOMINIO/reclamaciones.html">
+  <meta name="theme-color" content="#ff7b7b"/>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="JONZKO — Libro de Reclamaciones">
+  <meta property="og:description" content="Registra tu reclamo o queja. Atención responsable y trazabilidad.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://TU_DOMINIO/og.jpg">
+  <meta property="og:url" content="https://TU_DOMINIO/reclamaciones.html">
+
+  <!-- Fonts + Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
   <style>
-    :root {
-      --brand:#1b4332; 
-      --brand-light:#52b788; 
-      --accent:#ffb703; 
-      --bg:#f4f6f5;
-      --text:#222;
+    :root{--radius:18px;--shadow-1:0 18px 40px rgba(0,0,0,.10);--line:rgba(0,0,0,.08);--blur:16px}
+    html[data-theme="sorbet"]{--bg1:#fff7f4;--bg2:#fff1f1;--ink:#211f27;--muted:#6b7280;--a1:#ff7b7b;--a2:#ffb86b;--a3:#ffd6e7;--chip:#fff0e3;--card:#fff;--accentText:#1f2937;--ok:#2bb673;--err:#d84343}
+    *{box-sizing:border-box} html,body{height:100%}
+    body{
+      margin:0;color:var(--ink);
+      background:radial-gradient(1200px 700px at 120% -20%, color-mix(in oklab, var(--a2) 18%, transparent), transparent 40%),
+                 radial-gradient(900px 500px at -10% -10%, color-mix(in oklab, var(--a1) 14%, transparent), transparent 45%),
+                 linear-gradient(180deg, var(--bg1), var(--bg2));
+      font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial; overflow-x:hidden;
     }
-    body {
-      font-family:'Poppins',sans-serif;
-      margin:0;
-      background:var(--bg);
-      color:var(--text);
+
+    /* Blobs */
+    .blobs{position:fixed; inset:0; pointer-events:none; z-index:0}
+    .blob{position:absolute; width:680px; height:680px; border-radius:50%; filter:blur(60px); opacity:.35; mix-blend-mode:multiply}
+    .b1{left:-120px; top:-140px; background:radial-gradient(circle at 30% 30%, var(--a1), transparent 60%); animation:float1 18s ease-in-out infinite}
+    .b2{right:-160px; top:10vh; background:radial-gradient(circle at 70% 40%, var(--a2), transparent 60%); animation:float2 21s ease-in-out infinite}
+    .b3{left:50%; bottom:-220px; transform:translateX(-50%); background:radial-gradient(circle at 50% 50%, var(--a3), transparent 60%); animation:float3 22s ease-in-out infinite}
+    @keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(30px,20px)}}
+    @keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,-25px)}}
+    @keyframes float3{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-45%,-20px)}}
+
+    /* Topbar */
+    .topbar{position:relative; z-index:5; background:linear-gradient(90deg, color-mix(in oklab, var(--a1) 35%, white), color-mix(in oklab, var(--a2) 35%, white));
+      color:var(--accentText); text-align:center; font-weight:800; letter-spacing:.3px; padding:.6rem 1rem; border-bottom:1px solid color-mix(in oklab, var(--a1) 25%, white)}
+
+    /* Header mini */
+    header{position:sticky; top:0; z-index:50; backdrop-filter:blur(var(--blur)) saturate(140%); background:color-mix(in oklab, white 70%, var(--a3) 5%); border-bottom:1px solid rgba(0,0,0,.06)}
+    .nav{max-width:1180px; margin:0 auto; padding:12px 18px; display:flex; align-items:center; justify-content:space-between; gap:16px}
+    .brand{display:flex; align-items:center; gap:12px}
+    .brand img{width:42px;height:42px;border-radius:50%;object-fit:cover; box-shadow:0 0 0 2px #fff, 0 0 0 3px color-mix(in oklab, var(--a1) 30%, transparent)}
+    .brand .name{font-weight:900; font-size:1.05rem; letter-spacing:.3px}
+    nav a{text-decoration:none; color:#0e0f11; font-weight:900; margin-left:18px}
+    nav a:hover{color:var(--a1)}
+    .menu{display:none;background:none;border:0;font-size:1.5rem}
+    @media(max-width:860px){
+      nav{display:none; position:absolute; top:64px; left:16px; right:16px; background:color-mix(in oklab, white 86%, var(--a3) 8%); backdrop-filter:blur(20px); border:1px solid rgba(0,0,0,.06); border-radius:16px; padding:14px}
+      nav.show{display:block; animation:fade .18s ease} .menu{display:block}
     }
-    .container {
-      max-width: 950px;
-      margin: 40px auto;
-      background: #fff;
-      padding: 40px;
-      border-radius: 16px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-      animation: fadeIn 0.8s ease-in-out;
-    }
-    h1 {
-      font-size: 2.2rem;
-      color: var(--brand);
-      text-align: center;
-      margin-bottom: 25px;
-      position: relative;
-    }
-    h1::after {
-      content:"";
-      display:block;
-      width:100px;
-      height:4px;
-      background:var(--accent);
-      margin:12px auto 0;
-      border-radius:4px;
-    }
-    p {
-      margin:10px 0 20px;
-      line-height:1.6;
-      color:#444;
-      text-align:center;
-    }
-    form {
-      display:grid;
-      gap:15px;
-    }
-    label {
-      font-weight:600;
-      color:var(--brand);
-    }
-    input, select, textarea {
-      width:100%;
-      padding:10px;
-      border:1px solid #ccc;
-      border-radius:8px;
-      font-size:0.95rem;
-      transition:border .3s;
-    }
-    input:focus, select:focus, textarea:focus {
-      border:1px solid var(--brand-light);
-      outline:none;
-    }
-    textarea {
-      min-height:100px;
-      resize: vertical;
-    }
-    .btn-submit {
-      background:var(--brand);
-      color:#fff;
-      border:none;
-      padding:14px;
-      border-radius:8px;
-      font-weight:600;
-      cursor:pointer;
-      transition:all .3s;
-    }
-    .btn-submit:hover {
-      background:var(--brand-light);
-      transform:translateY(-2px);
-      box-shadow:0 4px 10px rgba(0,0,0,0.15);
-    }
-    .btn-volver {
-      display: inline-block;
-      margin-top: 25px;
-      padding: 12px 24px;
-      background: var(--brand);
-      color: #fff;
-      border-radius: 8px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      text-align:center;
-    }
-    .btn-volver:hover {
-      background: var(--brand-light);
-      transform: translateY(-3px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
-    @keyframes fadeIn {
-      from {opacity:0; transform:translateY(20px);}
-      to {opacity:1; transform:translateY(0);}
-    }
+    @keyframes fade{from{opacity:0; transform:translateY(-6px)} to{opacity:1; transform:none}}
+
+    .wrap{max-width:1180px; margin:0 auto; padding:28px 18px 70px; position:relative; z-index:1}
+    .hero{text-align:center; margin:10px 0 18px}
+    .kicker{display:inline-flex; align-items:center; gap:8px; font-weight:900; letter-spacing:.45px; font-size:.82rem; color:var(--accentText); border:1px solid rgba(0,0,0,.06); padding:6px 12px; border-radius:999px; background:linear-gradient(180deg,#fff, color-mix(in oklab, var(--a3) 14%, white))}
+    .kicker .dot{width:6px;height:6px;border-radius:999px;background:var(--ok);box-shadow:0 0 0 6px color-mix(in oklab, var(--ok) 25%, transparent)}
+    h1{margin:14px 0 10px; line-height:1.08; font-weight:800; font-size:clamp(1.8rem,3.4vw,2.6rem); letter-spacing:.2px; background:linear-gradient(90deg,var(--ink) 0%, color-mix(in oklab, var(--ink) 45%, white) 30%, var(--ink) 60%); -webkit-background-clip:text; background-clip:text; color:transparent}
+    .subtitle{max-width:780px; margin:0 auto 10px; color:var(--muted)}
+
+    /* Grid principal */
+    .grid{margin-top:24px; display:grid; grid-template-columns: 1.15fr .85fr; gap:22px; align-items:start}
+    @media(max-width:1100px){ .grid{grid-template-columns:1fr} }
+
+    .card{position:relative; padding:22px; border-radius:var(--radius); background:linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.72)); border:1px solid var(--line); box-shadow:var(--shadow-1); overflow:hidden; transform-style:preserve-3d; transition:transform .15s ease; isolation:isolate}
+    .card::before{content:""; position:absolute; inset:-2px; background:conic-gradient(from var(--angle, 0deg), color-mix(in oklab, var(--a1) 28%, transparent), color-mix(in oklab, var(--a2) 28%, transparent), color-mix(in oklab, var(--a3) 28%, transparent), color-mix(in oklab, var(--a1) 28%, transparent)); filter:blur(18px); opacity:.6; z-index:-1; animation:spin 18s linear infinite}
+    @keyframes spin{to{--angle:360deg}}
+
+    .title{display:flex; align-items:center; gap:10px; margin:0 0 14px}
+    .title i{color:color-mix(in oklab, var(--a1) 60%, black)}
+    .muted{color:var(--muted)}
+    .field{display:grid; gap:8px; margin-bottom:12px}
+    label{font-weight:800; font-size:.93rem}
+    input, select, textarea{width:100%; padding:14px; border-radius:14px; font-size:1rem; background:linear-gradient(180deg,#ffffff, color-mix(in oklab, var(--a3) 10%, white)); border:1px solid var(--line); transition:border-color .18s ease, box-shadow .18s ease}
+    textarea{resize:vertical; min-height:120px}
+    input::placeholder, textarea::placeholder{color:#9aa0a6}
+    input:focus, select:focus, textarea:focus{outline:none; border-color:color-mix(in oklab, var(--a1) 40%, #d4c6a8); box-shadow:0 0 0 6px color-mix(in oklab, var(--a1) 18%, transparent), inset 0 -1px 0 rgba(255,255,255,.8)}
+
+    .row{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+    @media(max-width:640px){ .row{grid-template-columns:1fr} }
+
+    .help{font-size:.85rem; color:#6b7280}
+    .cta{display:flex; gap:10px; flex-wrap:wrap}
+    .btn{appearance:none; border:0; cursor:pointer; text-decoration:none; padding:14px 18px; border-radius:14px; display:inline-flex; align-items:center; gap:10px; font-weight:900; letter-spacing:.3px; position:relative; overflow:hidden; color:#0f1112; background:linear-gradient(90deg, color-mix(in oklab, var(--a2) 28%, white), #fff); border:1px solid var(--line); box-shadow: 0 12px 28px color-mix(in oklab, var(--a2) 22%, transparent); transition: transform .12s ease}
+    .btn:hover{ transform:translateY(-2px) }
+    .btn.primary{background:linear-gradient(90deg, var(--a1), var(--a2)); color:#111}
+    .btn.ghost{background:linear-gradient(180deg,#fff, color-mix(in oklab, var(--a3) 12%, white)); box-shadow:none}
+
+    .badge{display:inline-flex; align-items:center; gap:8px; font-weight:800; font-size:.82rem; padding:8px 12px; border-radius:999px; border:1px solid var(--line); background:linear-gradient(180deg,#fff, color-mix(in oklab, var(--a3) 8%, white)); color:#0b0c0d}
+
+    .note{background:#fffbe6; border:1px solid #f5d565; padding:10px 12px; border-radius:10px; color:#7a5b00}
+
+    .toast{position:fixed; left:50%; bottom:18px; transform:translateX(-50%) translateY(20px); border:1px solid var(--line); background:linear-gradient(180deg,#fff, color-mix(in oklab, var(--a3) 10%, white)); color:#0b0c0d; border-radius:14px; padding:12px 16px; display:flex; gap:10px; align-items:center; z-index:55; opacity:0; pointer-events:none; transition:.28s; box-shadow:0 12px 28px rgba(17,17,19,.12)}
+    .toast.show{opacity:1; transform:translateX(-50%)}
+    .toast.ok i{color:var(--ok)} .toast.err i{color:var(--err)}
+
+    footer{border-top:1px solid var(--line); background:linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,.9)); text-align:center; padding:26px 18px; margin-top:48px}
+    .f-links{display:flex; gap:20px; justify-content:center; flex-wrap:wrap; margin-bottom:10px}
+    .f-links a{position:relative; text-decoration:none; font-weight:900; letter-spacing:.3px; color:#0e0f11}
+    .social{display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:10px}
+    .soc{width:42px; height:42px; display:grid; place-items:center; border-radius:999px; background:#fff; border:1px solid rgba(0,0,0,.08)}
+    .soc img{width:26px; height:26px; object-fit:contain}
+
+    /* WhatsApp flotante */
+    .wa{position:fixed; right:16px; bottom:16px; z-index:40; width:56px;height:56px; display:grid; place-items:center; border-radius:999px; color:#0e0f11; background:linear-gradient(180deg,#ffffff, color-mix(in oklab, var(--a3) 12%, white)); border:1px solid var(--line); box-shadow:0 12px 28px rgba(17,17,19,.12); animation: wa-pulse 3s ease-in-out infinite}
+    @keyframes wa-pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.06)} }
+
+    .sr-only{position:absolute; left:-9999px}
+    :focus-visible{outline:3px solid color-mix(in oklab, var(--a1) 55%, white); outline-offset:2px}
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>📖 Libro de Reclamaciones</h1>
-    <p>En <strong>JONZKO</strong>, nos preocupamos por ti. Si tienes un reclamo o sugerencia, llena este formulario y nuestro equipo se comunicará contigo lo antes posible.</p>
+  <!-- Fondo vivo -->
+  <div class="blobs"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
 
-    <form>
-      <div>
-        <label for="nombre">Nombre completo</label>
-        <input type="text" id="nombre" placeholder="Escribe tu nombre completo" required>
-      </div>
-      <div>
-        <label for="email">Correo electrónico</label>
-        <input type="email" id="email" placeholder="tuemail@ejemplo.com" required>
-      </div>
-      <div>
-        <label for="telefono">Teléfono</label>
-        <input type="tel" id="telefono" placeholder="+51 999 999 999" required>
-      </div>
-      <div>
-        <label for="tipo">Tipo de reclamo</label>
-        <select id="tipo" required>
-          <option value="">Selecciona una opción</option>
-          <option value="producto">Producto</option>
-          <option value="servicio">Servicio</option>
-          <option value="otros">Otros</option>
-        </select>
-      </div>
-      <div>
-        <label for="detalle">Detalle del reclamo</label>
-        <textarea id="detalle" placeholder="Describe tu reclamo aquí..." required></textarea>
-      </div>
-      <button type="submit" class="btn-submit">Enviar Reclamo</button>
-    </form>
+  <div class="topbar">📖 <strong>Libro de Reclamaciones</strong> • Atención responsable y trazable</div>
 
-    <!-- Botón para volver -->
-    <div style="text-align:center;">
-      <a href="index.html" class="btn-volver">⬅ Volver al Inicio</a>
+  <!-- NAV MINI -->
+  <header>
+    <div class="nav" role="navigation" aria-label="Navegación">
+      <div class="brand">
+        <img src="img/logo.jpg" alt="JONZKO">
+        <div class="name">JONZKO</div>
+      </div>
+
+      <button class="menu" id="menuBtn" aria-label="Abrir menú" aria-controls="navBar" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+      <nav id="navBar">
+        <a href="index.html">Inicio</a>
+        <a href="tienda.html">Tienda</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
     </div>
-  </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="wrap">
+    <div class="hero">
+      <span class="kicker"><span class="dot" aria-hidden="true"></span> Libro de Reclamaciones</span>
+      <h1>Registra tu <span style="background:linear-gradient(90deg,var(--a1),var(--a2));-webkit-background-clip:text;background-clip:text;color:transparent">reclamo o queja</span>.</h1>
+      <p class="subtitle">Respetamos la normativa peruana. Recibirás un código de seguimiento y respuesta dentro del plazo legal.</p>
+    </div>
+
+    <!-- GRID -->
+    <div class="grid">
+      <!-- FORM -->
+      <article class="card tilt">
+        <h3 class="title"><i class="fa-solid fa-file-signature"></i> Formulario oficial</h3>
+
+        <!-- AVISO legal -->
+        <p class="note"><strong>Definiciones:</strong> <u>Reclamo</u> = disconformidad relacionada con el producto/servicio. <u>Queja</u> = malestar o descontento no relacionado directamente a productos (trato, demora, etc.).</p>
+
+        <!-- Cambia TU_ENDPOINT_ID por tu endpoint de Formspree -->
+        <form id="claimForm" action="https://formspree.io/f/TU_ENDPOINT_ID" method="POST" novalidate>
+          <input type="text" name="company" class="sr-only" autocomplete="off" aria-hidden="true"> <!-- honeypot -->
+          <input type="hidden" name="_subject" value="Libro de Reclamaciones (web)">
+          <input type="hidden" name="utm" id="utm">
+          <input type="hidden" name="tracking" id="tracking">
+
+          <div class="row">
+            <div class="field">
+              <label for="fecha">Fecha</label>
+              <input id="fecha" name="fecha" type="date" required>
+            </div>
+            <div class="field">
+              <label for="tipo">Tipo</label>
+              <select id="tipo" name="tipo" required>
+                <option value="">Selecciona</option>
+                <option value="Reclamo">Reclamo</option>
+                <option value="Queja">Queja</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="nombre">Nombre completo</label>
+              <input id="nombre" name="nombre" type="text" placeholder="Nombres y apellidos" required>
+            </div>
+            <div class="field">
+              <label for="dni">DNI / CE</label>
+              <input id="dni" name="dni" type="text" placeholder="Documento" required>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="email">Correo</label>
+              <input id="email" name="email" type="email" placeholder="tunombre@correo.com" required>
+            </div>
+            <div class="field">
+              <label for="telefono">Teléfono</label>
+              <input id="telefono" name="telefono" type="tel" placeholder="+51 ..." required>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="direccion">Dirección</label>
+            <input id="direccion" name="direccion" type="text" placeholder="Calle, número, distrito, ciudad" required>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="producto">Producto/Servicio</label>
+              <input id="producto" name="producto" type="text" placeholder="Nombre del producto o servicio" required>
+            </div>
+            <div class="field">
+              <label for="pedido">N° de pedido (si aplica)</label>
+              <input id="pedido" name="pedido" type="text" placeholder="Ej. #A1234">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="monto">Monto reclamado (S/)</label>
+              <input id="monto" name="monto" type="number" min="0" step="0.01" placeholder="0.00">
+            </div>
+            <div class="field">
+              <label for="medio">Medio de compra</label>
+              <select id="medio" name="medio">
+                <option>Tienda web</option>
+                <option>WhatsApp</option>
+                <option>Otro</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="detalle">Detalle del reclamo/queja</label>
+            <textarea id="detalle" name="detalle" placeholder="Describe los hechos con la mayor claridad posible" required></textarea>
+          </div>
+
+          <div class="field">
+            <label for="pedido_cliente">Pedido del consumidor</label>
+            <textarea id="pedido_cliente" name="pedido_cliente" placeholder="¿Qué solución solicitas?" required></textarea>
+          </div>
+
+          <div class="field">
+            <label><input type="checkbox" id="acepta" required> Declaro ser titular de la compra y que la información brindada es veraz. Acepto el tratamiento de datos para gestionar mi reclamo conforme a la <a href="privacidad.html" target="_blank" rel="noopener">Política de Privacidad</a>.</label>
+          </div>
+
+          <div class="cta">
+            <button id="sendBtn" type="submit" class="btn primary"><i class="fa-solid fa-paper-plane"></i> Enviar</button>
+            <button type="button" id="btnPrint" class="btn ghost"><i class="fa-solid fa-print"></i> Imprimir</button>
+            <button type="button" id="btnWsp" class="btn ghost"><i class="fa-brands fa-whatsapp"></i> Enviar por WhatsApp</button>
+          </div>
+
+          <p class="help">Conforme a normativa peruana, responderemos dentro del <strong>plazo legal</strong>. Recibirás un <strong>código de seguimiento</strong>.</p>
+        </form>
+      </article>
+
+      <!-- INFO / AYUDA -->
+      <aside class="card tilt" aria-labelledby="info-title">
+        <h3 class="title" id="info-title"><i class="fa-solid fa-circle-info"></i> Información y ayuda</h3>
+        <p class="muted">Este Libro de Reclamaciones atiende a consumidores en el Perú. Si tu caso es una <em>consulta general</em>, usa la sección <a href="contacto.html">Contacto</a>.</p>
+
+        <div class="badge"><i class="fa-regular fa-clock"></i> Plazo de respuesta: hasta 30 días calendario*</div>
+        <p class="help">*Salvo que una norma o situación particular disponga un plazo distinto; te lo informaremos.</p>
+
+        <div class="badge"><i class="fa-solid fa-shield-halved"></i> Protegemos tus datos</div>
+        <p class="help">Solo usaremos tu información para gestionar el reclamo. Más en nuestra <a href="privacidad.html">Política de Privacidad</a>.</p>
+
+        <h4 style="margin:14px 0 8px">Otros canales</h4>
+        <ul class="muted">
+          <li>Correo: <a href="mailto:ventas@jonzko.com">ventas@jonzko.com</a></li>
+          <li>WhatsApp: <a href="https://wa.me/51998989599" target="_blank" rel="noopener">+51 998 989 599</a></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="f-links">
+      <a href="terminos.html">📜 Términos</a>
+      <a href="privacidad.html">🔒 Privacidad</a>
+      <a href="reclamaciones.html" aria-current="page">📖 Reclamos</a>
+    </div>
+    <div class="social" style="margin-bottom:10px">
+      <a class="soc" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+        <img src="img/instagram.jpg" alt="Instagram" width="28" height="28" loading="lazy" decoding="async">
+      </a>
+      <a class="soc" href="https://www.facebook.com/profile.php?id=61563952841904" target="_blank" rel="noopener" aria-label="Facebook">
+        <img src="img/facebook.jpg" alt="Facebook" width="28" height="28" loading="lazy" decoding="async">
+      </a>
+      <a class="soc" href="https://www.tiktok.com/@jonzko1?lang=es" target="_blank" rel="noopener" aria-label="TikTok">
+        <img src="img/tiktok.png" alt="TikTok" width="28" height="28" loading="lazy" decoding="async">
+      </a>
+      <a class="soc" href="mailto:ventas@jonzko.com" aria-label="Correo">
+        <img src="img/gmail.jpeg" alt="Correo" width="28" height="28" loading="lazy" decoding="async">
+      </a>
+      <a class="soc" href="https://wa.me/51998989599" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <img src="img/phone.png" alt="WhatsApp" width="28" height="28" loading="lazy" decoding="async">
+      </a>
+    </div>
+    <div class="muted">© 2025 <strong>JONZKO</strong>. Todos los derechos reservados.</div>
+  </footer>
+
+  <!-- WhatsApp flotante -->
+  <a class="wa" href="https://wa.me/51998989599?text=Hola%20JONZKO%2C%20quisiera%20hacer%20una%20consulta%20sobre%20un%20reclamo" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <img src="img/whassapp.png" alt="" aria-hidden="true" width="28" height="28" decoding="async">
+  </a>
+
+  <!-- Toast -->
+  <div id="toast" class="toast ok" role="status" aria-live="polite"><i class="fa-solid fa-circle-check"></i><span>Listo.</span></div>
+
+  <script>
+    // ===== Menú móvil
+    const menuBtn=document.getElementById('menuBtn');
+    const navBar=document.getElementById('navBar');
+    menuBtn?.addEventListener('click',()=>{const open=navBar.classList.toggle('show'); menuBtn.setAttribute('aria-expanded', open ? 'true':'false');});
+
+    // ===== Tilt 3D
+    document.querySelectorAll('.tilt').forEach(card=>{
+      card.addEventListener('mousemove',e=>{
+        const r=card.getBoundingClientRect(); const x=e.clientX - r.left, y=e.clientY - r.top;
+        const rx=((y/r.height)-0.5)*-6, ry=((x/r.width)-0.5)*6;
+        card.style.transform=`perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(6px)`;
+      });
+      card.addEventListener('mouseleave',()=> card.style.transform='perspective(1000px) rotateX(0) rotateY(0) translateZ(0)');
+    });
+
+    // ===== Toast
+    const toast=document.getElementById('toast');
+    const showToast=(msg,ok=true)=>{
+      toast.className='toast '+(ok?'ok':'err');
+      toast.querySelector('span').textContent=msg;
+      toast.querySelector('i').className= ok?'fa-solid fa-circle-check':'fa-solid fa-triangle-exclamation';
+      toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'),2600);
+    };
+
+    // ===== Captura UTM
+    (function(){
+      const params=new URLSearchParams(location.search);
+      const utm=['utm_source','utm_medium','utm_campaign','utm_content','utm_term']
+        .reduce((o,k)=> (params.get(k)&&(o[k]=params.get(k)),o),{});
+      const el=document.getElementById('utm'); if(el) el.value=JSON.stringify(utm);
+    })();
+
+    // ===== Prefill de fecha hoy
+    const today = new Date().toISOString().slice(0,10);
+    document.getElementById('fecha').value = today;
+
+    // ===== Generar código seguimiento
+    function genTracking(){
+      const d=new Date();
+      const ym = d.getFullYear().toString()+String(d.getMonth()+1).padStart(2,'0');
+      const r = Math.floor(Math.random()*9000)+1000;
+      return `JR-${ym}-${r}`;
+    }
+
+    // ===== WhatsApp con datos del formulario
+    function buildWspText(trk){
+      const f = new FormData(document.getElementById('claimForm'));
+      const lines = [
+        `*Libro de Reclamaciones*`,
+        `Código: ${trk}`,
+        `Tipo: ${f.get('tipo')||'-'}`,
+        `Nombre: ${f.get('nombre')||'-'}  DNI/CE: ${f.get('dni')||'-'}`,
+        `Email: ${f.get('email')||'-'}  Tel: ${f.get('telefono')||'-'}`,
+        `Dirección: ${f.get('direccion')||'-'}`,
+        `Producto/Servicio: ${f.get('producto')||'-'}  Pedido: ${f.get('pedido')||'-'}`,
+        `Monto: S/ ${f.get('monto')||'0.00'}  Medio: ${f.get('medio')||'-'}`,
+        `Detalle: ${f.get('detalle')||'-'}`,
+        `Pedido del consumidor: ${f.get('pedido_cliente')||'-'}`
+      ];
+      return encodeURIComponent(lines.join('\n'));
+    }
+
+    // ===== Envío del formulario
+    const form=document.getElementById('claimForm');
+    form.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      if(form.querySelector('[name="company"]').value!=="") return; // honeypot
+
+      // Validación básica
+      const req=['fecha','tipo','nombre','dni','email','telefono','direccion','producto','detalle','pedido_cliente','acepta'];
+      for(const id of req){
+        const el = document.getElementById(id) || form.querySelector(`[name="${id}"]`);
+        if(!el || (el.type==='checkbox' ? !el.checked : !el.value.trim())){
+          showToast('Completa todos los campos obligatorios', false);
+          if(el && el.focus) el.focus();
+          return;
+        }
+      }
+
+      const tracking = genTracking();
+      document.getElementById('tracking').value = tracking;
+
+      // Enviar a Formspree
+      const btn=document.getElementById('sendBtn');
+      const old=btn.innerHTML; btn.disabled=true; btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> Enviando…';
+
+      try{
+        const res=await fetch(form.action,{method:'POST', body:new FormData(form), headers:{'Accept':'application/json'}});
+        if(res.ok){
+          showToast('Reclamo registrado. Código: '+tracking, true);
+          localStorage.setItem('jr-tracking', tracking);
+          setTimeout(()=> window.print(), 700); // sugerir impresión
+        }else{
+          showToast('No se pudo enviar. Intenta de nuevo.', false);
+        }
+      }catch(err){
+        console.error(err);
+        showToast('Error de red. Intenta luego.', false);
+      }finally{
+        btn.disabled=false; btn.innerHTML=old;
+      }
+    });
+
+    // ===== Acciones secundarias
+    document.getElementById('btnPrint').addEventListener('click', ()=>window.print());
+    document.getElementById('btnWsp').addEventListener('click', ()=>{
+      const trk = document.getElementById('tracking').value || genTracking();
+      document.getElementById('tracking').value = trk;
+      const txt = buildWspText(trk);
+      window.open(`https://wa.me/51998989599?text=${txt}`, '_blank');
+    });
+  </script>
 </body>
 </html>
+
