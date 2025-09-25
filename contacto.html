@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
   <title>JONZKO — Contacto</title>
 
   <!-- Fuentes / Iconos -->
@@ -34,22 +34,30 @@
       --topbar-h: 44px;
       --header-h: 64px;
 
-      /* Imagenes */
+      /* Imágenes */
       --hero-img: url("img/contacto.jonzko.jpeg");
       --footer-img: url("img/contacto.abajo.jpeg");
+
+      /* Viewport ancho real (fallback set más abajo) */
+      --vw: 100vw;
+    }
+
+    /* Usa dvw si el navegador lo soporta (mejor en iOS/Android) */
+    @supports (width: 100dvw){
+      :root{ --vw: 100dvw; }
     }
 
     /* =========================
        BASE MOBILE-FIRST
        ========================= */
-    *{box-sizing:border-box}
-    html,body{height:100%}
+    *{box-sizing:border-box; min-width:0} /* evita empujes inesperados */
+    html,body{height:100%; max-width:100%}
+    html,body{overflow-x:hidden} /* NO scroll lateral jamás */
     body{
       margin:0;
       color:var(--ink);
       background:linear-gradient(180deg,var(--bg1),var(--bg2));
       font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial;
-      overflow-x:hidden; /* evita scroll lateral */
     }
     img{max-width:100%; height:auto; display:block}
 
@@ -57,15 +65,18 @@
        TOPBAR (glass) + NAV
        ========================= */
     .topbar{
-      position:fixed; inset:0 0 auto 0; height:var(--topbar-h); z-index:70;
+      position:fixed; inset:0 0 auto 0; height:auto; z-index:70;
       display:flex; align-items:center; justify-content:center; gap:6px;
-      padding:0 12px; color:#fff;
+      padding:calc(6px + env(safe-area-inset-top,0px)) 12px 6px; color:#fff;
       background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.12));
       backdrop-filter: blur(10px) saturate(140%); -webkit-backdrop-filter: blur(10px) saturate(140%);
       border-bottom:1px solid rgba(255,255,255,.18);
       text-shadow:0 1px 8px rgba(0,0,0,.45);
       font-weight:800; letter-spacing:.3px;
     }
+    /* altura real calculada después del render */
+    .topbar-measured{ --topbar-h-real: var(--topbar-h); }
+
     header{
       position:fixed; top:var(--topbar-h); left:0; right:0; z-index:60;
       background:transparent;
@@ -86,14 +97,20 @@
     @keyframes fade{from{opacity:0; transform:translateY(-6px)} to{opacity:1; transform:none}}
 
     /* =========================
+       FULL-BLEED helper
+       ========================= */
+    .fullbleed{
+      position:relative; isolation:isolate;
+      left:50%; right:50%; margin-left:calc(-1 * var(--vw)/2); margin-right:calc(-1 * var(--vw)/2); width:var(--vw);
+    }
+
+    /* =========================
        HERO (full-bleed)
        ========================= */
     .hero{
-      position:relative; isolation:isolate;
-      /* Full width sin desbordes */
-      left:50%; right:50%; margin-left:-50vw; margin-right:-50vw; width:100vw;
-
-      min-height:56vh; display:flex; align-items:flex-end; color:#fff;
+      composes: fullbleed;
+      min-height:56svh; /* estable en móvil */
+      display:flex; align-items:flex-end; color:#fff;
       background:
         linear-gradient(0deg, rgba(0,0,0,.55), rgba(0,0,0,.25) 55%, rgba(0,0,0,.10) 100%),
         var(--hero-img) 50% 32% / cover no-repeat;
@@ -117,15 +134,15 @@
        ========================= */
     .wrap{max-width:var(--container); margin:0 auto; padding:20px 16px 64px}
     .grid{display:grid; grid-template-columns:1fr; gap:16px}
-    .card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow-1); padding:18px}
+    .card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow-1); padding:18px; max-width:100%}
     .card h3{margin:0 0 12px; display:flex; align-items:center; gap:10px}
     .muted{color:var(--muted)}
 
     /* Form mobile */
-    form{display:grid; grid-template-columns:1fr; gap:12px}
+    form{display:grid; grid-template-columns:1fr; gap:12px; max-width:100%}
     label{font-weight:800; font-size:.94rem}
     input,select,textarea{
-      width:100%; padding:12px 14px; border-radius:12px; font-size:1rem;
+      width:100%; max-width:100%; padding:12px 14px; border-radius:12px; font-size:16px; /* 16px evita zoom iOS */
       background:linear-gradient(180deg,#fff, rgba(0,0,0,.02));
       border:1px solid var(--line); transition: border-color .18s, box-shadow .18s;
     }
@@ -154,8 +171,7 @@
        CTA Newsletter con imagen
        ========================= */
     .footer-cta{
-      position:relative; isolation:isolate;
-      left:50%; right:50%; margin-left:-50vw; margin-right:-50vw; width:100vw;
+      composes: fullbleed;
       color:#fff; padding:22px 0;
       background:linear-gradient(0deg, rgba(0,0,0,.55), rgba(0,0,0,.55)),
                  var(--footer-img) 50% 40% / cover no-repeat;
@@ -163,7 +179,7 @@
     .footer-cta .inner{max-width:var(--container); margin:0 auto; padding:0 16px; display:grid; gap:14px}
     .footer-cta h3{margin:0 0 4px; font-size:1.25rem}
     .footer-cta p{margin:0; opacity:.92}
-    .footer-cta form{display:grid; grid-template-columns:1fr; gap:10px}
+    .footer-cta form{display:grid; grid-template-columns:1fr; gap:10px; max-width:100%}
     .footer-cta input{height:48px; border-radius:12px; border:1px solid rgba(255,255,255,.55); background:rgba(255,255,255,.15); color:#fff; padding:12px 14px}
     .footer-cta input::placeholder{color:#f0f0f0}
     .footer-cta button{height:48px; border-radius:12px; border:1px solid rgba(255,255,255,.65); background:linear-gradient(90deg,var(--a1),var(--a2)); color:#111; font-weight:900}
@@ -171,8 +187,10 @@
     /* =========================
        FOOTER oscuro full width
        ========================= */
-    .site-footer{position:relative; isolation:isolate; background:#0d0f13; color:#b9c0cc;
-      left:50%; right:50%; margin-left:-50vw; margin-right:-50vw; width:100vw}
+    .site-footer{
+      composes: fullbleed;
+      background:#0d0f13; color:#b9c0cc;
+    }
     .site-footer .inner{max-width:var(--container); margin:0 auto; padding:24px 16px}
     .ft-grid{display:grid; grid-template-columns:1fr; gap:18px}
     .ft h4{margin:0 0 8px; color:#fff}
@@ -199,7 +217,7 @@
     .float-wa img{width:28px; height:28px}
 
     /* =========================
-       BREAKPOINTS (mejora en pantallas grandes)
+       BREAKPOINTS
        ========================= */
     @media (min-width: 700px){
       .footer-cta .inner{grid-template-columns:1.2fr .8fr}
@@ -228,6 +246,7 @@
     <div class="nav" role="navigation" aria-label="Navegación principal">
       <div class="brand">
         <img src="img/logo.jpg" alt="JONZKO">
+        <div class="name">JONZKO</div>
       </div>
       <button class="menu" id="menuBtn" aria-label="Abrir menú" aria-controls="navBar" aria-expanded="false">
         <i class="fa-solid fa-bars"></i>
@@ -242,7 +261,7 @@
   </header>
 
   <!-- HERO -->
-  <section class="hero" style="--hero-img:url('img/contacto.jonzko.jpeg')">
+  <section class="hero fullbleed" style="--hero-img:url('img/contacto.jonzko.jpeg')">
     <div class="inner">
       <p class="eyebrow">Hecho a tu medida</p>
       <h1 class="hero-title">Personaliza tu hoodie o polo</h1>
@@ -348,7 +367,7 @@
   </main>
 
   <!-- CTA NEWSLETTER -->
-  <section class="footer-cta" style="--footer-img:url('img/contacto.abajo.jpeg')">
+  <section class="footer-cta fullbleed" style="--footer-img:url('img/contacto.abajo.jpeg')">
     <div class="inner">
       <div>
         <h3>Giving up is not an option</h3>
@@ -362,7 +381,7 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="site-footer">
+  <footer class="site-footer fullbleed">
     <div class="inner">
       <div class="ft-grid">
         <div class="ft">
@@ -423,6 +442,15 @@
       menuBtn.setAttribute('aria-expanded', open ? 'true':'false');
     });
 
+    // Medir topbar para ajustar header (por si cambia por safe-area)
+    const topbar=document.querySelector('.topbar');
+    function fixTopbarHeight(){
+      const h=topbar.getBoundingClientRect().height;
+      document.documentElement.style.setProperty('--topbar-h', h+'px');
+    }
+    fixTopbarHeight();
+    window.addEventListener('resize', fixTopbarHeight);
+
     // Form Formspree (validación simple)
     const form=document.getElementById('contactForm');
     form.addEventListener('submit', async (e)=>{
@@ -437,14 +465,9 @@
         else{ alert('No se pudo enviar. Intenta de nuevo.'); }
       }catch{ alert('Error de red. Intenta luego.'); }
     });
-</script>
+  </script>
 </body>
 </html>
-
-
-
-
-
 
 
 
