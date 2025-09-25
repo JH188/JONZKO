@@ -1,660 +1,1129 @@
 <!DOCTYPE html>
 <html lang="es" data-theme="sorbet">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>JONZKO — Contáctanos</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>JONZKO</title>
 
-  <!-- SEO básico -->
-  <meta name="description" content="Contáctanos: soporte rápido por WhatsApp o correo. Envíos a todo el Perú. JONZKO."/>
-  <link rel="canonical" href="https://TU_DOMINIO/contacto.html"/>
+    <!-- SEO -->
+    <meta
+      name="description"
+      content="Contáctanos: soporte rápido por WhatsApp o correo. Envíos a todo el Perú. JONZKO."
+    />
+    <link rel="canonical" href="https://TU_DOMINIO/contacto.html" />
 
-  <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="JONZKO — Contáctanos"/>
-  <meta property="og:description" content="Soporte rápido • Envíos Perú • WhatsApp y correo"/>
-  <meta property="og:image" content="https://TU_DOMINIO/og.jpg"/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://TU_DOMINIO/contacto.html"/>
-  <meta name="twitter:card" content="summary_large_image"/>
+    <!-- OG/Twitter -->
+    <meta property="og:title" content="JONZKO — Contáctanos" />
+    <meta
+      property="og:description"
+      content="Soporte rápido • Envíos Perú • WhatsApp y correo"
+    />
+    <meta property="og:image" content="https://TU_DOMINIO/og.jpg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://TU_DOMINIO/contacto.html" />
+    <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- PWA básico -->
-  <meta name="theme-color" content="#ff7b7b"/>
-  <link rel="manifest" href="/manifest.webmanifest"/>
+    <!-- Fonts + Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
 
-  <!-- Fonts + Icons -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <style>
+      /* ===== Vars ===== */
+      :root {
+        --radius: 18px;
+        --shadow-1: 0 18px 40px rgba(0, 0, 0, 0.1);
+        --line: rgba(0, 0, 0, 0.08);
+        --container: 1200px;
+        --topbar-h: 44px;
+        --header-h: 72px;
 
-  <!-- Schema.org Organization -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"JONZKO",
-    "url":"https://TU_DOMINIO",
-    "logo":"https://TU_DOMINIO/img/logo.jpg",
-    "contactPoint":[{"@type":"ContactPoint","telephone":"+51-998-989-599","contactType":"customer support","areaServed":"PE","availableLanguage":["es"]}],
-    "sameAs":["https://www.instagram.com/","https://www.facebook.com/profile.php?id=61563952841904","https://www.tiktok.com/"]
-  }
-  </script>
+        /* Imágenes */
+        --hero-img: url("img/contacto.jonzko.jpeg");
+        --footer-img: url("img/contacto.abajo.jpeg");
 
-  <!-- Schema.org FAQ -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"FAQPage",
-    "mainEntity":[
-      {"@type":"Question","name":"¿Cuánto tarda el envío?","acceptedAnswer":{"@type":"Answer","text":"Lima 24–48h. Provincias 48–96h aprox. Tracking por WhatsApp."}},
-      {"@type":"Question","name":"¿Puedo cambiar talla o color?","acceptedAnswer":{"@type":"Answer","text":"Sí, dentro de 7 días hábiles, prenda nueva con etiquetas."}},
-      {"@type":"Question","name":"¿Atienden mayorista?","acceptedAnswer":{"@type":"Answer","text":"Sí, escríbenos cantidades y estilos para precios preferenciales."}}
-    ]
-  }
-  </script>
+        /* Colores */
+        --ink: #211f27;
+        --muted: #6b7280;
+        --card: #fff;
+        --a1: #ff7b7b;
+        --a2: #ffb86b;
+        --bg1: #fff7f4;
+        --bg2: #fff1f1;
+      }
 
-  <style>
-    /* ================= Temas ================= */
-    :root{--radius:18px;--shadow-1:0 18px 40px rgba(0,0,0,.10);--line:rgba(0,0,0,.08);--blur:16px}
-    html[data-theme="sorbet"]{--bg1:#fff7f4;--bg2:#fff1f1;--ink:#211f27;--muted:#6b7280;--a1:#ff7b7b;--a2:#ffb86b;--a3:#ffd6e7;--chip:#fff0e3;--card:#fff;--accentText:#1f2937;--ok:#2bb673;--err:#d84343}
-    html[data-theme="ocean"]{--bg1:#edf9fb;--bg2:#eaf5ff;--ink:#0d1b2a;--muted:#567;--a1:#00bcd4;--a2:#66e0b6;--a3:#bee3f8;--chip:#e6fbf4;--card:#fff;--accentText:#0b1320;--ok:#1a8f64;--err:#c0392b}
-    html[data-theme="royal"]{--bg1:#f7f5ff;--bg2:#fdf7ff;--ink:#1a152b;--muted:#6d6a7c;--a1:#9b5de5;--a2:#f15bb5;--a3:#fee440;--chip:#fff4f9;--card:#fff;--accentText:#1a152b;--ok:#2aa46b;--err:#d33f56}
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        overflow-x: hidden; /* <- evita scroll horizontal */
+        color: var(--ink);
+        background: linear-gradient(180deg, var(--bg1), var(--bg2));
+        font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      }
 
-    *{box-sizing:border-box} html,body{height:100%}
-    body{
-      margin:0;color:var(--ink);
-      background:radial-gradient(1200px 700px at 120% -20%, color-mix(in oklab, var(--a2) 18%, transparent), transparent 40%),
-                 radial-gradient(900px 500px at -10% -10%, color-mix(in oklab, var(--a1) 14%, transparent), transparent 45%),
-                 linear-gradient(180deg, var(--bg1), var(--bg2));
-      font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial; overflow-x:hidden;
-    }
+      /* ===== Topbar glass ===== */
+      .topbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 70;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 0.55rem 1rem;
+        color: #fff;
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.35),
+          rgba(0, 0, 0, 0.12)
+        );
+        backdrop-filter: blur(8px) saturate(140%);
+        -webkit-backdrop-filter: blur(8px) saturate(140%);
+        text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+      }
+      .topbar strong {
+        font-weight: 800;
+        letter-spacing: 0.3px;
+      }
 
-    /* Skip link */
-    .sr-skip{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
-    .sr-skip:focus{position:static;width:auto;height:auto;padding:8px 12px;border-radius:8px;background:#fff;border:1px solid var(--line)}
+      /* ===== Header / Nav ===== */
+      header {
+        position: fixed;
+        top: var(--topbar-h);
+        left: 0;
+        right: 0;
+        z-index: 60;
+        background: transparent;
+        border-bottom: none;
+      }
+      .nav {
+        max-width: var(--container);
+        margin: 0 auto;
+        padding: 12px 18px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .brand img {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 0 0 0 2px #fff, 0 0 0 3px rgba(0, 0, 0, 0.12);
+      }
+      .brand .name {
+        font-family: "Playfair Display", serif;
+        font-weight: 700;
+        font-size: 1.26rem;
+        letter-spacing: 0.4px;
+      }
+      nav a {
+        text-decoration: none;
+        color: #111;
+        font-weight: 800;
+        margin-left: 22px;
+        position: relative;
+      }
+      nav a.active::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -8px;
+        height: 3px;
+        background: linear-gradient(90deg, var(--a1), var(--a2));
+        border-radius: 999px;
+      }
+      .menu {
+        display: none;
+        background: none;
+        border: 0;
+        font-size: 1.5rem;
+      }
+      @keyframes fade {
+        from {
+          opacity: 0;
+          transform: translateY(-6px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      @media (max-width: 860px) {
+        nav {
+          display: none;
+          position: absolute;
+          top: 64px;
+          left: 16px;
+          right: 16px;
+          background: #fff;
+          border: 1px solid rgba(0, 0, 0, 0.06);
+          border-radius: 16px;
+          padding: 14px;
+        }
+        nav.show {
+          display: block;
+          animation: fade 0.18s ease;
+        }
+        .menu {
+          display: block;
+        }
+      }
 
-    /* Blobs */
-    .blobs{position:fixed; inset:0; pointer-events:none; z-index:0}
-    .blob{position:absolute; width:680px; height:680px; border-radius:50%; filter:blur(60px); opacity:.35; mix-blend-mode:multiply}
-    .b1{left:-120px; top:-140px; background:radial-gradient(circle at 30% 30%, var(--a1), transparent 60%); animation:float1 18s ease-in-out infinite}
-    .b2{right:-160px; top:10vh; background:radial-gradient(circle at 70% 40%, var(--a2), transparent 60%); animation:float2 21s ease-in-out infinite}
-    .b3{left:50%; bottom:-220px; transform:translateX(-50%); background:radial-gradient(circle at 50% 50%, var(--a3), transparent 60%); animation:float3 22s ease-in-out infinite}
-    @keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(30px,20px)}}
-    @keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,-25px)}}
-    @keyframes float3{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-45%,-20px)}}
+      /* ===== Hero full-bleed ===== */
+      .hero-banner {
+        position: relative;
+        isolation: isolate;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+        width: 100vw;
+        min-height: clamp(360px, 52vh, 560px);
+        display: flex;
+        align-items: flex-end;
+        color: #fff;
+        background: linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.55),
+            rgba(0, 0, 0, 0.25) 55%,
+            rgba(0, 0, 0, 0.1) 100%
+          ),
+          var(--hero-img) 50% 35% / cover no-repeat;
+      }
+      .hero-inner {
+        max-width: var(--container);
+        width: 100%;
+        margin: 0 auto;
+        padding: calc(var(--topbar-h) + var(--header-h) + 24px) 18px 48px;
+        position: relative;
+        z-index: 1;
+      }
+      .eyebrow {
+        font-weight: 800;
+        letter-spacing: 0.4px;
+        opacity: 0.9;
+        margin: 0 0 10px;
+      }
+      .hero-title {
+        margin: 0 0 8px;
+        line-height: 1.06;
+        font-weight: 800;
+        font-size: clamp(1.9rem, 3.6vw, 3rem);
+        font-family: "Playfair Display", serif;
+        position: relative;
+        padding-left: 14px;
+      }
+      .hero-title::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.15em;
+        bottom: 0.15em;
+        width: 4px;
+        background: linear-gradient(180deg, var(--a1), var(--a2));
+        border-radius: 4px;
+      }
+      .hero-sub {
+        max-width: 760px;
+        margin: 0;
+        opacity: 0.95;
+      }
+      @media (max-width: 768px) {
+        .hero-banner {
+          background: linear-gradient(
+              0deg,
+              rgba(0, 0, 0, 0.55),
+              rgba(0, 0, 0, 0.25) 55%,
+              rgba(0, 0, 0, 0.1) 100%
+            ),
+            var(--hero-img) 50% 28% / cover no-repeat;
+        }
+      }
 
-    .progress{position:fixed; top:0; left:0; height:3px; width:0%; z-index:60;
-      background:linear-gradient(90deg,var(--a1),var(--a2),var(--a3));
-      box-shadow:0 0 12px color-mix(in oklab, var(--a2) 50%, transparent); transition:width .1s linear}
+      /* ===== Main ===== */
+      .wrap {
+        max-width: var(--container);
+        margin: 0 auto;
+        padding: 36px 18px 70px;
+      }
+      [id] {
+        scroll-margin-top: calc(var(--topbar-h) + var(--header-h) + 16px);
+      }
 
-    .topbar{position:relative; z-index:5; background:linear-gradient(90deg, color-mix(in oklab, var(--a1) 35%, white), color-mix(in oklab, var(--a2) 35%, white));
-      color:var(--accentText); text-align:center; font-weight:800; letter-spacing:.3px; padding:.6rem 1rem; border-bottom:1px solid color-mix(in oklab, var(--a1) 25%, white)}
+      .grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.9fr;
+        gap: 26px;
+        align-items: start;
+      }
+      @media (max-width: 960px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
 
-    header{position:sticky; top:0; z-index:50; backdrop-filter:blur(var(--blur)) saturate(140%); background:color-mix(in oklab, white 70%, var(--a3) 5%); border-bottom:1px solid rgba(0,0,0,.06)}
-    .nav{max-width:1180px; margin:0 auto; padding:12px 18px; display:flex; align-items:center; justify-content:space-between; gap:16px}
-    .brand{display:flex; align-items:center; gap:12px}
-    .brand img{width:42px;height:42px;border-radius:50%;object-fit:cover; box-shadow:0 0 0 2px #fff, 0 0 0 3px color-mix(in oklab, var(--a1) 30%, transparent)}
-    .brand .name{font-family:"Playfair Display",serif; font-weight:700; font-size:1.3rem; letter-spacing:.5px}
-    nav a{text-decoration:none; color:var(--accentText); font-weight:800; margin-left:22px; position:relative}
-    nav a.active::after{content:""; position:absolute; left:0; right:0; bottom:-8px; height:3px; background:linear-gradient(90deg,var(--a1), var(--a2)); border-radius:999px; box-shadow:0 2px 10px color-mix(in oklab, var(--a2) 45%, transparent)}
-    .menu{display:none;background:none;border:0;font-size:1.5rem}
-    @media(max-width:860px){
-      nav{display:none; position:absolute; top:64px; left:16px; right:16px; background:color-mix(in oklab, white 86%, var(--a3) 8%); backdrop-filter:blur(20px); border:1px solid rgba(0,0,0,.06); border-radius:16px; padding:14px}
-      nav.show{display:block; animation:fade .18s ease} .menu{display:block}
-    }
-    @keyframes fade{from{opacity:0; transform:translateY(-6px)} to{opacity:1; transform:none}}
+      .card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        box-shadow: var(--shadow-1);
+        padding: 22px;
+      }
+      .card h3 {
+        margin: 0 0 12px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      .muted {
+        color: var(--muted);
+      }
 
-    .theme{display:flex; gap:8px; align-items:center; background:rgba(255,255,255,.8); border:1px solid rgba(0,0,0,.06); border-radius:999px; padding:6px 8px}
-    .sw{width:26px;height:26px;border-radius:999px;border:1px solid rgba(0,0,0,.1); cursor:pointer}
-    .sw.sorbet{background:conic-gradient(from 0deg, #ff7b7b, #ffb86b, #ffd6e7, #ff7b7b)}
-    .sw.ocean{background:conic-gradient(from 0deg, #00bcd4, #66e0b6, #bee3f8, #00bcd4)}
-    .sw.royal{background:conic-gradient(from 0deg, #9b5de5, #f15bb5, #fee440, #9b5de5)}
-    .sw:focus-visible{outline:3px solid color-mix(in oklab, var(--a1) 50%, white); outline-offset:2px}
+      /* Form */
+      form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      form .full {
+        grid-column: 1 / -1;
+      }
+      label {
+        font-weight: 800;
+        font-size: 0.93rem;
+      }
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 12px 14px;
+        border-radius: 12px;
+        font-size: 1rem;
+        background: linear-gradient(180deg, #ffffff, rgba(0, 0, 0, 0.02));
+        border: 1px solid var(--line);
+        transition: border-color 0.18s ease, box-shadow 0.18s ease;
+      }
+      textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: none;
+        border-color: color-mix(in oklab, var(--a1) 40%, #d4c6a8);
+        box-shadow: 0 0 0 6px color-mix(in oklab, var(--a1) 18%, transparent);
+      }
+      .btn {
+        appearance: none;
+        border: 0;
+        cursor: pointer;
+        padding: 14px 18px;
+        border-radius: 12px;
+        font-weight: 900;
+        letter-spacing: 0.3px;
+      }
+      .btn.primary {
+        color: #111;
+        background: linear-gradient(
+          90deg,
+          color-mix(in oklab, var(--a2) 35%, white),
+          #fff
+        );
+        border: 1px solid var(--line);
+      }
+      .btn.dark {
+        color: #fff;
+        background: #111;
+        border: 1px solid #111;
+      }
+      .btn.block {
+        width: 100%;
+      }
 
-    .wrap{max-width:1180px; margin:0 auto; padding:28px 18px 70px; position:relative; z-index:1}
-    .hero{text-align:center; margin:26px 0 16px}
-    .kicker{display:inline-flex; align-items:center; gap:8px; font-weight:900; letter-spacing:.45px; font-size:.82rem; color:var(--accentText); border:1px solid rgba(0,0,0,.06); padding:6px 12px; border-radius:999px; background:linear-gradient(180deg,#fff, color-mix(in oklab, var(--a3) 14%, white)); box-shadow:inset 0 -2px 0 color-mix(in oklab, var(--a2) 20%, transparent)}
-    .kicker .dot{width:6px;height:6px;border-radius:999px;background:var(--ok);box-shadow:0 0 0 6px color-mix(in oklab, var(--ok) 25%, transparent)}
-    h1{margin:14px 0 10px; line-height:1.08; font-weight:800; font-size:clamp(2rem,3.6vw,3.2rem); font-family:"Playfair Display",serif; letter-spacing:.2px; background:linear-gradient(90deg,var(--ink) 0%, color-mix(in oklab, var(--ink) 45%, white) 30%, var(--ink) 60%); -webkit-background-clip:text; background-clip:text; color:transparent}
-    .subtitle{max-width:780px; margin:0 auto 10px; color:var(--muted)}
+      /* Info lateral */
+      .info-list {
+        display: grid;
+        gap: 12px;
+      }
+      .info {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: linear-gradient(180deg, #fff, rgba(0, 0, 0, 0.02));
+      }
+      .info i {
+        width: 42px;
+        height: 42px;
+        display: grid;
+        place-items: center;
+        border-radius: 10px;
+        background: linear-gradient(180deg, #fff, #f5f5f5);
+        border: 1px solid var(--line);
+        color: #0e0f11;
+      }
+      .info strong {
+        display: block;
+        font-size: 1.05rem;
+      }
 
-    /* Hero video */
-    .hero-video{position:relative; margin:18px auto 8px; max-width:1100px; border-radius:18px; overflow:hidden; box-shadow:0 24px 60px rgba(0,0,0,.12)}
-    .vh{width:100%; height:auto; display:none; object-fit:cover}
-    .v-land{display:block}
-    @media (max-width:780px){.v-land{display:none}.v-port{display:block}}
+      /* Mapa + Info */
+      .map-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 26px;
+        margin-top: 26px;
+      }
+      @media (max-width: 960px) {
+        .map-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .map iframe,
+      .map .placeholder {
+        width: 100%;
+        height: 320px;
+        border: 0;
+        border-radius: 12px;
+      }
 
-    .grid{margin-top:24px; display:grid; grid-template-columns: 1fr 1.2fr .9fr; gap:22px; align-items:start}
-    @media(max-width:1200px){ .grid{grid-template-columns:1fr 1fr} }
-    @media(max-width:920px){ .grid{grid-template-columns:1fr} }
+      /* ===== Newsletter (imagen de fondo) ===== */
+      .footer-cta {
+        position: relative;
+        isolation: isolate;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+        width: 100vw;
+        padding: 28px 0;
+        background: linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.55),
+            rgba(0, 0, 0, 0.55)
+          ),
+          var(--footer-img) center/cover no-repeat;
+        color: #fff;
+      }
+      .footer-cta .inner {
+        max-width: var(--container);
+        margin: 0 auto;
+        padding: 0 18px;
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 16px;
+        align-items: center;
+      }
+      .footer-cta h3 {
+        margin: 0 0 6px;
+        font-size: 1.4rem;
+      }
+      .footer-cta p {
+        margin: 0;
+        opacity: 0.92;
+      }
+      .footer-cta form {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 10px;
+      }
+      .footer-cta input {
+        height: 48px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        background: rgba(255, 255, 255, 0.15);
+        color: #fff;
+        padding: 12px 14px;
+      }
+      .footer-cta input::placeholder {
+        color: #eaeaea;
+      }
+      .footer-cta button {
+        height: 48px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        background: linear-gradient(90deg, var(--a1), var(--a2));
+        color: #111;
+        font-weight: 900;
+        letter-spacing: 0.3px;
+        cursor: pointer;
+      }
 
-    .card{position:relative; padding:22px; border-radius:var(--radius); background:linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.72)); border:1px solid var(--line); box-shadow:var(--shadow-1); overflow:hidden; transform-style:preserve-3d; transition:transform .15s ease; isolation:isolate}
-    .card::before{content:""; position:absolute; inset:-2px; background:conic-gradient(from var(--angle, 0deg), color-mix(in oklab, var(--a1) 28%, transparent), color-mix(in oklab, var(--a2) 28%, transparent), color-mix(in oklab, var(--a3) 28%, transparent), color-mix(in oklab, var(--a1) 28%, transparent)); filter:blur(18px); opacity:.6; z-index:-1; animation:spin 18s linear infinite}
-    @keyframes spin{to{--angle:360deg}}
-    .title{display:flex; align-items:center; gap:10px; margin:0 0 14px; color:var(--accentText)}
-    .title i{color:color-mix(in oklab, var(--a1) 60%, black)}
-    .muted{color:var(--muted)}
+      /* ===== Footer oscuro (FULL WIDTH FIX) ===== */
+      .site-footer {
+        position: relative;
+        isolation: isolate; /* <- ¡IMPORTANTE! */
+        background: #0d0f13;
+        color: #b9c0cc;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+        width: 100vw;
+      }
+      .site-footer .inner {
+        max-width: var(--container);
+        margin: 0 auto;
+        padding: 34px 18px;
+      }
+      .ft-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr 1fr 1.2fr;
+        gap: 22px;
+      }
+      @media (max-width: 960px) {
+        .ft-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 580px) {
+        .ft-grid {
+          grid-template-columns: 1fr;
+        }
+      }
 
-    .list{display:grid; gap:12px}
-    .item{display:flex; align-items:center; gap:14px; padding:14px; border-radius:14px; background:linear-gradient(180deg,#ffffff, color-mix(in oklab, var(--a3) 8%, white)); border:1px solid var(--line); transition:.18s ease; position:relative; overflow:hidden}
-    .item:hover{transform:translateY(-2px); box-shadow:0 10px 22px rgba(17,17,19,.08)}
-    .item i{width:44px; height:44px; display:grid; place-items:center; border-radius:12px; color:#0e0f11; background:radial-gradient(circle at 30% 30%, #fff, color-mix(in oklab, var(--a3) 30%, white)); border:1px solid var(--line)}
-    .item strong{font-size:1.06rem; color:#0e0f11}
-    .chip{margin-left:auto; display:inline-flex; align-items:center; gap:6px; font-size:.78rem; padding:6px 10px; border-radius:999px; font-weight:800; background:linear-gradient(180deg, color-mix(in oklab, var(--a3) 36%, white), #fff); border:1px solid var(--line); color:#333}
-    .actions{display:flex; gap:8px; margin-left:10px}
-    .btn-icon{width:40px;height:40px;display:grid;place-items:center;border-radius:12px;cursor:pointer; background:linear-gradient(180deg,#ffffff, color-mix(in oklab, var(--a3) 10%, white)); border:1px solid var(--line); transition:.18s ease}
-    .btn-icon:hover{transform:translateY(-1px); box-shadow:0 8px 18px rgba(17,17,19,.08)}
+      .ft h4 {
+        margin: 0 0 10px;
+        color: #fff;
+      }
+      .ft ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 8px;
+      }
+      .ft a {
+        color: #b9c0cc;
+        text-decoration: none;
+      }
+      .ft a:hover {
+        color: #fff;
+      }
+      .ft .brand {
+        gap: 10px;
+      }
+      .ft .brand img {
+        box-shadow: none;
+      }
+      .ft .muted {
+        color: #8f97a6;
+      }
 
-    .cta{margin-top:14px; display:flex; flex-wrap:wrap; gap:12px}
-    .btn{appearance:none; border:0; cursor:pointer; text-decoration:none; padding:14px 18px; border-radius:14px; display:inline-flex; align-items:center; gap:10px; font-weight:900; letter-spacing:.3px; position:relative; overflow:hidden; color:#0f1112; background:linear-gradient(90deg, color-mix(in oklab, var(--a2) 28%, white), #fff), linear-gradient(180deg, transparent, rgba(0,0,0,.03)); border:1px solid var(--line); box-shadow: 0 12px 28px color-mix(in oklab, var(--a2) 22%, transparent); transition: transform .12s ease, box-shadow .2s ease}
-    .btn:hover{ transform:translateY(-2px) }
-    .btn:after{content:""; position:absolute; inset:0; background:radial-gradient(250px 120px at var(--mx,50%) var(--my,0%), color-mix(in oklab, var(--a1) 20%, transparent), transparent 60%); transition:.08s}
-    .btn.mail{box-shadow:0 12px 28px color-mix(in oklab, var(--a1) 18%, transparent)}
-    .btn.ghost{background:linear-gradient(180deg,#fff, color-mix(in oklab, var(--a3) 12%, white)); box-shadow:none}
-    .btn i{color:#333}
-    .btn .ico{width:18px;height:18px;object-fit:contain;display:block} /* para imágenes dentro de botones */
-    .ripple{position:absolute; border-radius:50%; transform:translate(-50%,-50%); pointer-events:none; opacity:.4; background:radial-gradient(circle, color-mix(in oklab, var(--a2) 50%, white) 10%, transparent 60%); width:10px;height:10px; animation:rip .6s ease-out}
-    @keyframes rip{to{opacity:0; width:260px; height:260px}}
+      .ft-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        margin-top: 20px;
+        padding-top: 14px;
+        display: flex;
+        gap: 14px;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+      .ft-bottom .links {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .ft-bottom .links a {
+        color: #d7dce7;
+        text-decoration: none;
+        font-weight: 800;
+      }
+      .ft-bottom .copy {
+        color: #8f97a6;
+      }
 
-    form{display:grid; gap:14px}
-    .field{display:grid; gap:8px}
-    label{font-weight:800; font-size:.93rem; color:#0b0c0d}
-    input, select, textarea{width:100%; padding:14px; border-radius:14px; font-size:1rem; background:linear-gradient(180deg,#ffffff, color-mix(in oklab, var(--a3) 10%, white)); border:1px solid var(--line); transition:border-color .18s ease, box-shadow .18s ease}
-    input::placeholder, textarea::placeholder{color:#9aa0a6}
-    input:focus, select:focus, textarea:focus{outline:none; border-color:color-mix(in oklab, var(--a1) 40%, #d4c6a8); box-shadow:0 0 0 6px color-mix(in oklab, var(--a1) 18%, transparent), inset 0 -1px 0 rgba(255,255,255,.8)}
-    textarea{resize:vertical; min-height:120px}
+      /* WhatsApp flotante */
+      .float-wa {
+        position: fixed;
+        right: 16px;
+        bottom: 16px;
+        z-index: 40;
+        width: 56px;
+        height: 56px;
+        display: grid;
+        place-items: center;
+        border-radius: 999px;
+        background: linear-gradient(180deg, #ffffff, rgba(0, 0, 0, 0.04));
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+      }
+      /* Filita de métodos de pago */
+      .pay-row {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        padding: 10px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: linear-gradient(
+          180deg,
+          #fff,
+          color-mix(in oklab, var(--a3) 10%, #fff)
+        );
+      }
+      .pay-badge {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 10px;
+        border-radius: 10px;
+        border: 1px solid var(--line);
+        background: #fff;
+        box-shadow: 0 4px 12px rgba(17, 17, 19, 0.05);
+        font-weight: 800;
+        color: #0e0f11;
+      }
+      .pay-badge img {
+        width: 28px;
+        height: 28px;
+        object-fit: contain;
+        display: block;
+        border-radius: 6px; /* quítalo si quieres el logo tal cual */
+      }
+      @media (max-width: 560px) {
+        .pay-badge span {
+          font-size: 0.92rem;
+        }
+      }
+      /* Contenedor de redes (ya lo tienes, lo reforzamos) */
+      .social {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
 
-    .kpis{display:grid; grid-template-columns:repeat(3,1fr); gap:10px}
-    .kpi{text-align:center; padding:14px; border-radius:12px; background:linear-gradient(180deg,#ffffff, color-mix(in oklab, var(--a3) 10%, white)); border:1px solid var(--line)}
-    .kpi strong{display:block; font-size:1.25rem; letter-spacing:.4px}
-    .trust{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
-    .trust .badge{display:inline-flex; align-items:center; gap:8px; font-weight:800; font-size:.82rem; padding:8px 12px; border-radius:999px; border:1px solid var(--line); background:linear-gradient(180deg,#fff, color-mix(in oklab, var(--a3) 8%, white)); color:#0b0c0d}
+      /* Pastilla circular para cada red con tu estética */
+      .soc {
+        width: 42px;
+        height: 42px;
+        display: grid;
+        place-items: center;
+        border-radius: 999px;
+        background: linear-gradient(
+          180deg,
+          #ffffff,
+          color-mix(in oklab, var(--a3) 8%, #fff)
+        );
+        border: 1px solid var(--line);
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.15s ease, box-shadow 0.2s ease,
+          border-color 0.2s ease;
+      }
+      .soc:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 22px rgba(17, 17, 19, 0.12);
+        border-color: color-mix(in oklab, var(--a1) 35%, var(--line));
+      }
 
-    /* Reels */
-    .reels{display:flex; gap:12px; overflow:auto; scroll-snap-type:x mandatory; padding-bottom:6px}
-    .reel{flex:0 0 260px; height:460px; border-radius:16px; overflow:hidden; scroll-snap-align:start; position:relative; box-shadow:0 16px 40px rgba(0,0,0,.12); background:#000}
-    .reel video{width:100%; height:100%; object-fit:cover}
-    .reels-nav{display:flex; gap:8px; justify-content:flex-end; margin-top:8px}
-    .reels-nav button{border:1px solid var(--line); background:#fff; padding:8px 12px; border-radius:10px; cursor:pointer; font-weight:800}
-    @media (max-width:560px){ .reel{flex-basis:70vw; height:64vh} }
+      /* Imagen del logo */
+      .soc img {
+        width: 26px;
+        height: 26px;
+        object-fit: contain;
+        display: block;
+      }
 
-    footer{border-top:1px solid var(--line); background:linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,.9)); backdrop-filter:blur(var(--blur)); text-align:center; padding:26px 18px; margin-top:48px}
-    .f-links{display:flex; gap:20px; justify-content:center; flex-wrap:wrap; margin-bottom:10px}
-    .f-links a{position:relative; text-decoration:none; font-weight:900; letter-spacing:.3px; background:linear-gradient(90deg,#0e0f11,#0e0f11,var(--a1),#0e0f11); -webkit-background-clip:text; background-clip:text; color:transparent; text-shadow:0 0 14px color-mix(in oklab, var(--a2) 20%, transparent); transition:transform .2s ease}
-    .f-links a:hover{transform:translateY(-1px)}
-    .f-links a::after{content:""; position:absolute; left:0; right:0; bottom:-6px; height:2px; background:linear-gradient(90deg,transparent,var(--a1),transparent); opacity:0; transform:translateX(-25%); transition:.3s ease}
-    .f-links a:hover::after{opacity:1; transform:translateX(0)}
-
-    /* Redes con tus imágenes */
-    .social{display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
-    .social .soc{
-      width:42px; height:42px; display:grid; place-items:center; border-radius:999px;
-      background:linear-gradient(180deg,#ffffff, color-mix(in oklab, var(--a3) 8%, white));
-      border:1px solid rgba(0,0,0,.08);
-      position:relative; overflow:hidden; transition:transform .15s ease, box-shadow .2s ease;
-    }
-    .social .soc::before{
-      content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
-      background:conic-gradient(from 0deg, color-mix(in oklab, var(--a1) 35%, transparent), color-mix(in oklab, var(--a2) 35%, transparent), color-mix(in oklab, var(--a3) 35%, transparent), color-mix(in oklab, var(--a1) 35%, transparent));
-      mask: radial-gradient(circle at 50% 50%, transparent 62%, #000 63%);
-      opacity:.55; filter:blur(0.5px);
-    }
-    .social .soc:hover{ transform:translateY(-2px); box-shadow:0 10px 22px rgba(17,17,19,.12) }
-    .social .soc img{ width:26px; height:26px; object-fit:contain; display:block }
-
-    .toast{position:fixed; left:50%; bottom:18px; transform:translateX(-50%) translateY(20px); border:1px solid var(--line); background:linear-gradient(180deg,#fff, color-mix(in oklab, var(--a3) 10%, white)); color:#0b0c0d; border-radius:14px; padding:12px 16px; display:flex; gap:10px; align-items:center; z-index:55; opacity:0; pointer-events:none; transition:.28s; box-shadow:0 12px 28px rgba(17,17,19,.12)}
-    .toast.show{opacity:1; transform:translateX(-50%)}
-    .toast.ok i{color:var(--ok)} .toast.err i{color:var(--err)}
-
-    /* WhatsApp flotante con tu imagen */
-    .wa{
-      position:fixed; right:16px; bottom:16px; z-index:40;
-      width:56px; height:56px; display:grid; place-items:center; border-radius:999px;
-      background:linear-gradient(180deg,#ffffff, color-mix(in oklab, var(--a3) 12%, white));
-      border:1px solid rgba(0,0,0,.08);
-      box-shadow:0 12px 28px rgba(0,0,0,.12);
-      transition:transform .15s ease, box-shadow .2s ease;
-      animation: wa-pulse 3s ease-in-out infinite;
-    }
-    .wa:hover{ transform:translateY(-2px); box-shadow:0 16px 36px rgba(0,0,0,.16) }
-    .wa img{ width:28px; height:28px; object-fit:contain; display:block }
-    @keyframes wa-pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.06)} }
-    @media (prefers-reduced-motion: reduce){ .wa{ animation: none } }
-
-    .hidden{position:absolute; left:-9999px}
-    :focus-visible{outline:3px solid color-mix(in oklab, var(--a1) 55%, white); outline-offset:2px}
-
-    /* Consent banner */
-    .consent{position:fixed; inset:auto 16px 16px 16px; z-index:70; background:#fff; border:1px solid var(--line); border-radius:14px; box-shadow:0 12px 28px rgba(0,0,0,.12); padding:14px; display:none; gap:10px; align-items:center}
-    .consent.show{display:flex}
-    .consent button{margin-left:auto; border:1px solid var(--line); background:#fff; padding:8px 12px; border-radius:10px; cursor:pointer; font-weight:800}
-  </style>
-</head>
-<body>
-  <a class="sr-skip" href="#form">Saltar al formulario</a>
-
-  <!-- Fondo vivo -->
-  <div class="blobs"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
-
-  <div class="progress" id="progress"></div>
-
-  <div class="topbar">✨ <strong>JONZKO</strong> • Atención rápida por WhatsApp y correo • Envíos a todo el Perú</div>
-
-  <!-- NAV -->
-  <header>
-    <div class="nav" role="navigation" aria-label="Navegación principal">
-      <div class="brand">
-        <img src="img/logo.jpg" alt="JONZKO">
-        <div class="name">JONZKO</div>
-      </div>
-
-      <!-- Theme switch -->
-      <div class="theme" aria-label="Cambiar tema">
-        <button class="sw sorbet" title="Tema Sorbet" aria-label="Tema Sorbet" data-set-theme="sorbet"></button>
-        <button class="sw ocean"  title="Tema Ocean"  aria-label="Tema Ocean"  data-set-theme="ocean"></button>
-        <button class="sw royal"  title="Tema Royal"  aria-label="Tema Royal"  data-set-theme="royal"></button>
-      </div>
-
-      <button class="menu" id="menuBtn" aria-label="Abrir menú" aria-controls="navBar" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
-      <nav id="navBar">
-        <a href="index.html">Inicio</a>
-        <a href="tienda.html">Tienda</a>
-        <a href="nosotros.html">Nosotros</a>
-        <a class="active" href="contacto.html" aria-current="page">Contacto</a>
-      </nav>
+      /* Si alguna imagen es muy oscura, puedes forzar mejor contraste al pasar el mouse */
+      /* .soc:hover img{ filter:brightness(1.05) contrast(1.05); } */
+    </style>
+  </head>
+  <body>
+    <!-- TOPBAR -->
+    <div class="topbar">
+      ✨ <strong>JONZKO</strong> • Tienda Virtual • Envíos a todo el Perú
     </div>
-  </header>
 
-  <!-- HERO -->
-  <section class="wrap">
-    <div class="hero">
-      <span class="kicker"><span class="dot" aria-hidden="true"></span> Contactanos </span>
-      <h1>Hablemos con <span style="background:linear-gradient(90deg,var(--a1),var(--a2));-webkit-background-clip:text;background-clip:text;color:transparent">estilo</span>.</h1>
-      <p class="subtitle">Consultas de tallas, materiales, envíos y pedidos corporativos. <strong>Respuesta ~1–2 h</strong> (9:00–19:00).</p>
-
-       <!-- Video dual: 16:9 desktop / 9:16 mobile -->
-<div class="hero-video">
-  <!-- Versión desktop -->
-  <video class="vh v-land" autoplay muted playsinline loop preload="auto" poster="img/slide1.jpg">
-    <source src="img/conocenos.mp4" type="video/mp4">
-    Tu navegador no soporta video HTML5.
-  </video>
-
-  <!-- Versión móvil (mismo archivo por ahora) -->
-  <video class="vh v-port" autoplay muted playsinline loop preload="auto" poster="img/slide1.jpg">
-    <source src="img/conocenos.mp4" type="video/mp4">
-    Tu navegador no soporta video HTML5.
-  </video>
-</div>
-
-
-    <!-- GRID -->
-    <div class="grid">
-      <!-- INFO -->
-      <aside class="card tilt" id="info" aria-labelledby="info-title">
-        <h3 class="title" id="info-title"><i class="fa-regular fa-address-card" aria-hidden="true"></i> Información de contacto</h3>
-
-        <div class="list" role="list">
-          <div class="item" role="listitem">
-            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
-            <div>
-              <div><strong>+51 998 989 599</strong></div>
-              <div class="muted">Lunes a Sábado, 9:00–19:00</div>
-            </div>
-            <span class="chip"><i class="fa-regular fa-circle-check" aria-hidden="true"></i> Rápido</span>
-            <div class="actions" role="group" aria-label="Acciones WhatsApp">
-              <a class="btn-icon" href="https://wa.me/51998989599?text=Hola%20JONZKO%2C%20tengo%20una%20consulta%20sobre%20[tema]" target="_blank" title="Abrir WhatsApp" aria-label="Abrir WhatsApp"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
-              <button class="btn-icon" data-copy="+51 998 989 599" title="Copiar teléfono" aria-label="Copiar teléfono"><i class="fa-regular fa-copy" aria-hidden="true"></i></button>
-            </div>
-          </div>
-
-          <div class="item" role="listitem">
-            <i class="fa-solid fa-envelope-open-text" aria-hidden="true"></i>
-            <div>
-              <!-- correo ofuscado -->
-              <div><strong><a data-mail href="#" rel="nofollow noopener"></a></strong></div>
-              <div class="muted">Pedidos, facturas y atención B2B</div>
-            </div>
-            <span class="chip"><i class="fa-solid fa-shield-heart" aria-hidden="true"></i> Soporte</span>
-            <div class="actions" role="group" aria-label="Acciones correo">
-              <a class="btn-icon" id="mailLink" href="#" title="Escribir correo" aria-label="Escribir correo"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i></a>
-              <button class="btn-icon" id="mailCopy" title="Copiar correo" aria-label="Copiar correo"><i class="fa-regular fa-copy" aria-hidden="true"></i></button>
-            </div>
-          </div>
-
-          <div class="item" role="listitem">
-            <i class="fa-solid fa-truck-fast" aria-hidden="true"></i>
-            <div>
-              <div><strong>Envíos a todo el Perú</strong></div>
-              <div class="muted">100% online con tracking por WhatsApp.</div>
-            </div>
-            <span class="chip"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Tracking</span>
-          </div>
+    <!-- NAV -->
+    <header>
+      <div class="nav" role="navigation" aria-label="Navegación principal">
+        <div class="brand">
+          <img src="img/logo.jpg" alt="JONZKO" />
+          <div class="name">JONZKO</div>
         </div>
+        <button
+          class="menu"
+          id="menuBtn"
+          aria-label="Abrir menú"
+          aria-controls="navBar"
+          aria-expanded="false"
+        >
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <nav id="navBar">
+          <a href="index.html">Inicio</a>
+          <a href="tienda.html">Tienda</a>
+          <a href="nosotros.html">Nosotros</a>
+          <a class="active" href="contacto.html" aria-current="page"
+            >Contacto</a
+          >
+        </nav>
+      </div>
+    </header>
 
-        <div class="cta">
-          <a href="https://wa.me/51998989599?text=Hola%20JONZKO%2C%20tengo%20una%20consulta%20sobre%20[tema]" target="_blank" class="btn mag">
-            <img class="ico" src="img/whassapp.png" alt="" aria-hidden="true"> WhatsApp ahora
-          </a>
-          <a id="ctaMail" class="btn mail mag" href="#"><i class="fa-solid fa-envelope"></i> Enviar correo</a>
-          <a href="tienda.html" class="btn ghost mag"><i class="fa-solid fa-store"></i> Ver tienda</a>
+    <!-- HERO -->
+    <section
+      class="hero-banner"
+      style="--hero-img: url('img/contacto.jonzko.jpeg')"
+    >
+      <div class="hero-inner">
+        <p class="eyebrow">Hecho a tu medida</p>
+        <h1 class="hero-title">Personaliza tu hoodie o polo</h1>
+        <p class="hero-sub">
+          Elige color, talla y estampado. También hacemos pedidos por volumen
+          para equipos y marcas.
+        </p>
+      </div>
+    </section>
+
+    <!-- MAIN -->
+    <main class="wrap">
+      <div class="grid">
+        <article class="card">
+          <h3>
+            <i class="fa-solid fa-envelope-open-text"></i> Escríbenos un mensaje
+          </h3>
+
+          <form
+            id="contactForm"
+            action="https://formspree.io/f/TU_ENDPOINT_ID"
+            method="POST"
+            novalidate
+          >
+            <input
+              type="text"
+              name="company"
+              class="full"
+              style="display: none"
+              autocomplete="off"
+              aria-hidden="true"
+            />
+            <input
+              type="hidden"
+              name="_subject"
+              value="Contacto JONZKO (web)"
+            />
+
+            <div>
+              <label for="name">Nombre</label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                placeholder="Tu nombre"
+                required
+              />
+            </div>
+            <div>
+              <label for="phone">Teléfono (opcional)</label>
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                placeholder="+51 9xx xxx xxx"
+              />
+            </div>
+            <div>
+              <label for="email">Correo</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="tunombre@correo.com"
+                required
+              />
+            </div>
+            <div>
+              <label for="company2">Empresa (opcional)</label>
+              <input
+                id="company2"
+                name="company_name"
+                type="text"
+                placeholder="Tu empresa"
+              />
+            </div>
+            <div>
+              <label for="subject">Asunto</label>
+              <input
+                id="subject"
+                name="subject"
+                type="text"
+                placeholder="Ej. Consulta de tallas"
+                required
+              />
+            </div>
+            <div class="full">
+              <label for="message">Mensaje</label>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Cuéntanos cómo te ayudamos…"
+                required
+              ></textarea>
+            </div>
+
+            <div
+              class="full"
+              style="display: flex; gap: 10px; align-items: center"
+            >
+              <button type="submit" class="btn primary">ENVIAR MENSAJE</button>
+              <a
+                class="btn dark"
+                href="https://wa.me/51998989599?text=Hola%20JONZKO%2C%20tengo%20una%20consulta%20sobre%20[tema]"
+                target="_blank"
+                rel="noopener"
+              >
+                <i class="fa-brands fa-whatsapp"></i>&nbsp;WhatsApp
+              </a>
+            </div>
+
+            <div class="full">
+              <div class="social">
+                <a
+                  class="soc"
+                  href="https://www.instagram.com/"
+                  target="_blank"
+                  aria-label="Instagram"
+                  rel="noopener"
+                >
+                  <img
+                    src="img/instagram.jpg"
+                    width="28"
+                    height="28"
+                    alt="Instagram"
+                    loading="lazy"
+                  />
+                </a>
+
+                <a
+                  class="soc"
+                  href="https://www.facebook.com/profile.php?id=61563952841904"
+                  target="_blank"
+                  aria-label="Facebook"
+                  rel="noopener"
+                >
+                  <img
+                    src="img/facebook.jpg"
+                    width="28"
+                    height="28"
+                    alt="Facebook"
+                    loading="lazy"
+                  />
+                </a>
+
+                <a
+                  class="soc"
+                  href="https://www.tiktok.com/"
+                  target="_blank"
+                  aria-label="TikTok"
+                  rel="noopener"
+                >
+                  <img
+                    src="img/tiktok.png"
+                    width="28"
+                    height="28"
+                    alt="TikTok"
+                    loading="lazy"
+                  />
+                </a>
+              </div>
+            </div>
+          </form>
+        </article>
+
+        <aside class="card">
+          <h3>
+            <i class="fa-solid fa-address-book"></i> Ponte en contacto con
+            nosotros
+          </h3>
+          <div class="info-list">
+            <div class="info">
+              <i class="fa-solid fa-location-dot"></i>
+              <div>
+                <strong> Perù / Lima</strong
+                ><span class="muted">Envíos a todo el Perú</span>
+              </div>
+            </div>
+            <div class="info">
+              <i class="fa-solid fa-envelope"></i>
+              <div>
+                <strong
+                  ><a href="mailto:jonathan.huaman18@gmail.com"
+                    >jonathan.huaman18@gmail.com</a
+                  ></strong
+                ><span class="muted">Pedidos, facturas y atención 24/7</span>
+              </div>
+            </div>
+            <div class="info">
+              <i class="fa-brands fa-whatsapp"></i>
+              <div>
+                <strong
+                  ><a href="https://wa.me/51998989599" target="_blank"
+                    >+51 998 989 599</a
+                  ></strong
+                ><span class="muted">Lun–Sáb • 9:00–19:00</span>
+              </div>
+            </div>
+            <div class="info">
+              <i class="fa-solid fa-rotate"></i>
+              <div>
+                <strong>Cambios y devoluciones</strong
+                ><span class="muted">Hasta 7 días hábiles (con etiquetas)</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <div class="map-grid">
+        <section class="card map">
+          <h3>
+            <i class="fa-solid fa-map-location-dot"></i> Ubicación (referencial)
+          </h3>
+          <div
+            class="placeholder"
+            style="
+              display: grid;
+              place-items: center;
+              background: #f5f6f8;
+              color: #777;
+              border: 1px dashed #dcdcdc;
+            "
+          >
+            <span>Mapa — Inserta aquí tu iframe de Google Maps</span>
+          </div>
+        </section>
+
+        <section class="card">
+          <h3><i class="fa-solid fa-circle-info"></i> Información rápida</h3>
+          <div>
+            <strong>Metodo de Pago :</strong>
+            <span class="muted">....</span>
+          </div>
+          <!-- Métodos de pago con logos -->
+          <div class="pay-row" aria-label="Métodos de pago aceptados">
+            <div class="pay-badge">
+              <img
+                src="img/yape.png"
+                alt="Yape"
+                width="40"
+                height="40"
+                loading="lazy"
+              />
+              <span>Yape</span>
+            </div>
+            <div class="pay-badge">
+              <img
+                src="img/plin.jpg"
+                alt="Plin"
+                width="40"
+                height="40"
+                loading="lazy"
+              />
+              <span>Plin</span>
+            </div>
+            <div class="pay-badge">
+              <img
+                src="img/bcp.jpg"
+                alt="BCP"
+                width="40"
+                height="40"
+                loading="lazy"
+              />
+              <span>BCP</span>
+            </div>
+            <!-- si luego agregas VISA/MC, repite el bloque -->
+          </div>
+
+          <div class="info-list" style="margin-top: 10px">
+            <div class="info">
+              <i class="fa-solid fa-leaf"></i>
+              <div>
+                <strong>Materiales premium</strong>
+                <span class="muted">Control de calidad</span>
+              </div>
+            </div>
+            <div class="info">
+              <i class="fa-solid fa-truck-fast"></i>
+              <div>
+                <strong>Envíos 24–96h</strong>
+                <span class="muted">Tracking por WhatsApp</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- NEWSLETTER con imagen -->
+    <section
+      class="footer-cta"
+      style="--footer-img: url('img/contacto.abajo.jpeg')"
+    >
+      <div class="inner">
+        <div>
+          <h3>Giving up is not an option</h3>
+          <p>Suscríbete para recibir lanzamientos y ofertas de JONZKO.</p>
         </div>
-
-        <div class="trust" aria-label="Confianza">
-          <span class="badge"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Pago seguro</span>
-          <span class="badge"><i class="fa-solid fa-leaf" aria-hidden="true"></i> Materiales premium</span>
-          <span class="badge"><i class="fa-solid fa-rotate" aria-hidden="true"></i> Cambios 7 días</span>
-        </div>
-      </aside>
-
-      <!-- FORM -->
-      <article class="card tilt" id="form">
-        <h3 class="title"><i class="fa-solid fa-headset" aria-hidden="true"></i> Escríbenos un mensaje</h3>
-
-        <!-- Cambia TU_ENDPOINT_ID por tu endpoint de Formspree -->
-        <form id="contactForm" action="https://formspree.io/f/TU_ENDPOINT_ID" method="POST" novalidate aria-describedby="formHelp">
-          <input type="text" name="company" class="hidden" autocomplete="off" aria-hidden="true"> <!-- honeypot -->
-          <input type="hidden" name="_subject" value="Contacto JONZKO (web)">
-          <input type="hidden" name="utm" id="utm">
-
-          <div class="field">
-            <label for="name">Nombre y apellido</label>
-            <input id="name" name="name" type="text" placeholder="Tu nombre completo" required>
-          </div>
-
-          <div class="field">
-            <label for="email">Correo</label>
-            <input id="email" name="email" type="email" placeholder="tunombre@correo.com" required>
-          </div>
-
-          <div class="field">
-            <label for="topic">Motivo</label>
-            <select id="topic" name="topic" required>
-              <option value="">Selecciona una opción</option>
-              <option value="tallas">Consulta de tallas</option>
-              <option value="materiales">Materiales y calidad</option>
-              <option value="envios">Envíos y seguimiento</option>
-              <option value="mayorista">Mayorista / B2B</option>
-              <option value="otro">Otro</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label for="tone">Tono</label>
-            <select id="tone">
-              <option value="rapido">Rápido</option>
-              <option value="amable" selected>Amable</option>
-              <option value="formal">Formal</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label for="message">Mensaje</label>
-            <textarea id="message" name="message" placeholder="Cuéntanos cómo te ayudamos…" required></textarea>
-          </div>
-
-          <!-- Lottie en el botón -->
-          <button id="sendBtn" type="submit" class="btn submit mag" style="display:inline-flex;align-items:center;gap:10px">
-            <span id="sendAnim" style="width:22px;height:22px"></span>
-            Enviar mensaje
-          </button>
-          <button type="button" class="btn ghost mag" id="aiHelp"><i class="fa-solid fa-wand-magic-sparkles"></i> Redactar por mí</button>
-
-          <p id="formHelp" class="muted" style="font-size:.85rem">Al enviar aceptas nuestra <a href="privacidad.html" style="text-decoration:none;border-bottom:1px solid rgba(0,0,0,.12);color:inherit">Política de Privacidad</a>.</p>
+        <form action="https://formspree.io/f/TU_ENDPOINT_ID" method="POST">
+          <input
+            type="email"
+            name="email"
+            placeholder="tu@email.com"
+            required
+          />
+          <button type="submit">SUSCRIBIRME</button>
         </form>
+      </div>
+    </section>
 
-        <div style="height:10px"></div>
-        <div class="kpis" aria-label="Indicadores">
-          <div class="kpi"><strong>24/7</strong><span class="muted">Soporte</span></div>
-          <div class="kpi"><strong>+2,500</strong><span class="muted">Pedidos</span></div>
-          <div class="kpi"><strong>4.9/5</strong><span class="muted">Satisfacción</span></div>
+    <!-- FOOTER oscuro full-width -->
+    <footer class="site-footer">
+      <div class="inner">
+        <div class="ft-grid">
+          <div class="ft">
+            <div class="brand">
+              <img src="img/logo.jpg" alt="JONZKO" width="42" height="42" />
+              <div class="name" style="font-weight: 800; color: #fff">
+                JONZKO
+              </div>
+            </div>
+            <p class="muted" style="margin: 0.6rem 0 0">
+              Prendas premium con acabados de calidad. Hecho en Perú.
+            </p>
+          </div>
+
+          <div class="ft">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="nosotros.html">Nosotros</a></li>
+              <li><a href="tienda.html">Tienda</a></li>
+              <li><a href="reclamaciones.html">Libro de Reclamaciones</a></li>
+            </ul>
+          </div>
+
+          <div class="ft">
+            <h4>Soporte</h4>
+            <ul>
+              <li><a href="terminos.html">Términos</a></li>
+              <li><a href="privacidad.html">Privacidad</a></li>
+              <li><a href="mailto:jonathan.huaman18@gmail.com">Correo</a></li>
+            </ul>
+          </div>
+
+          <div class="ft">
+            <h4>Contacto</h4>
+            <ul>
+              <li>📍 Lima — Perú</li>
+              <li>
+                ☎️
+                <a href="https://wa.me/51998989599" target="_blank"
+                  >+51 998 989 599</a
+                >
+              </li>
+              <li>
+                ✉️
+                <a href="mailto:jonathan.huaman18@gmail.com"
+                  >jonathan.huaman18@gmail.com</a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
 
-        <div class="faq" style="margin-top:12px">
-          <details class="q">
-            <summary>¿Cuánto tarda el envío? <i class="fa-solid fa-chevron-down"></i></summary>
-            <div class="a">Lima 24–48h. Provincias 48–96h aprox. Te compartimos tracking por WhatsApp.</div>
-          </details>
-          <details class="q">
-            <summary>¿Puedo cambiar talla o color? <i class="fa-solid fa-chevron-down"></i></summary>
-            <div class="a">Sí, dentro de los 7 días hábiles. La prenda debe estar nueva con etiquetas.</div>
-          </details>
-          <details class="q">
-            <summary>¿Atienden ventas al por mayor? <i class="fa-solid fa-chevron-down"></i></summary>
-            <div class="a">Claro. Escríbenos con cantidades y estilos para precios preferenciales.</div>
-          </details>
+        <div class="ft-bottom">
+          <div class="links">
+            <a href="terminos.html">📜 Términos</a>
+            <a href="privacidad.html">🔒 Privacidad</a>
+            <a href="reclamaciones.html">📖 Reclamos</a>
+          </div>
+          <div class="copy">
+            © 2025 <strong>JONZKO</strong>. Todos los derechos reservados.
+          </div>
         </div>
-      </article>
+      </div>
+    </footer>
 
-<!-- TESTIMONIOS en video (reels) -->
-<aside class="card tilt" id="testi">
-  <h3 class="title">
-    <i class="fa-solid fa-clapperboard" aria-hidden="true"></i> Opiniones en video
-  </h3>
+    <!-- WhatsApp -->
+    <a
+      class="float-wa"
+      href="https://wa.me/51998989599?text=Hola%20JONZKO%2C%20tengo%20una%20consulta%20sobre%20[tema]"
+      target="_blank"
+      rel="noopener"
+      aria-label="WhatsApp"
+    >
+      <img src="img/whassapp.png" alt="WhatsApp" width="28" height="28" />
+    </a>
 
-  <div class="reels" id="reels">
-    <!-- Reel 1 -->
-    <div class="reel">
-      <video autoplay muted playsinline loop preload="auto" poster="img/slide1.jpg">
-        <!-- Si luego generas WebM, agrégalo arriba de MP4 -->
-        <!-- <source src="img/conocenos.webm" type="video/webm"> -->
-        <source src="img/conocenos.mp4" type="video/mp4">
-        Tu navegador no soporta video HTML5.
-      </video>
-    </div>
-
-    <!-- Reel 2 (mismo video) -->
-    <div class="reel">
-      <video autoplay muted playsinline loop preload="auto" poster="img/slide1.jpg">
-        <!-- <source src="img/conocenos.webm" type="video/webm"> -->
-        <source src="img/conocenos.2.mp4" type="video/mp4">
-        Tu navegador no soporta video HTML5.
-      </video>
-    </div>
-
-    <!-- Reel 3 (mismo video) -->
-    <div class="reel">
-      <video autoplay muted playsinline loop preload="auto" poster="img/slide1.jpg">
-        <!-- <source src="img/conocenos.webm" type="video/webm"> -->
-        <source src="img/conocenos.mp4" type="video/mp4">
-        Tu navegador no soporta video HTML5.
-      </video>
-    </div>
-  </div>
-
-  <div class="reels-nav">
-    <button data-d="-1" aria-label="Anterior">‹</button>
-    <button data-d="1" aria-label="Siguiente">›</button>
-  </div>
-</aside>
-
-
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="f-links">
-      <a href="terminos.html">📜 Términos</a>
-      <a href="privacidad.html">🔒 Privacidad</a>
-      <a href="reclamaciones.html">📖 Reclamos</a>
-    </div>
-
-    <div class="social" style="margin-bottom:10px">
-      <a class="soc" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
-        <img src="img/instagram.jpg" alt="Instagram" width="28" height="28" loading="lazy" decoding="async">
-      </a>
-      <a class="soc" href="https://www.facebook.com/profile.php?id=61563952841904" target="_blank" rel="noopener" aria-label="Facebook">
-        <img src="img/facebook.jpg" alt="Facebook" width="28" height="28" loading="lazy" decoding="async">
-      </a>
-      <a class="soc" href="https://www.tiktok.com/" target="_blank" rel="noopener" aria-label="TikTok">
-        <img src="img/tiktok.png" alt="TikTok" width="28" height="28" loading="lazy" decoding="async">
-      </a>
-      <a class="soc" href="mailto:jonathan.huaman18@gmail.com" aria-label="Correo">
-        <img src="img/gmail.jpeg" alt="Correo" width="28" height="28" loading="lazy" decoding="async">
-      </a>
-      <a class="soc" href="https://wa.me/51998989599" target="_blank" rel="noopener" aria-label="WhatsApp">
-        <img src="img/phone.png" alt="WhatsApp" width="28" height="28" loading="lazy" decoding="async">
-      </a>
-    </div>
-
-    <div class="muted">© 2025 <strong>JONZKO</strong>. Todos los derechos reservados.</div>
-  </footer>
-
-  <!-- WhatsApp flotante (usa tu imagen) -->
-  <a class="wa" href="https://wa.me/51998989599?text=Hola%20JONZKO%2C%20tengo%20una%20consulta%20sobre%20[tema]"
-     target="_blank" rel="noopener" aria-label="WhatsApp">
-    <img src="img/whassapp.png" alt="" aria-hidden="true" width="28" height="28" decoding="async">
-  </a>
-  <!-- Si más adelante agregas retina: 
-  <img src="img/whassapp.png" srcset="img/whassapp.png 1x, img/whassapp@2x.png 2x" ...>
-  -->
-
-  <!-- Toast -->
-  <div id="toast" class="toast ok" role="status" aria-live="polite"><i class="fa-solid fa-circle-check"></i><span>Listo.</span></div>
-
-  <!-- Consent simple (GA4 placeholder) -->
-  <div id="consent" class="consent">
-    Usamos cookies para métricas anónimas. ¿Aceptar?
-    <button id="c-accept">Aceptar</button>
-    <button id="c-reject">Rechazar</button>
-  </div>
-
-  <!-- Lottie -->
-  <script src="https://unpkg.com/lottie-web/build/player/lottie.min.js"></script>
-
-  <script>
-    // ===== Progreso scroll
-    const progress=document.getElementById('progress');
-    const onScroll=()=>{const h=document.documentElement; const sc=h.scrollTop/(h.scrollHeight-h.clientHeight)*100; progress.style.width=sc+'%';};
-    document.addEventListener('scroll', onScroll, {passive:true}); onScroll();
-
-    // ===== Menú móvil
-    const menuBtn=document.getElementById('menuBtn');
-    const navBar=document.getElementById('navBar');
-    menuBtn?.addEventListener('click',()=>{const open=navBar.classList.toggle('show'); menuBtn.setAttribute('aria-expanded', open ? 'true':'false');});
-
-    // ===== Theme switcher persistente
-    const html=document.documentElement;
-    const saved=localStorage.getItem('jonzko-theme'); if(saved) html.setAttribute('data-theme', saved);
-    document.querySelectorAll('[data-set-theme]').forEach(b=>{
-      b.addEventListener('click',()=>{ html.setAttribute('data-theme', b.dataset.setTheme); localStorage.setItem('jonzko-theme', b.dataset.setTheme); });
-    });
-
-    // ===== Botones magnéticos + ripple
-    function mag(e,el){const r=el.getBoundingClientRect(); el.style.setProperty('--mx',(e.clientX-r.left)+'px'); el.style.setProperty('--my',(e.clientY-r.top)+'px');}
-    document.querySelectorAll('.mag,.btn').forEach(btn=>{
-      btn.addEventListener('mousemove', e=>mag(e,btn));
-      btn.addEventListener('mouseleave', ()=>{btn.style.removeProperty('--mx'); btn.style.removeProperty('--my');});
-      btn.addEventListener('click', (e)=>{const rip=document.createElement('span'); rip.className='ripple'; rip.style.left=e.offsetX+'px'; rip.style.top=e.offsetY+'px'; btn.appendChild(rip); setTimeout(()=>rip.remove(), 600);});
-    });
-
-    // ===== Tilt 3D
-    document.querySelectorAll('.tilt').forEach(card=>{
-      card.addEventListener('mousemove',e=>{
-        const r=card.getBoundingClientRect(); const x=e.clientX - r.left, y=e.clientY - r.top;
-        const rx=((y/r.height)-0.5)*-6, ry=((x/r.width)-0.5)*6;
-        card.style.transform=`perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(6px)`;
+    <script>
+      // Menú móvil
+      const menuBtn = document.getElementById("menuBtn");
+      const navBar = document.getElementById("navBar");
+      menuBtn?.addEventListener("click", () => {
+        const open = navBar.classList.toggle("show");
+        menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
       });
-      card.addEventListener('mouseleave',()=> card.style.transform='perspective(1000px) rotateX(0) rotateY(0) translateZ(0)');
-    });
 
-    // ===== Toast
-    const toast=document.getElementById('toast');
-    function showToast(msg,ok=true){toast.className='toast '+(ok?'ok':'err'); toast.querySelector('span').textContent=msg; toast.querySelector('i').className= ok?'fa-solid fa-circle-check':'fa-solid fa-triangle-exclamation'; toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'),2600);}
-
-    // ===== Copiar teléfono
-    document.querySelectorAll('[data-copy]').forEach(btn=>{
-      btn.addEventListener('click', async ()=>{try{ await navigator.clipboard.writeText(btn.dataset.copy); showToast('Copiado: '+btn.dataset.copy,true);} catch{ showToast('No se pudo copiar',false);} });
-    });
-
-    // ===== Video: play/pause por visibilidad
-    document.querySelectorAll('.vh').forEach(v=>{
-      const io=new IntersectionObserver(entries=>{entries.forEach(e=> e.isIntersecting ? v.play().catch(()=>{}) : v.pause());},{threshold:.3});
-      io.observe(v);
-    });
-
-    // ===== Reels navegación
-    (()=>{const box=document.getElementById('reels'); document.querySelectorAll('.reels-nav button').forEach(btn=>{btn.addEventListener('click',()=> box.scrollBy({left:(btn.dataset.d==='1'?1:-1)*(box.clientWidth*0.8), behavior:'smooth'}));});})();
-
-    // ===== Ofuscación de correo + enlaces
-    const email="jonathan.huaman18"+"@"+"gmail.com";
-    document.querySelectorAll('[data-mail]').forEach(el=>{el.textContent=email; el.href="mailto:"+email;});
-    const mailLink=document.getElementById('mailLink'); if(mailLink) mailLink.href="mailto:"+email;
-    const mailCopy=document.getElementById('mailCopy'); mailCopy?.addEventListener('click', async ()=>{try{await navigator.clipboard.writeText(email); showToast('Copiado: '+email,true);}catch{showToast('No se pudo copiar',false);}});
-    const ctaMail=document.getElementById('ctaMail'); if(ctaMail) ctaMail.href="mailto:"+email;
-
-    // ===== Captura UTM
-    (function(){
-      const params=new URLSearchParams(location.search);
-      const utm=['utm_source','utm_medium','utm_campaign','utm_content','utm_term']
-        .reduce((o,k)=> (params.get(k)&&(o[k]=params.get(k)),o),{});
-      const el=document.getElementById('utm'); if(el) el.value=JSON.stringify(utm);
-    })();
-
-    // ===== Lottie en botón Enviar
-    const sendAnim=lottie.loadAnimation({
-      container: document.getElementById('sendAnim'),
-      renderer: 'svg', loop: true, autoplay: true,
-      path: 'lottie/paperplane.json' /* tu JSON */
-    });
-
-    // ===== IA client-side: plantillas
-    const TEMPLATES={
-      tallas:{rapido:n=>`Hola JONZKO, soy ${n}. ¿La talla M de [modelo] equivale a [medidas]? ¿Recomiendan subir o bajar talla?`, amable:n=>`¡Hola, JONZKO! Soy ${n}. ¿La talla M de [modelo] se ajusta a estas medidas: [medidas]? ¿Algún consejo de calce?`, formal:n=>`Estimados, mi nombre es ${n}. Solicito confirmación de medidas para la talla M del modelo [modelo] y recomendaciones de ajuste.`},
-      materiales:{rapido:n=>`Hola, ${n} por aquí. ¿Qué materiales exactos tiene [prenda]? ¿Se puede lavar a máquina?`, amable:n=>`Hola, soy ${n}. ¿Podrían indicarme los materiales del modelo [prenda] y cuidados sugeridos?`, formal:n=>`Estimados, ${n}. Solicito ficha de materiales y cuidados del producto [prenda].`},
-      envios:{rapido:n=>`Hola JONZKO, soy ${n}. ¿Tiempo de envío a [ciudad]? ¿Costo y tracking?`, amable:n=>`Hola, ${n}. ¿Me confirman plazo y costo de envío a [ciudad]? ¿Incluye número de seguimiento?`, formal:n=>`Estimados, ${n}. Requiero tiempos y costos de envío a [ciudad], además de procedimiento de seguimiento.`},
-      mayorista:{rapido:n=>`Hola, ${n}. Cotización mayorista para [cantidades] de [modelo/colores].`, amable:n=>`Hola, soy ${n}. Quisiera una cotización mayorista: [cantidades], modelos y colores. Gracias.`, formal:n=>`Estimados, ${n}. Solicito cotización B2B para [cantidades], modelos y colores.`},
-      otro:{rapido:n=>`Hola, ${n}. Consulta: [tu mensaje aquí].`, amable:n=>`Hola, soy ${n}. Tengo esta consulta: [tu mensaje aquí]. ¡Gracias!`, formal:n=>`Estimados, ${n}. Deseo realizar la siguiente consulta: [tu mensaje aquí].`}
-    };
-    document.getElementById('aiHelp')?.addEventListener('click', ()=>{
-      const name=document.getElementById('name')?.value.trim()||'';
-      const topic=document.getElementById('topic')?.value||'otro';
-      const tone=document.getElementById('tone')?.value||'amable';
-      const fn=(TEMPLATES[topic]||TEMPLATES.otro)[tone];
-      const draft=fn(name||'');
-      const msg=document.getElementById('message');
-      msg.value=draft; msg.focus();
-      showToast('Borrador generado. Ajusta los corchetes [] ✍️', true);
-    });
-
-    // ===== Form + Formspree
-    const form=document.getElementById('contactForm');
-    form.addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      if(form.querySelector('[name="company"]').value!=="") return; // honeypot
-
-      const fd=new FormData(form);
-      const name=(fd.get('name')||'').toString().trim();
-      const emailv=(fd.get('email')||'').toString().trim();
-      const topic=(fd.get('topic')||'').toString().trim();
-      const message=(fd.get('message')||'').toString().trim();
-
-      if(!name||!emailv||!topic||!message){ showToast('Completa todos los campos',false); return; }
-      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailv)){ showToast('Correo no válido',false); return; }
-
-      const btn=document.getElementById('sendBtn');
-      const old=btn.innerHTML; btn.disabled=true; btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> Enviando…';
-
-      try{
-        const res=await fetch(form.action,{method:'POST', body:fd, headers:{'Accept':'application/json'}});
-        if(res.ok){ form.reset(); showToast('Mensaje enviado. ¡Gracias!',true); }
-        else{ showToast('No se pudo enviar. Intenta de nuevo.',false); }
-      }catch(err){ console.error(err); showToast('Error de red. Intenta luego.',false); }
-      finally{ btn.disabled=false; btn.innerHTML=old; }
-    });
-
-    // ===== Consent + GA4 (placeholder)
-    const consent=document.getElementById('consent');
-    const CONSENT_KEY='jonzko-consent';
-    if(!localStorage.getItem(CONSENT_KEY)) consent.classList.add('show');
-    document.getElementById('c-accept').addEventListener('click', ()=>{
-      localStorage.setItem(CONSENT_KEY,'yes'); consent.classList.remove('show');
-      // Carga GA4 si quieres
-      /* const s=document.createElement('script'); s.async=true; s.src='https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX'; document.head.appendChild(s);
-      window.dataLayer=window.dataLayer||[]; function gtag(){dataLayer.push(arguments)}; gtag('js', new Date()); gtag('config','G-XXXXXXX'); */
-    });
-    document.getElementById('c-reject').addEventListener('click', ()=>{ localStorage.setItem(CONSENT_KEY,'no'); consent.classList.remove('show'); });
-  </script>
-</body>
+      // Form Formspree
+      const form = document.getElementById("contactForm");
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        if (form.querySelector('[name="company"]').value !== "") return;
+        const fd = new FormData(form);
+        const email = (fd.get("email") || "").toString().trim();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          alert("Correo no válido");
+          return;
+        }
+        try {
+          const res = await fetch(form.action, {
+            method: "POST",
+            body: fd,
+            headers: { Accept: "application/json" },
+          });
+          if (res.ok) {
+            form.reset();
+            alert("Mensaje enviado. ¡Gracias!");
+          } else {
+            alert("No se pudo enviar. Intenta de nuevo.");
+          }
+        } catch {
+          alert("Error de red. Intenta luego.");
+        }
+      });
+    </script>
+  </body>
 </html>
+
 
 
