@@ -74,8 +74,6 @@
       text-shadow:0 1px 8px rgba(0,0,0,.45);
       font-weight:800; letter-spacing:.3px;
     }
-    /* altura real calculada después del render */
-    .topbar-measured{ --topbar-h-real: var(--topbar-h); }
 
     header{
       position:fixed; top:var(--topbar-h); left:0; right:0; z-index:60;
@@ -108,7 +106,6 @@
        HERO (full-bleed)
        ========================= */
     .hero{
-      composes: fullbleed;
       min-height:56svh; /* estable en móvil */
       display:flex; align-items:flex-end; color:#fff;
       background:
@@ -171,7 +168,6 @@
        CTA Newsletter con imagen
        ========================= */
     .footer-cta{
-      composes: fullbleed;
       color:#fff; padding:22px 0;
       background:linear-gradient(0deg, rgba(0,0,0,.55), rgba(0,0,0,.55)),
                  var(--footer-img) 50% 40% / cover no-repeat;
@@ -188,7 +184,6 @@
        FOOTER oscuro full width
        ========================= */
     .site-footer{
-      composes: fullbleed;
       background:#0d0f13; color:#b9c0cc;
     }
     .site-footer .inner{max-width:var(--container); margin:0 auto; padding:24px 16px}
@@ -467,7 +462,3 @@
   </script>
 </body>
 </html>
-
-
-
-
