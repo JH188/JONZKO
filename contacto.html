@@ -216,6 +216,51 @@
       .ft-grid{grid-template-columns:1.2fr 1fr 1fr 1.2fr}
       .ft-bottom{flex-direction:row; justify-content:space-between; align-items:center}
     }
+    /* ====== MÓVIL / FINO ====== */
+
+/* Héroe más alto y estable en móvil */
+@media (max-width: 700px){
+  .hero-banner{
+    min-height: 62svh; /* mejor que 100vh en iOS */
+    background:
+      linear-gradient(0deg, rgba(0,0,0,.65), rgba(0,0,0,.35) 55%, rgba(0,0,0,.12)),
+      var(--hero-img) 50% 32% / cover no-repeat; /* sube foco un poco */
+  }
+  .hero-inner{
+    padding: calc(var(--topbar-h) + var(--header-h) + 12px) 16px 28px;
+  }
+  .hero-title{ font-size: clamp(1.6rem, 5.6vw, 2.4rem) }
+  .hero-sub{ font-size: 0.98rem }
+}
+
+/* Ícono del menú visible sobre la foto */
+.menu{ color:#111 }               /* color por defecto (cuando hay fondo claro) */
+header.on-hero .menu{ color:#fff }/* cuando está sobre la imagen del héroe */
+
+/* También el logo/nombre */
+header.on-hero .brand .name{ color:#fff }
+header.on-hero .brand img{
+  box-shadow: 0 0 0 2px rgba(255,255,255,.9), 0 0 0 3px rgba(255,255,255,.2);
+}
+
+/* Evitar que el botón de WhatsApp tape campos en móvil */
+@media (max-width: 700px){
+  .float-wa{ bottom: 84px; }        /* súbelo un poco */
+  main.wrap{ padding-bottom: 92px; }/* deja espacio bajo el form */
+}
+
+/* Inputs a 16px para impedir zoom de iOS al foco */
+input, select, textarea{ font-size:16px }
+
+/* Mejoras de foco accesibles en móvil */
+:where(a,button,input,textarea):focus-visible{
+  outline: 3px solid color-mix(in oklab, var(--a1) 70%, #fff);
+  outline-offset: 2px;
+}
+
+/* Safe-area (notch) en iPhone */
+.topbar{ padding-top: calc(.55rem + env(safe-area-inset-top, 0px)); }
+
   </style>
 </head>
 <body>
@@ -437,9 +482,29 @@
         else{ alert('No se pudo enviar. Intenta de nuevo.'); }
       }catch{ alert('Error de red. Intenta luego.'); }
     });
-  </script>
+  // Cambia estilos del header cuando está “sobre el héroe”
+  const headerEl = document.querySelector('header');
+  const heroEl   = document.querySelector('.hero-banner');
+
+  function paintHeader(){
+    const heroBottom = heroEl.getBoundingClientRect().bottom;
+    // Si aún se ve el héroe detrás del header -> usa modo "on-hero"
+    if (heroBottom > (parseInt(getComputedStyle(document.documentElement)
+        .getPropertyValue('--topbar-h')) || 44) + 
+        (parseInt(getComputedStyle(document.documentElement)
+        .getPropertyValue('--header-h')) || 72)) {
+      headerEl.classList.add('on-hero');
+    } else {
+      headerEl.classList.remove('on-hero');
+    }
+  }
+  paintHeader();
+  addEventListener('scroll', paintHeader, {passive:true});
+  addEventListener('resize', paintHeader);
+</script>
 </body>
 </html>
+
 
 
 
